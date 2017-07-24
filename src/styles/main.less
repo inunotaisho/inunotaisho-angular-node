@@ -9,11 +9,22 @@
 @import './src/views/write/write.less';
 @import '../../node_modules/bootstrap/less/bootstrap.less';
 @import '../../node_modules/bootstrap/less/theme.less';
+@import '../../node_modules/platypusui/dist/platypus.less';
+
 .app{
     height: 100vh;
     width: 100vw;
-    position:absolute;
+    z-index: 1000000;
+    position: absolute;
 }
+[plat-control='app-root']{
+
+    background-color: white;
+    #platui > #mixins > .calc(height; '100%');
+    #platui > #mixins > .scroll(y);
+
+}
+
 .easterEgg{
     color: #fff;
 }
