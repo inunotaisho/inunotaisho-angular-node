@@ -3,7 +3,6 @@ const webpack = require('webpack');
 module.exports = {
     devtool: 'source-map',
     entry: [
-        'webpack-hot-middleware/client?reload=true',
         './src/main.ts'
     ],
     target: 'web',
@@ -17,6 +16,10 @@ module.exports = {
             __DEV__: true
         }),
         new webpack.HotModuleReplacementPlugin(),
+        new webpack.ProvidePlugin({
+            angular: "angular",
+            platypusui: 'platypusui'
+        }),
         new webpack.NoEmitOnErrorsPlugin()
     ],
     module:{

@@ -41,7 +41,7 @@ const routes: Routes = [
    providers: [],
    bootstrap: [AppComponent]
 })
-export class AppModule { 
+export default class AppModule { 
 
     error(ev: events.ErrorEvent<Error>): void {
         console.log(ev.error);
