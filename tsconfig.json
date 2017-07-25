@@ -6,9 +6,16 @@
         "removeComments": true,
         "preserveConstEnums": true,
         "sourceMap": true,
+        "declaration": false,
+        "moduleResolution": "node",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
         "suppressImplicitAnyIndexErrors": true,
         "watch": false
     },
+    "typeRoots": [
+      "node_modules/@types"
+    ],
     "include": [
         "./src/views/**/*.ts"
     ]

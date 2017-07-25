@@ -4,7 +4,6 @@ import { Http } from '@angular/http';
 @Component({
     templateUrl:'blog.component.html'
 })
-
 export default class BlogComponent implements OnInit{
     constructor() { }
 

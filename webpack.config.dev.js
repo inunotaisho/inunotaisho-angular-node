@@ -4,7 +4,7 @@ module.exports = {
     devtool: 'source-map',
     entry: [
         'webpack-hot-middleware/client?reload=true',
-        './src/views/lib/main.js'
+        './src/main.ts'
     ],
     target: 'web',
     output: {
@@ -17,10 +17,6 @@ module.exports = {
             __DEV__: true
         }),
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.ProvidePlugin({
-            $: "jquery",
-            jQuery: 'jquery'
-        }),
         new webpack.NoEmitOnErrorsPlugin()
     ],
     module:{
@@ -30,9 +26,9 @@ module.exports = {
                 loader: 'raw-loader'
             }],
         }, {
-            test: /\.js$/, 
+            test: /\.ts$/, 
             use: [{
-                loader: 'babel-loader'
+                loader: 'ts-loader'
             }]
         }]
     }

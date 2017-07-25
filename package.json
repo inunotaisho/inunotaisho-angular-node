@@ -23,6 +23,7 @@
     "@angular/platform-browser": "^4.3.1",
     "@angular/platform-browser-dynamic": "^4.3.1",
     "@angular/router": "^4.3.1",
+    "@types/core-js": "^0.9.42",
     "bcrypt": "^1.0.2",
     "body-parser": "^1.17.1",
     "bootstrap": "^3.3.7",
@@ -47,6 +48,7 @@
     "rxjs": "^5.4.2",
     "sequelize": "^3.30.4",
     "sequelize-cli": "^2.7.0",
+    "ts-loader": "^2.3.1",
     "typescript": "^2.4.2",
     "webpack": "^3.1.0",
     "zone.js": "^0.8.14"
