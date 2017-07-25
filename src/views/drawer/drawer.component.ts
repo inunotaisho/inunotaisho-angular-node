@@ -8,11 +8,14 @@ import {DrawerController} from 'platypusui';
     templateUrl:'./drawer.component.html'
 })
 
-export default class DrawerComponent implements OnInit{
-    constructor() { }
+export default class DrawerComponent extends ui.TemplateControl implements OnInit{
+    constructor() {
+        super();
+     }
 
     ngOnInit(): void {
         throw new Error("Method not implemented.");
     }
     
 }
+register.control('drawer', DrawerComponent, [], true);

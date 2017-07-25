@@ -4,6 +4,8 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { Routes, RouterModule } from '@angular/router';
+import {events, register} from 'platypus';
+
 
 import HomeComponent from '../home/home.component';
 import EdComponent from '../education/ed.component';
@@ -39,4 +41,9 @@ const routes: Routes = [
    providers: [],
    bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+
+    error(ev: events.ErrorEvent<Error>): void {
+        console.log(ev.error);
+    }
+}

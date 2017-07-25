@@ -1,1 +1,47 @@
-<h1>hello</h1>
+<plat-drawer plat-options="{position:'right'}">
+    <div>
+        <li>
+            <a class="mobile" href="/#!/">Home</a>
+        </li>
+    </div>
+    <div>
+        <li>
+            <a class="mobile" href="/#!/education">Education</a>
+        </li>
+    </div>
+    <div>
+        <li>
+            <a class="mobile" href="/#!/portfolio">Portfolio</a>
+        </li>
+    </div>
+    <div>
+        <li>
+            <a class="mobile" href="/#!/blog">Blog</a>
+        </li>
+    </div>
+    <div>
+        <li ng-show="!isUserLoggedIn()">
+            <a class="mobile" href="/#!/login">Login</a>
+        </li>
+    </div>
+    <div>
+        <li ng-show="isUserLoggedIn()">
+            <a class="mobile" href="/#!/profile">
+                <i class="fa fa-user fa-1x" aria-hidden="true"></i>
+            </a>
+        </li>
+    </div>
+    <div>
+        <li ng-show="isUserLoggedIn()"><a class="mobile" href="/#!/write">Write</a></li>
+    </div>
+    <div>
+        <li ng-show="isUserLoggedIn()">
+            <a class="mobile" href="/#!/" ng-click="logout()">Logout</a>
+        </li>
+    </div>
+    <div>
+        <li ng-show="!isUserLoggedIn()">
+            <a class="mobile" href="/#!/contact">Contact</a>
+        </li>
+    </div>
+</plat-drawer>

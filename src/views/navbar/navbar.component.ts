@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { Http } from '@angular/http';
+import {register, controls, ui} from 'platypus';
 import {DrawerController} from 'platypusui';
 
 import DrawerComponent from '../drawer/drawer.component';
@@ -18,11 +19,15 @@ import ContactComponent from '../contact/contact.component';
     templateUrl:'./navbar.component.html'
 })
 
-export default class Navbar implements OnInit{
-    constructor() { }
+export default class Navbar extends ui.TemplateControl implements OnInit {
+    drawerController:controls.INamedElement<HTMLDivElement, DrawerController>;
+    constructor() { 
+        super();
+    }
 
     ngOnInit(): void {
         throw new Error("Method not implemented.");
     }
     
 }
+register.control('navbar', Navbar, [], true);
