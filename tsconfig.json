@@ -1,22 +1,20 @@
 {
-    "compilerOptions": {
-        "module": "commonjs",
-        "target": "es5",
-        "noImplicitAny": true,
-        "removeComments": true,
-        "preserveConstEnums": true,
-        "sourceMap": true,
-        "declaration": false,
-        "moduleResolution": "node",
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
-        "suppressImplicitAnyIndexErrors": true,
-        "watch": false
-    },
+  "compileOnSave": false,
+  "compilerOptions": {
+    "outDir": "./dist/out-tsc",
+    "baseUrl": "src",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es5",
     "typeRoots": [
       "node_modules/@types"
     ],
-    "include": [
-        "./src/views/**/*.ts"
+    "lib": [
+      "es2016",
+      "dom"
     ]
+  }
 }
