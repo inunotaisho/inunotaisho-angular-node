@@ -27,7 +27,6 @@
     "autoprefixer": "^7.1.2",
     "bcrypt": "^1.0.2",
     "body-parser": "^1.17.1",
-    "bootstrap": "^3.3.7",
     "connect-redis": "^3.2.0",
     "cookie-parser": "^1.4.3",
     "copy-webpack-plugin": "^4.0.1",

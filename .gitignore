@@ -3,3 +3,12 @@ coverage
 npm-debug.log
 .env
 dump.rdb
+
+# OSX Folder Attributes
+.DS_Store
+
+# Map files
+*.map
+
+# Distribution files
+public/dist
