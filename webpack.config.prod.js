@@ -1,37 +1,71 @@
 const webpack = require('webpack');
+const { CommonsChunkPlugin } = require('webpack').optimize;
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+const VENDOR_LIBS =[
+    '@angular/animations', '@angular/common', '@angular/compiler', '@angular/core', '@angular/forms',
+    '@angular/http', '@angular/platform-browser', '@angular/platform-browser-dynamic', '@angular/router', 'core-js', 
+    'es6-shim', 'platypus','platypusui', 'reflect-metadata','rxjs', 'zone.js'
+]
 
 module.exports = {
-    devtool: 'cheap-module-eval-source-map',
-    entry: [
-        './src/views/lib/main.js'
+    devtool: 'source-map',
+    "resolve": {
+    "extensions": [
+      ".ts",
+      ".js"
     ],
+    "modules": [
+      "./node_modules",
+      "./node_modules"
+    ],
+    "symlinks": true
+    },
+    entry: {
+       main:"./src/main.ts",
+       polyfills:"./src/polyfills.ts",
+       vendor: VENDOR_LIBS
+    },
     target: 'web',
     output: {
         path: `${__dirname}/public/dist/`,
-        filename: 'bundle.js'
+        filename: '[name].bundle.js'
     },
     plugins: [
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify('production'),
+            'process.env.NODE_ENV': JSON.stringify('development'),
             __DEV__: true
         }),
-        new webpack.ProvidePlugin({
-            $: "jquery",
-            jQuery: 'jquery'
-        }),
+        new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
-        new webpack.optimize.UglifyJsPlugin()
+        new CommonsChunkPlugin({
+        "name": [
+            "inline"
+        ],
+        "minChunks": null
+    }),
     ],
     module:{
-        rules: [{
+        rules: [
+            {
+        "enforce": "pre",
+        "test": /\.js$/,
+        "loader": "source-map-loader",
+        "exclude": [
+          /\/node_modules\//
+        ]
+        }, {
+        "test": /\.json$/,
+        "loader": "json-loader"
+        }, {
             test: /\.html$/,
             use: [{
                 loader: 'raw-loader'
             }],
         }, {
-            test: /\.js$/, 
+            test: /\.ts$/, 
             use: [{
-                loader: 'babel-loader'
+                loader: 'ts-loader'
             }]
         }]
     }
