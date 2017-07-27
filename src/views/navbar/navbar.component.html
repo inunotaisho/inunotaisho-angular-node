@@ -14,21 +14,21 @@
 </plat-drawer-controller>
 <nav class="navbar">
     <div class="">
-        <a class="navbar-brand" href="/#!/home">
+        <a class="navbar-brand" [routerLink]="['/']">
             <span class="logotext">晴天エタン Ethan Fairweather</span>
         </a>
     </div>
     <div id="" class="">
         <ul class="nav navbar-nav navbar-right" id="">
-            <li><a class="mobile" href="/#!/">Home</a></li>
-            <li><a class="mobile" href="/#!/education">Education</a></li>
-            <li><a class="mobile" href="/#!/portfolio">Portfolio</a></li>
-            <li><a class="mobile" href="/#!/blog">Blog</a></li>
-            <li ng-show="!isUserLoggedIn()"><a class="mobile" href="/#!/login">Login</a></li>
-            <li ng-show="isUserLoggedIn()"><a class="mobile" href="/#!/profile"><i class="fa fa-user fa-1x" aria-hidden="true"></i></a></li>
-            <li ng-show="isUserLoggedIn()"><a class="mobile" href="/#!/write">Write</a></li>
-            <li ng-show="isUserLoggedIn()"><a class="mobile" href="/#!/" ng-click="logout()">Logout</a></li>
-            <li ng-show="!isUserLoggedIn()"><a class="mobile" href="/#!/contact">Contact</a></li>
+            <li><a class="mobile" [routerLink]="['/']">Home</a></li>
+            <li><a class="mobile" [routerLink]="['/education']">Education</a></li>
+            <li><a class="mobile" [routerLink]="['/portfolio']">Portfolio</a></li>
+            <li><a class="mobile" [routerLink]="['/blog']">Blog</a></li>
+            <li ng-show="!isUserLoggedIn()"><a class="mobile" [routerLink]="['/login']">Login</a></li>
+            <li ng-show="isUserLoggedIn()"><a class="mobile" [routerLink]="['/profile']"><i class="fa fa-user fa-1x" aria-hidden="true"></i></a></li>
+            <li ng-show="isUserLoggedIn()"><a class="mobile" [routerLink]="['/write']">Write</a></li>
+            <li ng-show="isUserLoggedIn()"><a class="mobile" [routerLink]="['/']" ng-click="logout()">Logout</a></li>
+            <li ng-show="!isUserLoggedIn()"><a class="mobile" [routerLink]="['/contact']">Contact</a></li>
         </ul>
     </div>
 </nav>
