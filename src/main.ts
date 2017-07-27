@@ -6,10 +6,6 @@ import AppModule  from './views/lib/app.module';
 import 'reflect-metadata';
 import 'es6-shim';
 import 'zone.js';
-
-import Navbar from './views/navbar/navbar.component';
-import DrawerComponent from './views/drawer/drawer.component';
-
 import 'platypus';
 import 'platypusui';
 

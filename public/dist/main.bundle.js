@@ -101,6 +101,56 @@ exports.default = Contact;
 
 /***/ }),
 
+/***/ "./src/views/drawer/drawer.component.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+var platypus_1 = __webpack_require__("./node_modules/platypus/dist/platypus.js");
+var DrawerComponent = (function (_super) {
+    __extends(DrawerComponent, _super);
+    function DrawerComponent() {
+        return _super.call(this) || this;
+    }
+    DrawerComponent.prototype.ngOnInit = function () {
+        throw new Error("Method not implemented.");
+    };
+    DrawerComponent = __decorate([
+        core_1.Component({
+            selector: 'app-drawer',
+            templateUrl: './drawer.component.html'
+        }),
+        __metadata("design:paramtypes", [])
+    ], DrawerComponent);
+    return DrawerComponent;
+}(platypus_1.ui.TemplateControl));
+exports.default = DrawerComponent;
+platypus_1.register.control('drawer', DrawerComponent, [], true);
+
+
+/***/ }),
+
 /***/ "./src/views/education/ed.component.ts":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -224,6 +274,8 @@ var app_component_1 = __webpack_require__("./src/views/lib/app.component.ts");
 var forms_1 = __webpack_require__("./node_modules/@angular/forms/@angular/forms.es5.js");
 var http_1 = __webpack_require__("./node_modules/@angular/http/@angular/http.es5.js");
 var router_1 = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
+var navbar_component_1 = __webpack_require__("./src/views/navbar/navbar.component.ts");
+var drawer_component_1 = __webpack_require__("./src/views/drawer/drawer.component.ts");
 var home_component_1 = __webpack_require__("./src/views/home/home.component.ts");
 var ed_component_1 = __webpack_require__("./src/views/education/ed.component.ts");
 var portfolio_component_1 = __webpack_require__("./src/views/portfolio/portfolio.component.ts");
@@ -257,6 +309,8 @@ var AppModule = (function () {
                 platform_browser_1.BrowserModule,
                 forms_1.FormsModule,
                 http_1.HttpModule,
+                navbar_component_1.default,
+                drawer_component_1.default,
                 router_1.RouterModule.forRoot(routes)
             ],
             providers: [],
@@ -301,6 +355,56 @@ var LoginComponent = (function () {
     return LoginComponent;
 }());
 exports.default = LoginComponent;
+
+
+/***/ }),
+
+/***/ "./src/views/navbar/navbar.component.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+var platypus_1 = __webpack_require__("./node_modules/platypus/dist/platypus.js");
+var Navbar = (function (_super) {
+    __extends(Navbar, _super);
+    function Navbar() {
+        return _super.call(this) || this;
+    }
+    Navbar.prototype.ngOnInit = function () {
+        throw new Error("Method not implemented.");
+    };
+    Navbar = __decorate([
+        core_1.Component({
+            selector: 'navbar',
+            templateUrl: './navbar.component.html'
+        }),
+        __metadata("design:paramtypes", [])
+    ], Navbar);
+    return Navbar;
+}(platypus_1.ui.TemplateControl));
+exports.default = Navbar;
+platypus_1.register.control('navbar', Navbar, [], true);
 
 
 /***/ }),

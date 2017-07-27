@@ -6,6 +6,8 @@ import { HttpModule } from '@angular/http';
 import { Routes, RouterModule } from '@angular/router';
 import {events, register} from 'platypus';
 
+import Navbar from '../navbar/navbar.component';
+import DrawerComponent from '../drawer/drawer.component';
 
 import HomeComponent from '../home/home.component';
 import EdComponent from '../education/ed.component';
@@ -36,6 +38,8 @@ const routes: Routes = [
       BrowserModule,
       FormsModule,
       HttpModule,
+      Navbar,
+      DrawerComponent,
       RouterModule.forRoot(routes)
    ],
    providers: [],
