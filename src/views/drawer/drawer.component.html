@@ -1,38 +1,40 @@
 <plat-drawer plat-options="{position:'right'}">
     <div>
         <li>
-            <a class="mobile" href="/#!/">Home</a>
+            <a class="mobile" [routerLink]="['/']">Home</a>
         </li>
     </div>
     <div>
         <li>
-            <a class="mobile" href="/#!/education">Education</a>
+            <a class="mobile" [routerLink]="['/education']">Education</a>
         </li>
     </div>
     <div>
         <li>
-            <a class="mobile" href="/#!/portfolio">Portfolio</a>
+            <a class="mobile" [routerLink]="['/portfolio']">Portfolio</a>
         </li>
     </div>
     <div>
         <li>
-            <a class="mobile" href="/#!/blog">Blog</a>
+            <a class="mobile" [routerLink]="['/blog']">Blog</a>
         </li>
     </div>
     <div>
         <li ng-show="!isUserLoggedIn()">
-            <a class="mobile" href="/#!/login">Login</a>
+            <a class="mobile" [routerLink]="['/login']">Login</a>
         </li>
     </div>
     <div>
         <li ng-show="isUserLoggedIn()">
-            <a class="mobile" href="/#!/profile">
+            <a class="mobile" [routerLink]="['/profile']">
                 <i class="fa fa-user fa-1x" aria-hidden="true"></i>
             </a>
         </li>
     </div>
     <div>
-        <li ng-show="isUserLoggedIn()"><a class="mobile" href="/#!/write">Write</a></li>
+        <li ng-show="isUserLoggedIn()">
+            <a class="mobile" [routerLink]="['/write']">Write</a>
+        </li>
     </div>
     <div>
         <li ng-show="isUserLoggedIn()">

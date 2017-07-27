@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import { Http } from '@angular/http';
-import {register, ui, controls, events, web} from 'platypus';
+import { RouterLink } from '@angular/router';
+import {register, ui} from 'platypus';
 import {DrawerController} from 'platypusui';
 
 @Component({
