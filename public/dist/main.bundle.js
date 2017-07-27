@@ -55,7 +55,7 @@ var BlogComponent = (function () {
     };
     BlogComponent = __decorate([
         core_1.Component({
-            templateUrl: 'blog.component.html'
+            templateUrl: './blog.component.html'
         }),
         __metadata("design:paramtypes", [])
     ], BlogComponent);
@@ -90,7 +90,7 @@ var Contact = (function () {
     };
     Contact = __decorate([
         core_1.Component({
-            templateUrl: 'contact.component.html'
+            templateUrl: './contact.component.html'
         }),
         __metadata("design:paramtypes", [])
     ], Contact);

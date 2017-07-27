@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import { Http } from '@angular/http';
 
 @Component({
-    templateUrl:'contact.component.html'
+    templateUrl:'./contact.component.html'
 })
 
 export default class Contact implements OnInit{
