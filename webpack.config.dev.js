@@ -21,6 +21,12 @@ module.exports = {
     ],
     "symlinks": true
     },
+    "resolveLoader": {
+        "modules": [
+        "./node_modules",
+        "./node_modules"
+        ]
+    },
     entry: {
        main:"./src/main.ts",
        polyfills:"./src/polyfills.ts",

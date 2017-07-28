@@ -5,7 +5,6 @@ import AppModule  from './views/lib/app.module';
 
 import 'reflect-metadata';
 import 'es6-shim';
-import 'zone.js';
 import 'platypus';
 import 'platypusui';
 

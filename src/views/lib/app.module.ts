@@ -19,6 +19,7 @@ import WriteComponent from '../write/write.component';
 import ContactComponent from '../contact/contact.component';
 
 
+
 const routes: Routes = [
  {path:'', pathMatch:'full', component:HomeComponent},
  {path:'education', component:EdComponent},
@@ -32,14 +33,22 @@ const routes: Routes = [
 
 @NgModule({
    declarations: [
-      AppComponent
+      AppComponent,
+      HomeComponent,
+      EdComponent,
+      PortfolioComponent,
+      BlogComponent,
+      LoginComponent,
+      ProfileComponent,
+      WriteComponent,
+      ContactComponent,
+      DrawerComponent,
+      Navbar
    ],
    imports: [
       BrowserModule,
       FormsModule,
       HttpModule,
-      Navbar,
-      DrawerComponent,
       RouterModule.forRoot(routes)
    ],
    providers: [],
