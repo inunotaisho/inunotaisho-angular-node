@@ -1,36 +1,35 @@
 const webpack = require('webpack');
+const fs = require('fs');
+const path = require('path');
 const { CommonsChunkPlugin } = require('webpack').optimize;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const VENDOR_LIBS =[
-    '@angular/animations', '@angular/common', '@angular/compiler', '@angular/core', '@angular/forms',
-    '@angular/http', '@angular/platform-browser', '@angular/platform-browser-dynamic', '@angular/router', 'core-js', 
-    'es6-shim', 'platypus','platypusui', 'reflect-metadata','rxjs', 'zone.js'
-]
+const nodeModules = path.join(process.cwd(), 'node_modules');
+const realNodeModules = fs.realpathSync(nodeModules);
+const genDirNodeModules = path.join(process.cwd(), 'src','$$_gendir','node_modules');
 
 module.exports = {
     devtool: 'source-map',
-    "resolve": {
-    "extensions": [
+    resolve: {
+    extensions: [
       ".ts",
       ".js"
     ],
-    "modules": [
+    modules: [
       "./node_modules",
       "./node_modules"
     ],
-    "symlinks": true
+    symlinks: true
     },
-    "resolveLoader": {
-        "modules": [
+    resolveLoader: {
+        modules: [
         "./node_modules",
         "./node_modules"
         ]
     },
     entry: {
        main:"./src/main.ts",
-       polyfills:"./src/polyfills.ts",
-       vendor: VENDOR_LIBS
+       polyfills:"./src/polyfills.ts"
     },
     target: 'web',
     output: {
@@ -45,24 +44,42 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
         new CommonsChunkPlugin({
-        "name": [
+            minChunks: 2,
+            async: "common"
+            }),
+        new CommonsChunkPlugin({
+        name: [
             "inline"
-        ],
-        "minChunks": null
-    }),
+            ],
+            "minChunks": null
+        }),
+        new CommonsChunkPlugin({
+            name: [
+                "vendor"
+            ],
+            minChunks: (module) => {
+                        return module.resource
+                            && (module.resource.startsWith(nodeModules)
+                                || module.resource.startsWith(genDirNodeModules)
+                                || module.resource.startsWith(realNodeModules));
+                    },
+            chunks: [
+                "main"
+            ]
+        }),
     ],
     module:{
         rules: [
             {
-        "enforce": "pre",
-        "test": /\.js$/,
-        "loader": "source-map-loader",
-        "exclude": [
-          /\/node_modules\//
-        ]
+            enforce: "pre",
+            test: /\.js$/,
+            loader: "source-map-loader",
+            exclude: [
+                /\/node_modules\//
+            ]
         }, {
-        "test": /\.json$/,
-        "loader": "json-loader"
+            test: /\.json$/,
+            loader: "json-loader"
         }, {
             test: /\.html$/,
             use: [{

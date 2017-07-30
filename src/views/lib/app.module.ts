@@ -4,7 +4,6 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { Routes, RouterModule } from '@angular/router';
-import {events, register} from 'platypus';
 
 import Navbar from '../navbar/navbar.component';
 import DrawerComponent from '../drawer/drawer.component';
@@ -56,7 +55,5 @@ const routes: Routes = [
 })
 export default class AppModule { 
 
-    error(ev: events.ErrorEvent<Error>): void {
-        console.log(ev.error);
-    }
+
 }

@@ -14,10 +14,6 @@ import ProfileComponent from '../profile/profile.component';
 import WriteComponent from '../write/write.component';
 import ContactComponent from '../contact/contact.component';
 
-@Component({
-    selector:'navbar',
-    templateUrl:'./navbar.component.html'
-})
 
 export default class Navbar extends ui.TemplateControl implements OnInit {
     drawerController:controls.INamedElement<HTMLDivElement, DrawerController>;
