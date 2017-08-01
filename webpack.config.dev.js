@@ -2,7 +2,6 @@ const webpack = require('webpack');
 const fs = require('fs');
 const path = require('path');
 const { CommonsChunkPlugin } = require('webpack').optimize;
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const nodeModules = path.join(process.cwd(), 'node_modules');
 const realNodeModules = fs.realpathSync(nodeModules);
@@ -45,32 +44,6 @@ module.exports = {
         }),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
-        new HtmlWebpackPlugin({
-            template:'./src/index.ejs',
-            hash: false,
-            inject: true,
-            compile: true,
-            favicon: false,
-            minify: false,
-            cache: true,
-            showErrors: true,
-            chunks: 'all',
-            excludeChunks: [],
-            xhtml: true,
-            chunksSortMode: function sort(left, right) {
-                let leftIndex = entryPoints.indexOf(left.names[0]);
-                let rightindex = entryPoints.indexOf(right.names[0]);
-                if (leftIndex > rightindex) {
-                     return 1;
-                }
-                else if (leftIndex < rightindex) {
-                    return -1;
-                }
-                else {
-                    return 0;
-                 }
-            }
-        }),
         new CommonsChunkPlugin({
             minChunks: 2,
             async: "common"
