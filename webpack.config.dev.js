@@ -44,6 +44,7 @@ module.exports = {
         }),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
+        new webpack.optimize.UglifyJsPlugin({ minimize: true}),
         new CommonsChunkPlugin({
             minChunks: 2,
             async: "common"

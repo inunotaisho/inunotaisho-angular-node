@@ -38,6 +38,7 @@ module.exports = {
         }),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
+        new webpack.optimize.UglifyJsPlugin({ minimize: true, mangle: false, sourcemap: false }),
         new CommonsChunkPlugin({
         "name": [
             "inline"
