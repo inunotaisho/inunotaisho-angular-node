@@ -7,6 +7,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const nodeModules = path.join(process.cwd(), 'node_modules');
 const realNodeModules = fs.realpathSync(nodeModules);
 const genDirNodeModules = path.join(process.cwd(), 'src','$$_gendir','node_modules');
+const entryPoints = ["inline","polyfills","sw-register","vendor","main"];
 
 module.exports = {
     devtool: 'source-map',
@@ -34,7 +35,8 @@ module.exports = {
     target: 'web',
     output: {
         path: `${__dirname}/public/dist/`,
-        filename: '[name].bundle.js'
+        filename: '[name].bundle.js',
+        chunkFilename: '[id].chunk.js'
     },
     plugins: [
         new webpack.DefinePlugin({
@@ -43,6 +45,32 @@ module.exports = {
         }),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
+        new HtmlWebpackPlugin({
+            template:'./src/index.ejs',
+            hash: false,
+            inject: true,
+            compile: true,
+            favicon: false,
+            minify: false,
+            cache: true,
+            showErrors: true,
+            chunks: 'all',
+            excludeChunks: [],
+            xhtml: true,
+            chunksSortMode: function sort(left, right) {
+                let leftIndex = entryPoints.indexOf(left.names[0]);
+                let rightindex = entryPoints.indexOf(right.names[0]);
+                if (leftIndex > rightindex) {
+                     return 1;
+                }
+                else if (leftIndex < rightindex) {
+                    return -1;
+                }
+                else {
+                    return 0;
+                 }
+            }
+        }),
         new CommonsChunkPlugin({
             minChunks: 2,
             async: "common"

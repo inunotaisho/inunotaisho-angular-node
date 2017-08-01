@@ -12,3 +12,5 @@ dump.rdb
 
 # Distribution files
 public/dist
+public/fonts
+public/images
