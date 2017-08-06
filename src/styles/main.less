@@ -27,26 +27,30 @@
 @import '../../node_modules/font-awesome/less/stacked.less';
 @import '../../node_modules/font-awesome/less/variables.less';
 
+& {
+    #platui > #media;
+    #platui > #mixins;
+    #platui > #variables;
 
-.app{
-    height: 100vh;
-    width: 100vw;
-    z-index: 1000000;
-    position: absolute;
-}
-[plat-control='app-root']{
+    .app{
+        height: 100vh;
+        width: 100vw;
+        z-index: 1000000;
+        position: absolute;
+        background-color: white;
+        #platui > #mixins > .calc(height; '100%');
+        #platui > #mixins > .scroll(y);
+    }
 
-    background-color: white;
-    #platui > #mixins > .calc(height; '100%');
-    #platui > #mixins > .scroll(y);
 
-}
 
-.easterEgg{
-    color: #fff;
-}
+    .easterEgg{
+        color: #fff;
+    }
 
-a.pdf{
-    color:#333;
-    text-decoration: none;
+    a.pdf{
+        color:#333;
+        text-decoration: none;
+
+    }
 }

@@ -42,8 +42,6 @@
     "nodemailer": "^4.0.1",
     "pg": "^6.1.5",
     "pg-hstore": "^2.3.2",
-    "platypus": "^0.23.5",
-    "platypusui": "^0.16.6",
     "raw-loader": "^0.5.1",
     "reflect-metadata": "^0.1.10",
     "request": "^2.79.0",

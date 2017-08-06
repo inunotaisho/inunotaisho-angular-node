@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import { Http } from '@angular/http';
-import {register, controls, ui} from 'platypus';
-import {DrawerController} from 'platypusui';
+import { ui, DrawerController } from 'platnav';
 
-import DrawerComponent from '../drawer/drawer.component';
+import Drawer from '../drawer/drawer.component';
 
 import HomeComponent from '../home/home.component';
 import EdComponent from '../education/ed.component';
@@ -14,16 +13,33 @@ import ProfileComponent from '../profile/profile.component';
 import WriteComponent from '../write/write.component';
 import ContactComponent from '../contact/contact.component';
 
+import { authService } from '../service/authentication';
 
-export default class Navbar extends ui.TemplateControl implements OnInit {
-    drawerController:controls.INamedElement<HTMLDivElement, DrawerController>;
+@Component({
+    selector:'navbar',
+    templateUrl:'./navbar.component.html'
+})
+
+export default class Navbar extends ui.angularControl implements OnInit {
+    drawerController:ui.angularControl.INamedElement<HTMLDivElement, DrawerController>;
     constructor() { 
-        super();
+        super()
     }
 
+    // isUserLoggedIn = () =>{
+    //     return authService.getIsLoggedIn();
+    // }
+
+    // logout = (http:Http) => {
+    //     http.get('/logout').subscribe((res:Response) => {
+    //         if(res.status) {
+    //             authService.setIsLoggedIn();
+    //         }
+    //     })
+    // }
+
     ngOnInit(): void {
-        throw new Error("Method not implemented.");
+        throw new Error("Method not implemented.")
     }
     
 }
-register.control('navbar', Navbar, [], true);

@@ -20,29 +20,29 @@
         </li>
     </div>
     <div>
-        <li ng-show="!isUserLoggedIn()">
+        <li [hidden]="!isUserLoggedIn()">
             <a class="mobile" [routerLink]="['/login']">Login</a>
         </li>
     </div>
     <div>
-        <li ng-show="isUserLoggedIn()">
+        <li [hidden]="isUserLoggedIn()">
             <a class="mobile" [routerLink]="['/profile']">
                 <i class="fa fa-user fa-1x" aria-hidden="true"></i>
             </a>
         </li>
     </div>
     <div>
-        <li ng-show="isUserLoggedIn()">
+        <li [hidden]="isUserLoggedIn()">
             <a class="mobile" [routerLink]="['/write']">Write</a>
         </li>
     </div>
     <div>
-        <li ng-show="isUserLoggedIn()">
-            <a class="mobile" href="/#!/" ng-click="logout()">Logout</a>
+        <li [hidden]="isUserLoggedIn()">
+            <a class="mobile" [routerLink]="['/']" (click)="logout()">Logout</a>
         </li>
     </div>
     <div>
-        <li ng-show="!isUserLoggedIn()">
+        <li [hidden]="!isUserLoggedIn()">
             <a class="mobile" [routerLink]="['/contact']">Contact</a>
         </li>
     </div>

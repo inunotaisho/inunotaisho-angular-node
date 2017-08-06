@@ -1,11 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { Routes, RouterModule } from '@angular/router';
 
-import {App, events, register, ui} from 'platypus';
+import {events} from 'platnav';
 
 import Navbar from '../navbar/navbar.component';
 import DrawerComponent from '../drawer/drawer.component';
@@ -53,9 +53,10 @@ const routes: Routes = [
       RouterModule.forRoot(routes)
    ],
    providers: [],
-   bootstrap: [AppComponent]
+   bootstrap: [AppComponent],
+   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export default class AppModule extends App { 
+export default class AppModule { 
    error(ev: events.ErrorEvent<Error>): void {
         console.log(ev.error);
     }

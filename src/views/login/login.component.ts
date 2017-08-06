@@ -6,8 +6,17 @@ import { Http } from '@angular/http';
 })
 
 export default class LoginComponent implements OnInit{
-    constructor() { }
+    constructor() { 
+    }
 
+    loginUser = (http:Http) => {
+        http.post('/users/login', {
+
+        })
+    }
+
+
+    
     ngOnInit(): void {
         throw new Error("Method not implemented.");
     }
