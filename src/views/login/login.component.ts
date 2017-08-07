@@ -5,7 +5,7 @@ import { Http } from '@angular/http';
     templateUrl:'./login.component.html'
 })
 
-export default class LoginComponent implements OnInit{
+export class LoginComponent implements OnInit{
     constructor() { 
     }
 

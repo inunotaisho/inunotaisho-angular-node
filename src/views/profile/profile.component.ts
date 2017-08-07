@@ -5,7 +5,7 @@ import { Http } from '@angular/http';
     templateUrl:'./profile.component.html'
 })
 
-export default class ProfileComponent implements OnInit{
+export class ProfileComponent implements OnInit{
     constructor() { }
 
     ngOnInit(): void {

@@ -22,23 +22,23 @@
                         <h2 class="panel-title">Contact Me</h2>
                     </div>
                     <div class="panel-body">
-                        <form method="POST" action="/contact" id="inputform">
+                        <form #contactForm="ngForm" method="POST" action="/contact" (ngSubmit)="onSubmit(contactForm)" id="inputform">
                             <div class="form-group">
                                 <input type="text" name="_gotcha" style="display: none">
                                 <!--<label>Contact</label>
                                 <select class="form-control" required>{{user.email}}</select>-->
                                 <label>First Name</label>
-                                <input class="form-control" type="text" name="firstName" required>
+                                <input class="form-control" type="text" name="firstName" ngModel required #firstName="ngModel">
                                 <label>Last Name</label>
-                                <input class="form-control" type="text" name="lastName" required>
+                                <input class="form-control" type="text" name="lastName" ngModel required #lastName="ngModel">
                                 <label>Email</label>
-                                <input class ="form-control" type="email" name="email" required>
+                                <input class ="form-control" type="email" name="email" ngModel required #email="ngModel">
                                 <label>Subject</label>
-                                <input class="form-control" type="text" name="subject" required>
+                                <input class="form-control" type="text" name="subject" ngModel required #subject="ngModel">
                                 <label>Message</label>
-                                <textarea class="form-control" name="message" rows="6" required></textarea>
+                                <textarea class="form-control" name="message" rows="6" required ngModel></textarea>
                                 <div class="btnpadding">
-                                    <button class="btn btn-default" type="submit" >Submit</button>
+                                    <button class="btn btn-default" type="submit" (click)="resetForm(contactForm)">Submit</button>
                                 </div>
                             </div>
                         </form>

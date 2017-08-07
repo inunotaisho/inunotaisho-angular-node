@@ -5,7 +5,7 @@ import { Http } from '@angular/http';
     templateUrl:'./write.component.html'
 })
 
-export default class WriteComponent implements OnInit{
+export class WriteComponent implements OnInit{
     constructor() { }
 
     ngOnInit(): void {

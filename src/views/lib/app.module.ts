@@ -1,24 +1,24 @@
+import * as $ from 'jquery';
+import * as bootstrap from 'bootstrap';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { Routes, RouterModule } from '@angular/router';
 
-import {events} from 'platnav';
 
-import Navbar from '../navbar/navbar.component';
-import DrawerComponent from '../drawer/drawer.component';
+import { Navbar } from '../navbar/navbar.component';
 
-import HomeComponent from '../home/home.component';
-import EdComponent from '../education/ed.component';
-import PortfolioComponent from '../portfolio/portfolio.component';
-import BlogComponent from '../blog/blog.component';
-import LoginComponent from '../login/login.component';
-import ProfileComponent from '../profile/profile.component';
-import WriteComponent from '../write/write.component';
-import ContactComponent from '../contact/contact.component';
-
+import { HomeComponent } from '../home/home.component';
+import { EdComponent } from '../education/ed.component';
+import { PortfolioComponent } from '../portfolio/portfolio.component';
+import { BlogComponent } from '../blog/blog.component';
+import { LoginComponent }from '../login/login.component';
+import { ProfileComponent } from '../profile/profile.component';
+import { WriteComponent } from '../write/write.component';
+import { ContactComponent } from '../contact/contact.component';
+import { RegComponent } from '../reg/reg.component';
 
 
 const routes: Routes = [
@@ -29,7 +29,8 @@ const routes: Routes = [
  {path:'login', component: LoginComponent},
  {path:'profile', component: ProfileComponent},
  {path:'write', component: WriteComponent},
- {path:'contact', component: ContactComponent}
+ {path:'contact', component: ContactComponent},
+ {path:'reg', component: RegComponent}
 ]
 
 @NgModule({
@@ -43,7 +44,7 @@ const routes: Routes = [
       ProfileComponent,
       WriteComponent,
       ContactComponent,
-      DrawerComponent,
+      RegComponent,
       Navbar
    ],
    imports: [
@@ -53,11 +54,8 @@ const routes: Routes = [
       RouterModule.forRoot(routes)
    ],
    providers: [],
-   bootstrap: [AppComponent],
-   schemas: [CUSTOM_ELEMENTS_SCHEMA]
+   bootstrap: [AppComponent]
 })
-export default class AppModule { 
-   error(ev: events.ErrorEvent<Error>): void {
-        console.log(ev.error);
-    }
+export class AppModule { 
+  
 }

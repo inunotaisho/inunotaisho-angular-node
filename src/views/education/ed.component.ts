@@ -5,7 +5,7 @@ import { Http } from '@angular/http';
     templateUrl:'./ed.component.html'
 })
 
-export default class EdComponent implements OnInit{
+export class EdComponent implements OnInit{
     constructor() { }
 
     ngOnInit(): void {

@@ -1,17 +1,15 @@
 import {Component, OnInit} from '@angular/core';
 import { Http } from '@angular/http';
-import { ui, DrawerController } from 'platnav';
 
-import Drawer from '../drawer/drawer.component';
 
-import HomeComponent from '../home/home.component';
-import EdComponent from '../education/ed.component';
-import PortfolioComponent from '../portfolio/portfolio.component';
-import BlogComponent from '../blog/blog.component';
-import LoginComponent from '../login/login.component';
-import ProfileComponent from '../profile/profile.component';
-import WriteComponent from '../write/write.component';
-import ContactComponent from '../contact/contact.component';
+import { HomeComponent } from '../home/home.component';
+import { EdComponent } from '../education/ed.component';
+import { PortfolioComponent }  from '../portfolio/portfolio.component';
+import { BlogComponent } from '../blog/blog.component';
+import { LoginComponent } from '../login/login.component';
+import { ProfileComponent } from '../profile/profile.component';
+import { WriteComponent } from '../write/write.component';
+import { ContactComponent } from '../contact/contact.component';
 
 import { authService } from '../service/authentication';
 
@@ -20,12 +18,9 @@ import { authService } from '../service/authentication';
     templateUrl:'./navbar.component.html'
 })
 
-export default class Navbar extends ui.angularControl implements OnInit {
-    drawerController:ui.angularControl.INamedElement<HTMLDivElement, DrawerController>;
-    constructor() { 
-        super()
-    }
-
+export class Navbar implements OnInit {
+    
+    
     // isUserLoggedIn = () =>{
     //     return authService.getIsLoggedIn();
     // }

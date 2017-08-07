@@ -6,10 +6,8 @@ import { Http } from '@angular/http';
     templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit{
-    constructor(){
-
-    }
+    
     ngOnInit() {
-        
+        throw new Error("Method not implemented.");
     }
 }

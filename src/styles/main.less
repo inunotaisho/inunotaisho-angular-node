@@ -1,16 +1,15 @@
 @import '../views/navbar/navbar.less';
-@import '../views/drawer/drawer.component.less';
 @import '../views/home/home.less';
 @import '../views/education/ed.less';
 @import '../views/portfolio/portfolio.less';
 @import '../views/login/login.less';
 @import '../views/contact/contact.less';
 @import '../views/blog/blog.less';
-@import '../views/navbar/navbar.less';
 @import '../views/profile/profile.vc.less';
 @import '../views/write/write.less';
 
-@import '../../node_modules/platypusui/dist/platypus.less';
+@import '../../node_modules/bootstrap/less/bootstrap.less';
+@import '../../node_modules/bootstrap/less/theme.less';
 
 @import '../../node_modules/font-awesome/less/animated.less';
 @import '../../node_modules/font-awesome/less/bordered-pulled';
@@ -27,10 +26,6 @@
 @import '../../node_modules/font-awesome/less/stacked.less';
 @import '../../node_modules/font-awesome/less/variables.less';
 
-& {
-    #platui > #media;
-    #platui > #mixins;
-    #platui > #variables;
 
     .app{
         height: 100vh;
@@ -38,8 +33,6 @@
         z-index: 1000000;
         position: absolute;
         background-color: white;
-        #platui > #mixins > .calc(height; '100%');
-        #platui > #mixins > .scroll(y);
     }
 
 
@@ -53,4 +46,3 @@
         text-decoration: none;
 
     }
-}

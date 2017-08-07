@@ -2,6 +2,9 @@ const webpack = require('webpack');
 const fs = require('fs');
 const path = require('path');
 const { CommonsChunkPlugin } = require('webpack').optimize;
+const { AotPlugin } = require('@ngtools/webpack');
+
+const helpers = require('./helpers');
 
 const nodeModules = path.join(process.cwd(), 'node_modules');
 const realNodeModules = fs.realpathSync(nodeModules);
@@ -9,6 +12,7 @@ const genDirNodeModules = path.join(process.cwd(), 'src','$$_gendir','node_modul
 const entryPoints = ["inline","polyfills","sw-register","vendor","main"];
 
 module.exports = {
+
     devtool: 'source-map',
     resolve: {
     extensions: [
@@ -16,20 +20,18 @@ module.exports = {
       ".js"
     ],
     modules: [
-      "./node_modules",
       "./node_modules"
     ],
     symlinks: true
     },
     resolveLoader: {
         modules: [
-        "./node_modules",
         "./node_modules"
         ]
     },
     entry: {
        main:"./src/main.ts",
-       polyfills:"./src/polyfills.ts"
+       polyfills: './src/polyfills.ts'
     },
     target: 'web',
     output: {
@@ -43,11 +45,21 @@ module.exports = {
             __DEV__: true
         }),
         new webpack.HotModuleReplacementPlugin(),
+         new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: 'jquery'
+        }),
         new webpack.NoEmitOnErrorsPlugin(),
+        new AotPlugin({
+            tsConfigPath: './tsconfig.json',
+            entryModule: helpers.root('./src/views/lib/app.module.ts#AppModule')
+        }),
         new webpack.ContextReplacementPlugin(
+            // The (\\|\/) piece accounts for path separators in *nix and Windows
             /angular(\\|\/)core(\\|\/)@angular/,
-            path.resolve(__dirname, './src')
-            ),
+            helpers.root('./src'), // location of your src
+            {} // a map of your routes
+        ),
         new CommonsChunkPlugin({
             minChunks: 2,
             async: "common"

@@ -5,7 +5,7 @@ import { Http } from '@angular/http';
     templateUrl:'./portfolio.component.html'
 })
 
-export default class PortfolioComponent implements OnInit{
+export class PortfolioComponent implements OnInit{
     constructor() { }
 
     ngOnInit(): void {
