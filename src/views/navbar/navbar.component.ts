@@ -1,9 +1,7 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import { Http } from '@angular/http';
-import { Observable } from 'rxjs/observable';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/throw';
+import { Subscription } from 'rxjs/Subscription';
+
 
 
 import { HomeComponent } from '../home/home.component';
@@ -15,26 +13,30 @@ import { ProfileComponent } from '../profile/profile.component';
 import { WriteComponent } from '../write/write.component';
 import { ContactComponent } from '../contact/contact.component';
 
-import { authService } from '../service/authentication';
+import { AuthService } from '../service/authentication.service';
 
 @Component({
     selector:'navbar',
-    templateUrl:'./navbar.component.html'
+    templateUrl:'./navbar.component.html',
+    providers: [AuthService]
 })
 
 export class Navbar implements OnInit {
-    constructor(private http:Http){
+    logout:Subscription;
+    authService: AuthService;
 
+    constructor(private http:Http){
+        this.authService = new AuthService();
     }
     
     isUserLoggedIn = () =>{
-        return authService.getIsLoggedIn();
+        return AuthService.getIsLoggedIn();
     }
 
-    logout = () => {
-        this.http.get('/logout').then((res:Response) => {
+    logOut = () => {
+        this.logout = this.http.get('/logout').subscribe((res) => {
             if(res.status) {
-                authService.setIsLoggedIn();
+                this.authService.setIsLoggedIn();
             }
         })
        

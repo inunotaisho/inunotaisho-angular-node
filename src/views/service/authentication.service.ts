@@ -1,17 +1,18 @@
 import {Injectable} from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
 
 
 
 @Injectable()
 
-export class authService {
+export class AuthService {
     isLoggedIn = () => {
         return false;
     }
     setIsLoggedIn = (value) => {
         this.isLoggedIn = value;
     }
-    getIsLoggedIn = () => {
+    getIsLoggedIn() {
         return this.isLoggedIn();
     }
 }

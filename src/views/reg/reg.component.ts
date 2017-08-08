@@ -1,12 +1,14 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
 import { Http } from '@angular/http';
-import { NgForm, FormsModule } from '@angular/forms'
+import { NgForm, FormsModule } from '@angular/forms';
+import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
     templateUrl:'./reg.component.html'
 })
 
-export class RegComponent implements OnInit{
+export class RegComponent implements OnInit, OnDestroy{
 
     constructor(private http:Http){
     }
@@ -14,6 +16,7 @@ export class RegComponent implements OnInit{
     registeration: {
         
     }
+    reg :Subscription
     user:{
         username: '',
         email: '',
@@ -24,13 +27,16 @@ export class RegComponent implements OnInit{
     }
 
     onSubmit(user: NgForm){
-        this.http.post('/users/register', user).then((res: Response) => {
+        this.reg = this.http.post('/users/register', user).subscribe((res) => {
             if(res.status === 200) {
                 console.log(res);
             } else {
                 console.log(res);
             }
         })
+    }
+    ngOnDestroy(){
+            this.reg.unsubscribe()
     }
 
     resetForm(registeration: NgForm) {
