@@ -7,13 +7,33 @@ import { NgForm, FormsModule } from '@angular/forms'
 })
 
 export class RegComponent implements OnInit{
-    constructor() { }
 
-    onsubmit(register: NgForm){
-
+    constructor(private http:Http){
     }
 
-    resetForm(contactForm: NgForm) {
+    registeration: {
+        
+    }
+    user:{
+        username: '',
+        email: '',
+        password: '',
+        password_confirm: '',
+        firstName: '',
+        lastName: '',
+    }
+
+    onSubmit(user: NgForm){
+        this.http.post('/users/register', user).then((res: Response) => {
+            if(res.status === 200) {
+                console.log(res);
+            } else {
+                console.log(res);
+            }
+        })
+    }
+
+    resetForm(registeration: NgForm) {
 		
 	}
     ngOnInit(): void {

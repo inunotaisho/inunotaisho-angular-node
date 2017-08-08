@@ -1,5 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
 import { Http } from '@angular/http';
+import { Observable } from 'rxjs/observable';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/throw';
 
 
 import { HomeComponent } from '../home/home.component';
@@ -19,19 +23,25 @@ import { authService } from '../service/authentication';
 })
 
 export class Navbar implements OnInit {
-    
-    
-    // isUserLoggedIn = () =>{
-    //     return authService.getIsLoggedIn();
-    // }
+    constructor(private http:Http){
 
-    // logout = (http:Http) => {
-    //     http.get('/logout').subscribe((res:Response) => {
-    //         if(res.status) {
-    //             authService.setIsLoggedIn();
-    //         }
-    //     })
-    // }
+    }
+    
+    isUserLoggedIn = () =>{
+        return authService.getIsLoggedIn();
+    }
+
+    logout = () => {
+        this.http.get('/logout').then((res:Response) => {
+            if(res.status) {
+                authService.setIsLoggedIn();
+            }
+        })
+       
+    }
+    ngOnDestroy() {
+        this.logout.unsubscribe();
+    }
 
     ngOnInit(): void {
         throw new Error("Method not implemented.")
