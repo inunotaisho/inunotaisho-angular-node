@@ -22,26 +22,27 @@ import { AuthService } from '../service/authentication.service';
 })
 
 export class Navbar implements OnInit {
-    logout:Subscription;
-    authService: AuthService;
+    logoutSubscription:Subscription;
 
-    constructor(private http:Http){
+    constructor(private http:Http, private authService: AuthService){
+
+
     }
     
     isUserLoggedIn = () =>{
         return this.authService.getIsLoggedIn();
     }
 
-    logOut = () => {
-        this.logout = this.http.get('/logout').subscribe((res) => {
+    logout = () => {
+        this.logoutSubscription = this.http.get('/logout').subscribe((res) => {
             if(res.status) {
-                this.authService.setIsLoggedIn();
+                this.authService.setIsLoggedIn(false);
             }
         })
        
     }
     ngOnDestroy() {
-        this.logout.unsubscribe();
+        this.logoutSubscription.unsubscribe();
     }
 
     ngOnInit(): void {

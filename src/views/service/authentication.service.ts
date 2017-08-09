@@ -6,15 +6,12 @@ import { Subscription } from 'rxjs/Subscription';
 @Injectable()
 
 export class AuthService {
+        isLoggedIn = false;
 
-
-    isLoggedIn = () => {
-        return false;
-    }
-    setIsLoggedIn = (value) => {
-        this.isLoggedIn = true;
+    setIsLoggedIn = (value: boolean) => {
+        this.isLoggedIn = value;
     }
     getIsLoggedIn() {
-        return this.isLoggedIn();
+        return this.isLoggedIn;
     }
 }

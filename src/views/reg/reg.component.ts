@@ -26,22 +26,22 @@ export class RegComponent implements OnInit, OnDestroy{
         lastName: string,
     }
 
-    onSubmit(user:NgForm){
-        this.reg = this.http.post('/users/register', user).subscribe((res) => {
+    onSubmit(form:NgForm){
+        this.reg = this.http.post('/users/register', this.user).subscribe((res) => {
             if(res.status === 200) {
                 console.log(res);
+                form.reset();
             } else {
                 console.log(res);
             }
         })
+
     }
     ngOnDestroy(){
             this.reg.unsubscribe()
     }
 
-    resetForm(registeration: NgForm) {
-		
-	}
+    
     ngOnInit(): void {
         throw new Error("Method not implemented.");
     }

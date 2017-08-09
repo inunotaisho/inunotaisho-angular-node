@@ -29,7 +29,7 @@
                 <input class="form-control" type="password" name="password" [(ngModel)]="user.password" required="required" #password="ngModel"/>
                 <label for="password_confirm">Confirm Password</label>
                 <input class="form-control" type="password" name="password_confirm" [(ngModel)]="user.password_confirm" registration-password-match="password" #password="ngModel"/>
-                <button class="btn btn-default" type="submit" [disabled]="!registration.valid" (click)="resetForm(registration)">Register!</button>
+                <button class="btn btn-default" type="submit" [disabled]="!registration.valid">Register!</button>
             </div>
         </form>
         <!--<pre>user = {{ user | json }}</pre>

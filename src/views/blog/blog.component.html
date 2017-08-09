@@ -9,15 +9,15 @@
             </div>
         </div>
     </div>
-    <div class="container">
-        <div ng-repeat="data in items">
+    <div *ngIf="items; else noItems" class="container">
+        <div *ngFor="let data of items">
             <div class="">
                 <p>
                     Posted by {{data.user.username}}
                 </p>
             </div>
             <div class="">
-                <a href="/#/blog/{{item.objectId}}">
+                <a href="/blog/{{item.objectId}}">
                     <p>{{data.blog.title}}</p>
                 </a>
                 <p>{{data.blog.type}} on {{data.blog.createdAt | date}}</p>
@@ -31,4 +31,9 @@
             </li>
         </ul>
     </div>
+    <ng-template #noItems>
+        <div>
+            <p>No Blog Post</p>
+        </div>
+    </ng-template>
 </div>

@@ -4,7 +4,7 @@ const path = require('path');
 const { CommonsChunkPlugin } = require('webpack').optimize;
 const { AotPlugin } = require('@ngtools/webpack');
 
-const helpers = require('./helpers');
+const helpers = require('./webpack-config/helpers');
 
 const nodeModules = path.join(process.cwd(), 'node_modules');
 const realNodeModules = fs.realpathSync(nodeModules);

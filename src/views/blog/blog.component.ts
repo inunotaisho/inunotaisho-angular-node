@@ -5,10 +5,20 @@ import { Http } from '@angular/http';
     templateUrl:'./blog.component.html'
 })
 export class BlogComponent implements OnInit{
-    constructor() { }
+    items: {};
+    constructor(private http:Http) {
 
+     }
+
+     getBlogItems(){
+        this.http.get('/blog').subscribe(res => {
+            console.log(res)
+        }, err => {
+            console.log(err);
+        })
+     }
     ngOnInit(): void {
-        throw new Error("Method not implemented.");
+        this.getBlogItems();
     }
     
 }
