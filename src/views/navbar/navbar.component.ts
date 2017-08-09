@@ -26,11 +26,10 @@ export class Navbar implements OnInit {
     authService: AuthService;
 
     constructor(private http:Http){
-        this.authService = new AuthService();
     }
     
     isUserLoggedIn = () =>{
-        return AuthService.getIsLoggedIn();
+        return this.authService.getIsLoggedIn();
     }
 
     logOut = () => {

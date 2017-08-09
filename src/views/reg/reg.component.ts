@@ -18,15 +18,15 @@ export class RegComponent implements OnInit, OnDestroy{
     }
     reg :Subscription
     user:{
-        username: '',
-        email: '',
-        password: '',
-        password_confirm: '',
-        firstName: '',
-        lastName: '',
+        username: string;
+        email: string; 
+        password: string;
+        password_confirm:string;
+        firstName: string,
+        lastName: string,
     }
 
-    onSubmit(user: NgForm){
+    onSubmit(user:NgForm){
         this.reg = this.http.post('/users/register', user).subscribe((res) => {
             if(res.status === 200) {
                 console.log(res);

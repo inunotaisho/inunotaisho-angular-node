@@ -30,6 +30,10 @@ module.exports = {
         ]
     },
     entry: {
+        globals: [
+            'zone.js',
+            'reflect-metadata'
+        ],
        main:"./src/main.ts",
        polyfills: './src/polyfills.ts'
     },
