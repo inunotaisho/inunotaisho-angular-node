@@ -1,6 +1,8 @@
 const webpack = require('webpack');
+const { GlobCopyWebpackPlugin, BaseHrefWebpackPlugin } = require('@angular/cli/plugins/webpack');
 const fs = require('fs');
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CommonsChunkPlugin } = require('webpack').optimize;
 const { AotPlugin } = require('@ngtools/webpack');
 
@@ -40,26 +42,59 @@ module.exports = {
         chunkFilename: '[id].chunk.js'
     },
     plugins: [
+        new webpack.NoEmitOnErrorsPlugin(),
+        new webpack.ProgressPlugin(),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('development'),
             __DEV__: true
         }),
-        new webpack.HotModuleReplacementPlugin(),
+        new BaseHrefWebpackPlugin({}),
+        // new webpack.optimize.UglifyJsPlugin({
+        //     minimize: true
+        // }),,
          new webpack.ProvidePlugin({
             $: "jquery",
             jQuery: 'jquery'
         }),
-        new webpack.NoEmitOnErrorsPlugin(),
         new AotPlugin({
-            tsConfigPath: './tsconfig.json',
-            entryModule: helpers.root('./src/views/lib/app.module.ts#AppModule')
+            mainPath:"main.ts",
+            tsConfigPath: 'src/tsconfig.src.json',
+            entryModule: helpers.root('./src/views/lib/app.module.ts#AppModule'),
+            skipCodeGeneration: true
         }),
         new webpack.ContextReplacementPlugin(
             // The (\\|\/) piece accounts for path separators in *nix and Windows
             /angular(\\|\/)core(\\|\/)@angular/,
-            helpers.root('./src'), // location of your src
-            {} // a map of your routes
+            // location of your src
+            helpers.root('./src'),
+            // a map of your routes
+            {}
         ),
+        new HtmlWebpackPlugin({
+            template: './src/index.ejs',
+            hash:false,
+            inject:true,
+            compile:true,
+            favicon: false,
+            minify:false,
+            cache:true,
+            showErrors: true,
+            chunks:'all',
+            xhtml: true,
+            chunksSortMode: function sort(left, right) {
+            let leftIndex = entryPoints.indexOf(left.names[0]);
+            let rightindex = entryPoints.indexOf(right.names[0]);
+                if (leftIndex > rightindex) {
+                    return 1;
+                }   
+                else if (leftIndex < rightindex) {
+                    return -1;
+                }
+                else {
+                    return 0;
+                }
+            }
+        }),
         new CommonsChunkPlugin({
             minChunks: 2,
             async: "common"

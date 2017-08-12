@@ -33,20 +33,24 @@ const routes: Routes = [
  {path:'reg', component: RegComponent}
 ]
 
+export function declarations(): any {
+    return [
+        AppComponent,
+        HomeComponent,
+        EdComponent,
+        PortfolioComponent,
+        BlogComponent,
+        LoginComponent,
+        ProfileComponent,
+        WriteComponent,
+        ContactComponent,
+        RegComponent,
+        Navbar
+    ]
+}
+
 @NgModule({
-   declarations: [
-      AppComponent,
-      HomeComponent,
-      EdComponent,
-      PortfolioComponent,
-      BlogComponent,
-      LoginComponent,
-      ProfileComponent,
-      WriteComponent,
-      ContactComponent,
-      RegComponent,
-      Navbar
-   ],
+   declarations: declarations(),
    imports: [
       BrowserModule,
       FormsModule,
