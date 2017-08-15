@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
+import { NgIf } from '@angular/common';
 import { Http } from '@angular/http';
 
-import { Navbar } from '../navbar/navbar.component';
 
 @Component({
     templateUrl:'./blog.component.html'

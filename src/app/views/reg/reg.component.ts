@@ -4,7 +4,6 @@ import { NgForm, FormsModule } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 
-import { Navbar } from '../navbar/navbar.component';
 
 @Component({
     templateUrl:'./reg.component.html'

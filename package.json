@@ -25,6 +25,7 @@
     "rimraf": "^2.6.1",
     "source-map-loader": "^0.2.1",
     "sqlite3": "^3.1.9",
+    "ts-loader": "^2.3.2",
     "ts-node": "^3.3.0",
     "typescript": "^2.4.2",
     "webpack": "^3.4.0",

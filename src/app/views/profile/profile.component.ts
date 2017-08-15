@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import { Http } from '@angular/http';
 import {Profile} from './profile';
 
-import { Navbar } from '../navbar/navbar.component';
 
 @Component({
     templateUrl:'./profile.component.html'

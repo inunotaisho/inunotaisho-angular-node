@@ -1,4 +1,5 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
+import { NgIf } from '@angular/common';
 import { Http } from '@angular/http';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -14,20 +15,27 @@ import { WriteComponent } from '../write/write.component';
 import { ContactComponent } from '../contact/contact.component';
 import { RegComponent } from '../reg/reg.component';
 
+import { NavbarService } from './navbar.service';
 import { AuthService } from '../service/authentication.service';
 
+export function services(): any {
 
+    return [
+        NavbarService,
+        AuthService
+    ]
+}
 
 @Component({
     selector:'navbar',
     templateUrl:'./navbar.component.html',
-    providers: [AuthService]
+    providers: services()
 })
 
 export class Navbar implements OnInit {
     logoutSubscription:Subscription;
 
-    constructor(private http:Http, private authService: AuthService){
+    constructor(private http:Http, private authService: AuthService, public nav: NavbarService){
 
 
     }
@@ -49,6 +57,7 @@ export class Navbar implements OnInit {
     }
 
     ngOnInit(): void {
+        this.nav.show();
         throw new Error("Method not implemented.")
     }
     
