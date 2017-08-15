@@ -6,6 +6,8 @@ import { Subscription } from 'rxjs/Subscription';
 import {AuthService} from '../service/authentication.service';
 import {Router} from '@angular/router';
 
+import { Navbar } from '../navbar/navbar.component';
+
 @Component({
     templateUrl:'./login.component.html'
 })

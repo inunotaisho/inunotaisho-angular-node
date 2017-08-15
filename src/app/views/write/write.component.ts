@@ -1,6 +1,8 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import { Http } from '@angular/http';
 
+import { Navbar } from '../navbar/navbar.component';
+
 
 @Component({
     templateUrl:'./write.component.html'

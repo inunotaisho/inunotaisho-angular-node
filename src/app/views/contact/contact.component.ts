@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import { Http } from '@angular/http';
 import {NgForm} from '@angular/forms';
 
+import { Navbar } from '../navbar/navbar.component';
+
 @Component({
     templateUrl:'./contact.component.html'
 })

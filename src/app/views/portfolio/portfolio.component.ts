@@ -1,11 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import { Http } from '@angular/http';
 
+import { Navbar } from '../navbar/navbar.component';
+
 @Component({
-    templateUrl:'./ed.component.html'
+    templateUrl:'./portfolio.component.html'
 })
 
-export class EdComponent implements OnInit{
+export class PortfolioComponent implements OnInit{
     constructor() { }
 
     ngOnInit(): void {

@@ -12,8 +12,11 @@ import { LoginComponent } from '../login/login.component';
 import { ProfileComponent } from '../profile/profile.component';
 import { WriteComponent } from '../write/write.component';
 import { ContactComponent } from '../contact/contact.component';
+import { RegComponent } from '../reg/reg.component';
 
 import { AuthService } from '../service/authentication.service';
+
+
 
 @Component({
     selector:'navbar',
