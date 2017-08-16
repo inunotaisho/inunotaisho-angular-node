@@ -1,31 +1,36 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Component, OnInit, OnDestroy, Input} from '@angular/core';
 import { Http } from '@angular/http';
-import { NgForm, FormsModule } from '@angular/forms';
+import { NgForm, FormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
+
+import {UserRegistration } from '../models/reg.model';
 
 
 @Component({
     templateUrl:'./reg.component.html'
 })
 
-export class RegComponent implements OnInit, OnDestroy{
-
+export class RegComponent implements OnDestroy{
+    @Input() user: UserRegistration;
+    
     constructor(private http:Http){
+        this.user = new UserRegistration();
     }
 
     registeration: {
         
     }
     reg :Subscription
-    user:{
-        username: string;
-        email: string; 
-        password: string;
-        password_confirm:string;
-        firstName: string,
-        lastName: string,
-    }
+
+    // ngOnInit(): void {
+    //     this.registeration = new FormGroup({
+    //         'username': new FormControl(this.user.username, [
+    //             Validators.required,
+                
+    //         ])
+    //     })
+    // }
 
     onSubmit(form:NgForm){
         this.reg = this.http.post('/users/register', this.user).subscribe((res) => {
@@ -39,12 +44,9 @@ export class RegComponent implements OnInit, OnDestroy{
 
     }
     ngOnDestroy(){
+        if(this.reg != undefined){
             this.reg.unsubscribe()
-    }
-
-    
-    ngOnInit(): void {
-        throw new Error("Method not implemented.");
+        }
     }
     
 }

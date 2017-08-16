@@ -1,5 +1,6 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 import { Http } from '@angular/http';
+import { Subscription } from 'rxjs/Subscription';
 
 
 
@@ -7,25 +8,28 @@ import { Http } from '@angular/http';
     templateUrl:'./write.component.html'
 })
 
-export class WriteComponent implements OnInit{
-
+export class WriteComponent implements OnDestroy {
+    blogPostSub: Subscription;
     subject= '';
     post='';
     constructor(private http:Http) { }
 
     blogPost(){
-        this.http.post('/blog',{
-            subject: this.subject,
-            post: this.post
-        }).subscribe(res => {
-            console.log(res)
-        }, err => {
-            console.log(err);
-            console.log('article did not post');
-        })
+        let blogPostSub = this.http.post('/blog',{
+                            subject: this.subject,
+                            post: this.post
+                        }).subscribe(res => {
+                            console.log(res)
+                        }, err => {
+                            console.log(err);
+                            console.log('article did not post');
+                        })
     }
-    ngOnInit(): void {
-        throw new Error("Method not implemented.");
+
+    ngOnDestroy(){
+        if(this.blogPostSub != undefined){
+            this.blogPostSub.unsubscribe();
+        }
     }
     
 }

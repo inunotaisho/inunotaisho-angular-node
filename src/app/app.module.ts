@@ -18,6 +18,8 @@ import { WriteComponent } from './views/write/write.component';
 import { ContactComponent } from './views/contact/contact.component';
 import { RegComponent } from './views/reg/reg.component';
 
+import { AuthService } from './views/service/authentication.service';
+
 export const routes: Routes = [
  {path:'', pathMatch:'full', component:HomeComponent},
  {path:'education', component:EdComponent},
@@ -55,7 +57,9 @@ export function declarations(): any {
       RouterModule.forRoot(routes),
       CollapseModule
    ],
-   providers: [],
+   providers: [
+       AuthService
+   ],
    bootstrap: [AppComponent]
 })
 export class AppModule { 

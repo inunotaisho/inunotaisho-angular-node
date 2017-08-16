@@ -1,4 +1,4 @@
-export class Profile {
+export class profileModel {
     username: string;
     firstName: string;
     lastName: string;

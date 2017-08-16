@@ -6,11 +6,8 @@ import { Http } from '@angular/http';
     templateUrl:'./portfolio.component.html'
 })
 
-export class PortfolioComponent implements OnInit{
+export class PortfolioComponent {
     constructor() { }
 
-    ngOnInit(): void {
-        throw new Error("Method not implemented.");
-    }
     
 }

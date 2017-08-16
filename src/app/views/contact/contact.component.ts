@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import { Http } from '@angular/http';
 import {NgForm} from '@angular/forms';
 
@@ -7,7 +7,7 @@ import {NgForm} from '@angular/forms';
     templateUrl:'./contact.component.html'
 })
 
-export class ContactComponent implements OnInit{
+export class ContactComponent {
     constructor() { }
 
     onSubmit(contactForm: NgForm){
@@ -19,8 +19,6 @@ export class ContactComponent implements OnInit{
     }
 
 
-    ngOnInit(): void {
-        throw new Error("Method not implemented.");
-    }
+    
     
 }

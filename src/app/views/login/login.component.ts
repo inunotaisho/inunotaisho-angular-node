@@ -1,25 +1,25 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Component, OnInit, OnDestroy, Input} from '@angular/core';
 import { Http } from '@angular/http';
 import { NgForm, FormsModule } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
-import {AuthService} from '../service/authentication.service';
+import { AuthService } from '../service/authentication.service';
+import { loginModel } from '../models/login.model'
 import {Router} from '@angular/router';
 
 @Component({
     templateUrl:'./login.component.html'
 })
 
-export class LoginComponent implements OnInit, OnDestroy{
+export class LoginComponent implements OnDestroy, OnInit{
     constructor(private http: Http, private authService:AuthService, private router:Router) { 
 
 
     }
     login: Subscription
-    user: {
-        username: string;
-        password: string;
-    }
+
+    @Input() user:loginModel;
+    
     loginUser = () => {
         let login = this.http.post('/users/login', this.user).subscribe(data => {
             if(data.status === 200){
@@ -34,11 +34,11 @@ export class LoginComponent implements OnInit, OnDestroy{
         })
     }
     ngOnDestroy(){
-        this.login.unsubscribe();
+        if (this.login != undefined){
+            this.login.unsubscribe();
+        }
     }
-
-    ngOnInit(): void {
-        throw new Error("Method not implemented.");
+    ngOnInit():void{
+        this.user = new loginModel();
     }
-    
 }

@@ -15,13 +15,11 @@ import { WriteComponent } from '../write/write.component';
 import { ContactComponent } from '../contact/contact.component';
 import { RegComponent } from '../reg/reg.component';
 
-import { NavbarService } from './navbar.service';
 import { AuthService } from '../service/authentication.service';
 
 export function services(): any {
 
     return [
-        NavbarService,
         AuthService
     ]
 }
@@ -32,10 +30,10 @@ export function services(): any {
     providers: services()
 })
 
-export class Navbar implements OnInit {
+export class Navbar implements OnDestroy {
     logoutSubscription:Subscription;
 
-    constructor(private http:Http, private authService: AuthService, public nav: NavbarService){
+    constructor(private http:Http, private authService: AuthService){
 
 
     }
@@ -53,12 +51,8 @@ export class Navbar implements OnInit {
        
     }
     ngOnDestroy() {
-        this.logoutSubscription.unsubscribe();
+        if (this.logoutSubscription != undefined) {
+            this.logoutSubscription.unsubscribe();
+        }
     }
-
-    ngOnInit(): void {
-        this.nav.show();
-        throw new Error("Method not implemented.")
-    }
-    
 }
