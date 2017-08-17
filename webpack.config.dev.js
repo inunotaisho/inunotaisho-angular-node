@@ -20,14 +20,12 @@ const entryPoints = ["inline","polyfills","sw-register","vendor","main"];
       ".js"
     ],
     modules: [
-        "./node_modules",
         "./node_modules"
     ],
     symlinks: true
     },
     resolveLoader: {
         modules: [
-        "./node_modules",
         "./node_modules"
         ]
     },

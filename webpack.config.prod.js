@@ -19,14 +19,12 @@ const entryPoints = ["inline","polyfills","sw-register","vendor","main"];
       ".js"
     ],
     modules: [
-        "./node_modules",
         "./node_modules"
     ],
     symlinks: true
     },
     resolveLoader: {
         modules: [
-        "./node_modules",
         "./node_modules"
         ]
     },
@@ -65,8 +63,8 @@ const entryPoints = ["inline","polyfills","sw-register","vendor","main"];
             }),
         new ProgressPlugin(),
         new DefinePlugin({
-             'process.env.NODE_ENV': JSON.stringify('development'),
-              __DEV__: true
+             'process.env.NODE_ENV': JSON.stringify('production'),
+              __DEV__: false
           }),
         new BaseHrefWebpackPlugin({}),
         new HotModuleReplacementPlugin(),

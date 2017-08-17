@@ -13,6 +13,7 @@ import {UserRegistration } from '../models/reg.model';
 
 export class RegComponent implements OnDestroy{
     @Input() user: UserRegistration;
+    errorMessage = '';
     
     constructor(private http:Http){
         this.user = new UserRegistration();
@@ -34,13 +35,15 @@ export class RegComponent implements OnDestroy{
 
     onSubmit(form:NgForm){
         this.reg = this.http.post('/users/register', this.user).subscribe((res) => {
-            if(res.status === 200) {
-                console.log(res);
-                form.reset();
-            } else {
-                console.log(res);
-            }
-        })
+            // success status code 2xx
+            console.log(res);
+            this.errorMessage = '';
+            form.reset();
+        }, (error) => {
+            // non success status code
+            console.log(error);
+            this.errorMessage = error.json().message;
+        });
 
     }
     ngOnDestroy(){
