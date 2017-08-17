@@ -68,9 +68,9 @@ const entryPoints = ["inline","polyfills","sw-register","vendor","main"];
     },
     plugins:[
         new NoEmitOnErrorsPlugin(),
-        // new UglifyJsPlugin({
-        //     minimize: true
-        //     }),
+        new UglifyJsPlugin({
+            minimize: true
+            }),
         new ProgressPlugin(),
         new DefinePlugin({
              'process.env.NODE_ENV': JSON.stringify('development'),
