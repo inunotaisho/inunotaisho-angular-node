@@ -35,11 +35,10 @@ export class Navbar implements OnDestroy {
 
     constructor(private http:Http, private authService: AuthService){
 
-
     }
     
     isUserLoggedIn = () =>{
-        return this.authService.getIsLoggedIn();
+        return this.authService.getIsLoggedIn();   
     }
 
     logout = () => {

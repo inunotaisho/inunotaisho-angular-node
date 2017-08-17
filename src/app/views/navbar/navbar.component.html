@@ -15,11 +15,21 @@
             <li><a class="mobile" routerLink="/education" routerLinkActive="active" >Education</a></li>
             <li><a class="mobile" routerLink="/portfolio" routerLinkActive="active" >Portfolio</a></li>
             <li><a class="mobile" routerLink="/blog" routerLinkActive="active" >Blog</a></li>
-            <li [hidden]="!isUserLoggedIn()"><a class="mobile" routerLink="/login" routerLinkActive="active">Login</a></li>
-            <li [hidden]="isUserLoggedIn()"><a class="mobile" routerLink="/profile" routerLinkActive="active"><i class="fa fa-user fa-1x" aria-hidden="true"></i></a></li>
-            <li [hidden]="isUserLoggedIn()"><a class="mobile" routerLink="/write" routerLinkActive="active">Write</a></li>
-            <li [hidden]="isUserLoggedIn()"><a class="mobile" routerLink="/" routerLinkActive="active" (click)="logout()">Logout</a></li>
-            <li [hidden]="!isUserLoggedIn()"><a class="mobile" routerLink="/contact" routerLinkActive="active">Contact</a></li>
+            <li [ngClass]="{'hidden': isUserLoggedIn()}">
+                <a class="mobile" routerLink="/login" routerLinkActive="active">Login</a>
+            </li>
+            <li [ngClass]="{'hidden': !isUserLoggedIn()}">
+                <a class="mobile" routerLink="/profile" routerLinkActive="active"><i class="fa fa-user fa-1x" aria-hidden="true"></i></a>
+            </li>
+            <li [ngClass]="{'hidden': !isUserLoggedIn()}">
+                <a class="mobile" routerLink="/write" routerLinkActive="active">Write</a>
+            </li>
+            <li [ngClass]="{'hidden': !isUserLoggedIn()}">
+                <a class="mobile" routerLink="/" routerLinkActive="active" (click)="logout()">Logout</a>
+            </li>
+            <li [ngClass]="{'hidden': isUserLoggedIn()}">
+                <a class="mobile" routerLink="/contact" routerLinkActive="active">Contact</a>  
+            </li>
         </ul>
     </div>
 </nav>
