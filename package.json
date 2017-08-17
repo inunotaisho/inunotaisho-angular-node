@@ -1,7 +1,7 @@
 {
-  "name": "inunotaisho-angular",
+  "name": "inunotaisho",
   "version": "0.4.0",
-  "description": "This is the packagejson for Ethan Fairweather's professional website version 2. This is also MEAN stack in nature. Will probably be written in Angular 2 or JS will be the fallback if need be.",
+  "description": "This is the packagejson for Ethan Fairweather's professional website version 2. This is also MEAN stack in nature and is written in Angular 4.",
   "main": "lib/app.js",
   "engines": {
     "node": "8.1.4",
@@ -81,7 +81,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/inunotaisho26/inunotaisho-angular.git"
+    "url": "git+https://github.com/inunotaisho26/inunotaisho.git"
   },
   "keywords": [
     "example",
@@ -94,7 +94,7 @@
   "author": "Ethan Burrow Fairweather",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/inunotaisho26/inunotaisho-angular/issues"
+    "url": "https://github.com/inunotaisho26/inunotaisho/issues"
   },
-  "homepage": "https://github.com/inunotaisho26/inunotaisho-angular#readme"
+  "homepage": "https://github.com/inunotaisho26/inunotaisho#readme"
 }
