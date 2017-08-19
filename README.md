@@ -1,8 +1,10 @@
 # InuNoTaisho: Angular
 
-This is the fullstack version of my website which will become www.ebseiten.com.
+This is the Angular 4 fullstack version of my website which is www.ebseiten.com.
 
-Alough not complete, it still runs so long as you have `postegres` and `redis` running with sequelize files migrated
+Its about 52% of the way complete. It runs so long as you have `postegres` and `redis` running with sequelize files migrated
+
+Plans are in the works to migrate the backend from `es5` to `TypeScript`.
 
 First clone this repo. Before taking futher steps, make sure you have `nodejs` and `npm` installed. Then run `npm install` to install all required `node_modules`.
 
@@ -25,8 +27,6 @@ Navigate to `localhost:5000` and you should be there.
 - https://expressjs.com/
 - https://webpack.js.org/configuration/
 - https://angular.io/docs
-- http://platypusts.com/docs/platui
-- http://platypusts.com/docs/getting-started
 - http://www.typescriptlang.org/docs/home.html
 - https://github.com/DefinitelyTyped/DefinitelyTyped
 - http://lesscss.org/

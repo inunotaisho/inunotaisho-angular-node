@@ -3,7 +3,6 @@ const path = require('path');
 const ProgressPlugin = require('webpack/lib/ProgressPlugin');
 
 const { HotModuleReplacementPlugin, ProvidePlugin, DefinePlugin, NoEmitOnErrorsPlugin, SourceMapDevToolPlugin, NamedModulesPlugin } = require('webpack');
-const { GlobCopyWebpackPlugin, BaseHrefWebpackPlugin } = require('@angular/cli/plugins/webpack');
 const { UglifyJsPlugin, CommonsChunkPlugin } = require('webpack').optimize;
 const { AotPlugin } = require('@ngtools/webpack');
 
@@ -66,7 +65,6 @@ const entryPoints = ["inline","polyfills","sw-register","vendor","main"];
              'process.env.NODE_ENV': JSON.stringify('production'),
               __DEV__: false
           }),
-        new BaseHrefWebpackPlugin({}),
         new HotModuleReplacementPlugin(),
         new CommonsChunkPlugin({
             minChunks: 2,
@@ -98,7 +96,7 @@ const entryPoints = ["inline","polyfills","sw-register","vendor","main"];
             hostReplacementPaths: {
                 "environments/environment.ts": "environments/environment.ts"
             },
-            tsConfigPath: 'src/tsconfig.src.json',
+            tsConfigPath: './src/tsconfig.src.json',
             skipCodeGeneration: true
         })
     ]
