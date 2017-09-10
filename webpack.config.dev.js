@@ -3,7 +3,6 @@ const path = require('path');
 const ProgressPlugin = require('webpack/lib/ProgressPlugin');
 
 const { HotModuleReplacementPlugin, ProvidePlugin, DefinePlugin, NoEmitOnErrorsPlugin, SourceMapDevToolPlugin, NamedModulesPlugin } = require('webpack');
-const { GlobCopyWebpackPlugin, BaseHrefWebpackPlugin } = require('@angular/cli/plugins/webpack');
 const { UglifyJsPlugin, CommonsChunkPlugin } = require('webpack').optimize;
 const { AotPlugin } = require('@ngtools/webpack');
 
@@ -66,15 +65,11 @@ const entryPoints = ["inline","polyfills","sw-register","vendor","main"];
     },
     plugins:[
         new NoEmitOnErrorsPlugin(),
-        new UglifyJsPlugin({
-            minimize: true
-            }),
         new ProgressPlugin(),
         new DefinePlugin({
              'process.env.NODE_ENV': JSON.stringify('development'),
               __DEV__: true
           }),
-        new BaseHrefWebpackPlugin({}),
         new HotModuleReplacementPlugin(),
         new CommonsChunkPlugin({
             minChunks: 2,

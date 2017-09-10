@@ -1,4 +1,4 @@
-import { CollapseModule } from 'ngx-bootstrap';
+import { CollapseModule, TooltipModule } from 'ngx-bootstrap';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
@@ -17,6 +17,7 @@ import { ProfileComponent } from './views/profile/profile.component';
 import { WriteComponent } from './views/write/write.component';
 import { ContactComponent } from './views/contact/contact.component';
 import { RegComponent } from './views/reg/reg.component';
+import portImgContainer from './views/portfolio/images/portfolio.image.component';
 
 import { AuthService } from './views/service/authentication.service';
 
@@ -38,6 +39,7 @@ export function declarations(): any {
         HomeComponent,
         EdComponent,
         PortfolioComponent,
+        portImgContainer,
         BlogComponent,
         LoginComponent,
         ProfileComponent,
@@ -49,12 +51,16 @@ export function declarations(): any {
 }
 
 @NgModule({
-   declarations: declarations(),
+   declarations: [ 
+       AppComponent,
+       declarations()
+   ],      
    imports: [
       BrowserModule,
       FormsModule,
       HttpModule,
       RouterModule.forRoot(routes),
+      TooltipModule.forRoot(),
       CollapseModule
    ],
    providers: [

@@ -1,6 +1,7 @@
 import {Component, OnDestroy} from '@angular/core';
 import { Http } from '@angular/http';
 import { Subscription } from 'rxjs/Subscription';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 
 
