@@ -32,9 +32,9 @@
                                 <label>Last Name</label>
                                 <input class="form-control" type="text" name="lastName" ngModel required #lastName="ngModel">
                                 <label>Email</label>
-                                <div class="form-group" [ngClass]="{ 'has-error': req.body.email.submitted && !req.body.email.valid }">
+                                <div class="form-group" [ngClass]="{ 'has-error': submitted && !valid }">
                                     <input class ="form-control" type="email" name="email" ngModel required #email="ngModel">
-                                    <p *ngIf="req.body.email.errors && req.body.email.errors.uniqueUsername">Email is not valid</p>
+                                    <p *ngIf="errors && errors.uniqueUsername">Email is not valid</p>
                                 </div>
                                 <label>Subject</label>
                                 <input class="form-control" type="text" name="subject" ngModel required #subject="ngModel">
