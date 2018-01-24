@@ -82,9 +82,11 @@
     "bundle": "npm run less && npm run pack",
     "clean": "rimraf public/* && npm run assets",
     "less": "mkdirp public/dist && lessc ./src/app/styles/main.less > ./public/dist/app.css --clean-css=\"--s0 --advanced\"",
-    "dev": "NODE_ENV=development nodemon ./lib/app.js",
+    "watch": "npm run watch:less",
+    "watch:less": "",
     "migrate": "sequelize db:migrate",
-    "start": "concurrently -r \"npm run clean\" \"npm run bundle\" && nodemon ./lib/app.js",
+    "refresh": "npm run less && node ./lib/app.js",
+    "start": "concurrently -r \"npm run clean\" \"npm run bundle\" && nodemon --watch ./src -e less --exec npm run refresh",
     "pack": "webpack --config webpack.config.dev.js"
   },
   "repository": {
