@@ -51,7 +51,7 @@
     "@angular/platform-browser-dynamic": "~4.3.0",
     "@angular/router": "~4.3.0",
     "@types/reflect-metadata": "~0.0.5",
-    "bbcode-parser": "^1.0.10",
+    "angular-froala-wysiwyg": "^2.7.3",
     "bcrypt": "^1.0.2",
     "body-parser": "^1.17.1",
     "bootstrap": "^3.3.7",
@@ -74,7 +74,7 @@
     "sequelize": "^3.30.4",
     "sequelize-cli": "^2.7.0",
     "serve-favicon": "^2.4.3",
-    "typeorm": "0.1.0-alpha.35",
+    "typeorm": "^0.1.11",
     "zone.js": "^0.8.14"
   },
   "scripts": {
@@ -86,7 +86,7 @@
     "watch:less": "",
     "migrate": "sequelize db:migrate",
     "refresh": "npm run less && node ./lib/app.js",
-    "start": "concurrently -r \"npm run clean\" \"npm run bundle\" && nodemon --watch ./src -e less --exec npm run refresh",
+    "start": "concurrently -r \"npm run clean\" \"npm run bundle\" && nodemon ./lib/app.js",
     "pack": "webpack --config webpack.config.dev.js"
   },
   "repository": {

@@ -1,30 +1,60 @@
+
+.content-container{
+    display: flex;
+    flex-flow: row wrap;
+
+    .side-content {
+        flex: 2;
+    }
+    .main-content {
+        flex: 6;
+        padding: 1em;
+        font-size: 1.3em;
+        line-height: 1em;
+    }
+}
+
+.article-title {
+    font-size: 4em;
+    line-height: 1em;
+    font-weight: normal;
+    padding: 1em 0;
+}
+
+.social-share-buttons{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    margin-bottom: 2em;
+
+    .social-button{
+        flex: none;
+        background-color: #2b97ef;
+        color: #fff;
+        font-size: 1.5em;
+        margin-right: 1em;
+        padding: .5em;
+    }
+}
+
 @media(min-width:1149px){
-    .blogPostPadd{
-        padding-top:20px;
-        .blogPostCenter{
-            display: flex;
-            justify-content: space-around;
-        }
-        .userSubDate{
-            display: flex;
-            justify-content: space-around;
-        }
+    .main-content {
+        margin-right:2em;
     }
 }
 @media(min-width:767px) and (max-width: 1148px){
-    .blogPostPadd{
-        padding-top:20px;
-        .blogPostCenter{
-            display: flex;
-            justify-content: space-around;
-        }
-       .userSubDate{
-            display: flex;
-            justify-content: space-around;
-        } 
+    .main-content {
+        margin-right:2em;
     }
 }
 @media(max-width:767px){
+    .side-content{
+        display: none;
+    }
+    .main-content {
+        flex-grow: 1;
+    }
+
     .blogPostPadd{
         padding-top:20px;
         .blogPostCenter{
@@ -36,3 +66,4 @@
             justify-content: space-around;
         }
     }
+}
