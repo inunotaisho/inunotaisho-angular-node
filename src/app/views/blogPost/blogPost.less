@@ -33,7 +33,6 @@
         color: #fff;
         font-size: 1.5em;
         margin-right: 1em;
-        padding: .5em;
     }
 }
 
@@ -41,29 +40,37 @@
     .main-content {
         margin-right:2em;
     }
+    .social-button{
+        padding: .5em; 
+    }
 }
 @media(min-width:767px) and (max-width: 1148px){
     .main-content {
         margin-right:2em;
+    }
+    .article-title {
+       font-size: 3.2em; 
+    }
+    .social-button{
+        margin-top: 0.5em;
+        padding: .375em;
     }
 }
 @media(max-width:767px){
     .side-content{
         display: none;
     }
+    .hiddenText{
+
+    }
     .main-content {
         flex-grow: 1;
     }
-
-    .blogPostPadd{
-        padding-top:20px;
-        .blogPostCenter{
-            display: flex;
-            justify-content: space-around;
-        }
-        .userSubDate{
-            display: flex;
-            justify-content: space-around;
-        }
-    }
+    .article-title {
+        font-size: 3em; 
+     }
+     .social-button{
+         margin-top: 0.5em;
+         padding: .25em;
+     }
 }
