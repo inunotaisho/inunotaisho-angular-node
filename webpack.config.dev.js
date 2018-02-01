@@ -30,8 +30,10 @@ const entryPoints = ["inline","polyfills","sw-register","vendor","main"];
     },
     entry: {
         main: [
+            "./node_modules/jquery/dist/jquery.slim.min.js",
+            "./node_modules/froala-editor/js/froala_editor.pkgd.min.js",
             "./src/main.ts"
-                ],
+        ],
         polyfills: [
             "./src/polyfills.ts"
         ]
@@ -64,6 +66,10 @@ const entryPoints = ["inline","polyfills","sw-register","vendor","main"];
             }]
     },
     plugins:[
+        new ProvidePlugin({
+            $: "jquery",
+            jQuery: 'jquery'
+        }),
         new NoEmitOnErrorsPlugin(),
         new ProgressPlugin(),
         new DefinePlugin({
@@ -95,6 +101,7 @@ const entryPoints = ["inline","polyfills","sw-register","vendor","main"];
                 "main"
             ]
         }),
+
         new SourceMapDevToolPlugin({
             filename: "[file].map[query]",
             moduleFilenameTemplate: "[resource-path]",

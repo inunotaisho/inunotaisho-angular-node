@@ -12,13 +12,8 @@
                                 <label>Topic</label>
                                 <input [(ngModel)]="subject" class="form-control" type="text" name="subject" required>
                                 <label>Post</label>
-                                <textarea [(ngModel)]="post" class="form-control" name="post" rows="6" required></textarea>
-                                <ul>
-                                    <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Audio"><i class="fa fa-music"></i></a></li>
-                                    <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Video"><i class="fa fa-video-camera"></i></a></li>
-                                    <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Sound Record"><i class="fa fa-microphone"></i></a></li>
-                                    <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Picture"><i class="fa fa-picture-o"></i></a></li>
-                                </ul>
+                                <!--<textarea [(ngModel)]="post" class="form-control" name="post" rows="6" required></textarea>-->
+                                <div [froalaEditor]="editorOptions" [(ngModel)]="post" [ngModelOptions]="{standalone: true}"></div>
                                 <div class="btnpadding">
                                     <button class="btn btn-default" type="submit">Submit</button> 
                                 </div>

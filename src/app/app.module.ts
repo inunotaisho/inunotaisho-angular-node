@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { Routes, RouterModule } from '@angular/router';
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 import { Navbar} from './views/navbar/navbar.component';
 
@@ -64,7 +65,9 @@ export function declarations(): any {
       HttpModule,
       RouterModule.forRoot(routes),
       TooltipModule.forRoot(),
-      CollapseModule
+      CollapseModule,
+      FroalaEditorModule.forRoot(),
+      FroalaViewModule.forRoot()
    ],
    providers: [
        AuthService

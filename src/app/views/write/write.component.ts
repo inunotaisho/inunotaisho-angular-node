@@ -13,6 +13,11 @@ export class WriteComponent implements OnDestroy {
     blogPostSub: Subscription;
     subject= '';
     post='';
+    editorOptions = {
+        placeholderText: "Type your blog post here ",
+        heightMin: 200
+    };
+
     constructor(private http:Http) { }
 
     blogPost(){
