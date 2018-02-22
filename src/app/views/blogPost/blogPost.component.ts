@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import { NgIf } from '@angular/common';
 import { Http } from '@angular/http';
+//var blogPost = require('./blogpost.component.html');
 
 
 @Component({
-    templateUrl:'./blogpost.component.html'
+    templateUrl:'./blogpost.component.html' //template: blogPost
 })
 export class BlogPostComponent implements OnInit{
     items: {};

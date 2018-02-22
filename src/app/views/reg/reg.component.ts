@@ -3,12 +3,12 @@ import { Http } from '@angular/http';
 import { NgForm, FormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
-
 import {UserRegistration } from '../models/reg.model';
+//var regComponent = require('./reg.component.html');
 
 
 @Component({
-    templateUrl:'./reg.component.html'
+    templateUrl:'./reg.component.html' //template: regComponent
 })
 
 export class RegComponent implements OnDestroy{

@@ -2,11 +2,11 @@ import {Component, OnDestroy} from '@angular/core';
 import { Http } from '@angular/http';
 import { Subscription } from 'rxjs/Subscription';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
-
+//var writeComponent = require('./write.component.html');
 
 
 @Component({
-    templateUrl:'./write.component.html'
+    templateUrl:'./write.component.html' //template: writeComponent
 })
 
 export class WriteComponent implements OnDestroy {
