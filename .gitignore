@@ -8,6 +8,8 @@ dump.rdb
 .DS_Store
 
 # Map files
+src/**/*.js
+*.css
 *.map
 
 # Distribution files
