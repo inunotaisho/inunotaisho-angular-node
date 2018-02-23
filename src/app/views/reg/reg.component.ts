@@ -6,8 +6,6 @@ import { Subscription } from 'rxjs/Subscription';
 import {UserRegistration } from '../models/reg.model';
 //var regComponent = require('./reg.component.html');
 
-//var regComponent = require('./reg.component.html');
-
 
 @Component({
     templateUrl:'./reg.component.html' //template: regComponent
