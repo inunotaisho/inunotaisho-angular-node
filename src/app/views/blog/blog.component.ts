@@ -5,7 +5,7 @@ import { Http } from '@angular/http';
 
 
 @Component({
-    templateUrl:'./blog.component.html' /*template: blogComponent*/
+    templateUrl:'./blog.component.html' //template: blogComponent
 })
 export class BlogComponent implements OnInit{
     items: {};
