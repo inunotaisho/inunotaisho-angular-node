@@ -6,9 +6,11 @@ import { Subscription } from 'rxjs/Subscription';
 import { AuthService } from '../service/authentication.service';
 import { loginModel } from '../models/login.model'
 import {Router} from '@angular/router';
+//var loginComponent = require('./login.component.html');
+
 
 @Component({
-    templateUrl:'./login.component.html'
+    templateUrl:'./login.component.html' //template: loginComponent
 })
 
 export class LoginComponent implements OnDestroy, OnInit{

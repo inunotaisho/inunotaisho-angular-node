@@ -17,6 +17,8 @@ import { RegComponent } from '../reg/reg.component';
 
 import { AuthService } from '../service/authentication.service';
 
+//var navbarComponent = require('./navbar.component.html');
+
 export function services(): any {
 
     return [
@@ -26,7 +28,7 @@ export function services(): any {
 
 @Component({
     selector:'navbar',
-    templateUrl:'./navbar.component.html',
+    templateUrl:'./navbar.component.html', //template: navbarComponent,
     providers: services()
 })
 
