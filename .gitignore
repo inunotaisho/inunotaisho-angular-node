@@ -9,6 +9,7 @@ dump.rdb
 
 # Map files
 src/**/*.js
+*.css
 *.map
 
 # Distribution files

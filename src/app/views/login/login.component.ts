@@ -8,7 +8,6 @@ import { loginModel } from '../models/login.model'
 import {Router} from '@angular/router';
 //var loginComponent = require('./login.component.html');
 
-
 @Component({
     templateUrl:'./login.component.html' //template: loginComponent
 })
