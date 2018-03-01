@@ -20,6 +20,7 @@ import { WriteComponent } from './views/write/write.component';
 import { ContactComponent } from './views/contact/contact.component';
 import { RegComponent } from './views/reg/reg.component';
 import portImgContainer from './views/portfolio/images/portfolio.image.component';
+import froalaEditor from './views/write/froala-editor/froala.component';
 
 import { AuthService } from './views/service/authentication.service';
 
@@ -42,6 +43,7 @@ export function declarations(): any {
         HomeComponent,
         EdComponent,
         PortfolioComponent,
+        froalaEditor,
         portImgContainer,
         BlogComponent,
         BlogPostComponent,
