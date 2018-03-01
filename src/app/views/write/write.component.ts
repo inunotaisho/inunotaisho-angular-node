@@ -1,7 +1,9 @@
-import {Component, OnDestroy} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { Http } from '@angular/http';
 import { Subscription } from 'rxjs/Subscription';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
+
+declare var $:any;
 //var writeComponent = require('./write.component.html');
 
 
