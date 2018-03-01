@@ -18,6 +18,5 @@ export default class froalaEditor implements OnInit {
             // Allow to upload PNG and JPG.
             imageAllowedTypes: ['jpeg', 'jpg', 'png']
         })
-        .on
     };
 }
