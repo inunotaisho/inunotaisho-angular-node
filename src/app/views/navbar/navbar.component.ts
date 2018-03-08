@@ -15,7 +15,7 @@ import { WriteComponent } from '../write/write.component';
 import { ContactComponent } from '../contact/contact.component';
 import { RegComponent } from '../reg/reg.component';
 
-import { AuthService } from '../service/authentication.service';
+import { AuthService } from '../../services/authservice/authentication.service';
 
 //var navbarComponent = require('./navbar.component.html');
 

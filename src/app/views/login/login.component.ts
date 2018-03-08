@@ -3,8 +3,8 @@ import { Http } from '@angular/http';
 import { NgForm, FormsModule } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
-import { AuthService } from '../service/authentication.service';
-import { loginModel } from '../models/login.model'
+import { AuthService } from '../../services/authservice/authentication.service';
+import { loginModel } from '../../models/login.model'
 import {Router} from '@angular/router';
 //var loginComponent = require('./login.component.html');
 
