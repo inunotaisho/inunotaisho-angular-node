@@ -1,14 +1,14 @@
 import { CollapseModule, TooltipModule } from 'ngx-bootstrap';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Injectable} from '@angular/core';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, CanActivate } from '@angular/router';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 import { Navbar} from './views/navbar/navbar.component';
-
+import { routes } from "./routes/app.route";
 import { HomeComponent } from './views/home/home.component';
 import { EdComponent } from './views/education/ed.component';
 import { PortfolioComponent } from './views/portfolio/portfolio.component';
@@ -20,39 +20,29 @@ import { WriteComponent } from './views/write/write.component';
 import { ContactComponent } from './views/contact/contact.component';
 import { RegComponent } from './views/reg/reg.component';
 import portImgContainer from './views/portfolio/images/portfolio.image.component';
-import froalaEditor from './views/write/froala-editor/froala.component';
+import FroalaEditor from './views/write/froala-editor/froala.component';
 
-import { AuthService } from './views/service/authentication.service';
+import { AuthService } from '../app/services/authservice/authentication.service';
+import { AuthGuard } from '../app/services/authguard/authguard.service';
 
-export const routes: Routes = [
- {path:'', pathMatch:'full', component:HomeComponent},
- {path:'education', component:EdComponent},
- {path:'portfolio', component: PortfolioComponent},
- {path:'blog', component: BlogComponent},
- {path:'blogPost', component: BlogPostComponent},
- {path:'login', component: LoginComponent},
- {path:'profile', component: ProfileComponent},
- {path:'write', component: WriteComponent},
- {path:'contact', component: ContactComponent},
- {path:'reg', component: RegComponent}
-]
+
+
 
 export function declarations(): any {
     return [
         AppComponent,
-        HomeComponent,
-        EdComponent,
-        PortfolioComponent,
-        froalaEditor,
-        portImgContainer,
         BlogComponent,
-        BlogPostComponent,
-        LoginComponent,
-        ProfileComponent,
-        WriteComponent,
         ContactComponent,
+        EdComponent,
+        FroalaEditor,
+        HomeComponent,
+        LoginComponent,
+        Navbar,
+        ProfileComponent,
+        PortfolioComponent,
+        portImgContainer,
         RegComponent,
-        Navbar
+        WriteComponent
     ]
 }
 
@@ -72,7 +62,8 @@ export function declarations(): any {
       FroalaViewModule.forRoot()
    ],
    providers: [
-       AuthService
+       AuthService,
+       AuthGuard
    ],
    bootstrap: [AppComponent]
 })
