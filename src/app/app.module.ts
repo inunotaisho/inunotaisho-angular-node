@@ -8,7 +8,7 @@ import { RouterModule, CanActivate } from '@angular/router';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 import { Navbar} from './views/navbar/navbar.component';
-import { routes } from "./routes/app.route";
+import { routes } from "./routes/routes.module";
 import { HomeComponent } from './views/home/home.component';
 import { EdComponent } from './views/education/ed.component';
 import { PortfolioComponent } from './views/portfolio/portfolio.component';
