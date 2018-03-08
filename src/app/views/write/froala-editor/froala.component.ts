@@ -6,17 +6,10 @@ declare var $ :any;
     templateUrl:'./frola.component.html' //template: portImgComponent
 })
 
-export default class froalaEditor implements OnInit {
+export default class FroalaEditor implements OnInit {
     ngOnInit(){
-        $.FroalaEditor({
-            // Set the image upload parameter.
-            imageUploadUrl: '',
-
-            // Set request type.
-            imageUploadMethod: 'POST',
-
-            // Allow to upload PNG and JPG.
-            imageAllowedTypes: ['jpeg', 'jpg', 'png']
+        $.FroalaEditor(function (e:any){
+            e.preventDefault;
         })
     };
 }
