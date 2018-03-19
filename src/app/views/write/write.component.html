@@ -13,7 +13,7 @@
                                 <input [(ngModel)]="subject" class="form-control" type="text" name="subject" required>
                                 <label>Post</label>
                                 <!--<textarea [(ngModel)]="post" class="form-control" name="post" rows="6" required></textarea>-->
-                                <froala-editor></froala-editor>
+                                <froala-editor [post]="post" (onChange)="handlePostChange($event)"></froala-editor>
                                 <div class="btnpadding">
                                     <button class="btn btn-default" type="submit">Submit</button> 
                                 </div>
