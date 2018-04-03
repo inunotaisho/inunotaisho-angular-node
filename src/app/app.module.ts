@@ -32,6 +32,7 @@ export function declarations(): any {
     return [
         AppComponent,
         BlogComponent,
+        BlogPostComponent,
         ContactComponent,
         EdComponent,
         FroalaEditor,
