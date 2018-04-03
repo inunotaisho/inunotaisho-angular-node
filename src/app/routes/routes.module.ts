@@ -25,5 +25,6 @@ export const routes: Routes = [
     {path:'profile', component: ProfileComponent, canActivate: [AuthGuard]},
     {path:'write', component: WriteComponent, canActivate: [AuthGuard]},
     {path:'contact', component: ContactComponent},
-    {path:'reg', component: RegComponent}
+    {path:'reg', component: RegComponent},
+    {path:'blogPost', component: BlogPostComponent}
    ]
