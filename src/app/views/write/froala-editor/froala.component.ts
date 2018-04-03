@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter  } from '@angular/core';
 import { FroalaEditorModule } from 'angular-froala-wysiwyg';
 declare var $ :any;
-import * as Cloudinary from '@cloudinary/angular';
+import * as Cloudinary from '@cloudinary/angular-4.x';
 
 @Component({
     selector:'froala-editor',
@@ -17,28 +17,25 @@ export default class FroalaEditor implements OnInit {
     @Output()
     public onChange: EventEmitter<any> = new EventEmitter();
 
-    ngOnInit(){
+    ngOnInit() {
         this.editorOptions = {
-            placeholderText: 'Enter Blog Post Here',
+            placeholderText: 'Enter post here',
+            charCounterCount: true,
+            // Set the image upload parameter.
+            imageUploadParam: 'file',
+    
+            // Set max image size to 5MB.
+            imageMaxSize: 5 * 1024 * 1024,
+    
+            // Allow to upload PNG and JPG.
+            imageAllowedTypes: ['jpeg', 'jpg', 'png'],
+            //params for handling image upload
+
             events: {
-                'froalaEditor.initialized': function(editor) {
-                    console.log('Here editor initialized', editor);
-                }, 
-                'froalaEditor.image.beforeUpload': (e, editor, images) => {
-                    console.log(images);
-
-                    //@TODO heee we save the images to cloudinary
-                },
-                'froalaEditor.file.beforeUpload': (e, editor, files) => {
-
-                }
-            },
-            options: {
-                fileUploadToS3: {
-                    
+                'froalaEditor.image.error': (e, editor, error, response) => {
+                    console.log(error);
                 }
             }
-
         }
     };
 
