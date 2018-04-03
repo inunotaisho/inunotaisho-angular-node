@@ -1,22 +1,67 @@
-import {cpus} from 'os';
 import * as cluster from 'cluster';
-import server from './server';
+import {cpus} from 'os';
+import { env } from 'process';
+import Server from './server';
 import models from '../models';
 
-if(cluster.isMaster){
 
-    // Count the machine's CPUs
-    let cpuCount = cpus().length;
+if (cluster.isMaster) {
 
-    // Create a worker for each CPU
-    for (let i = 0; i < cpuCount; i += 1) {
-        cluster.fork();
+    console.log(`\n -------------------> RUN ${env.NODE_ENV} ENVIRONMENT \n`);
+  
+    const numCPUs = cpus().length;
+  
+    for (const cpu of cpus()) {
+      cluster.fork();
     }
-
-    cluster.on('exit', worker => {
-        console.log('Worker %d died', worker.id);
-        cluster.fork();
-    })
-} else {
-    server.set()
-}
+  
+    cluster.on("exit", (worker, code, signal) => {
+      console.log("Worker " + worker.process.pid + " died with code: " + code + ", and signal: " + signal);
+      console.log("Starting a new worker");
+      cluster.fork();
+    });
+  
+  } else {
+  
+    const port: number = Number(env.PORT) ||  3000;
+  
+    new Server().Start().then((server) => {
+  
+      server.listen(port);
+  
+      server.on("error", (error: any) => {
+        if (error.syscall !== "listen") {
+          throw error;
+        }
+  
+        const bind = typeof port === "string"
+        ? "Pipe " + port
+        : "Port " + port;
+  
+        switch (error.code) {
+          case "EACCES":
+            console.error(bind + " requires elevated privileges");
+            process.exit(1);
+            break;
+          case "EADDRINUSE":
+            console.error(bind + " is already in use");
+            process.exit(1);
+            break;
+          default:
+          throw error;
+        }
+      });
+  
+      server.on("listening", () => {
+  
+        const addr = server.address();
+        const bind = typeof addr === "string"
+        ? "pipe " + addr
+        : "port " + addr.port;
+        console.log("Server is running in process " + process.pid + " listening on PORT " + addr.port + "\n");
+  
+      });
+  
+    });
+  
+  }
