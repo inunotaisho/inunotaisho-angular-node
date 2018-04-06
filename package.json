@@ -1,5 +1,5 @@
 {
-  "name": "inunotaisho",
+  "name": "inunotaisho-angular-node",
   "version": "0.4.0",
   "description": "This is the packagejson for Ethan Fairweather's professional website version 2. This is also MEAN stack in nature and is written in Angular 4.",
   "main": "lib/app.js",
@@ -30,6 +30,7 @@
     "@types/helmet": "0.0.37",
     "@types/jquery": "^3.3.1",
     "@types/method-override": "0.0.31",
+    "@types/mongoose": "^5.0.7",
     "@types/morgan": "^1.7.35",
     "@types/node": "^9.6.2",
     "@types/nodemailer": "^4.6.0",
