@@ -70,9 +70,6 @@ const entryPoints = ["inline","polyfills","sw-register","vendor","main"];
             $: "jquery",
             jQuery: 'jquery'
         }),
-        new UglifyJsPlugin({
-            minimize: true
-            }),
         new NoEmitOnErrorsPlugin(),
         new ProgressPlugin(),
         new DefinePlugin({
