@@ -1,14 +1,16 @@
 const fs = require('fs');
 const path = require('path');
+const projectRoot = process.cwd();
 const ProgressPlugin = require('webpack/lib/ProgressPlugin');
+const CircularDependencyPlugin = require('circular-dependency-plugin');
 
 const { HotModuleReplacementPlugin, ProvidePlugin, DefinePlugin, NoEmitOnErrorsPlugin, SourceMapDevToolPlugin, NamedModulesPlugin } = require('webpack');
 const { UglifyJsPlugin, CommonsChunkPlugin } = require('webpack').optimize;
-const { AotPlugin } = require('@ngtools/webpack');
+const  { AngularCompilerPlugin }= require('@ngtools/webpack');
 
-const nodeModules = path.join(process.cwd(), 'node_modules');
+const nodeModules = path.join(projectRoot, 'node_modules');
 const realNodeModules = fs.realpathSync(nodeModules);
-const genDirNodeModules = path.join(process.cwd(), 'src','$$_gendir','node_modules');
+const genDirNodeModules = path.join(projectRoot, 'src','$$_gendir','node_modules');
 const entryPoints = ["inline","polyfills","sw-register","vendor","main"];
  
  module.exports = {
@@ -72,6 +74,12 @@ const entryPoints = ["inline","polyfills","sw-register","vendor","main"];
         }),
         new NoEmitOnErrorsPlugin(),
         new ProgressPlugin(),
+        new CircularDependencyPlugin({
+            exclude: /(\\|\/)node_modules(\\|\/)/,
+            failOnError: false,
+            onDetected: false,
+            cwd: projectRoot
+          }),
         new DefinePlugin({
              'process.env.NODE_ENV': JSON.stringify('development'),
               __DEV__: true
@@ -109,13 +117,13 @@ const entryPoints = ["inline","polyfills","sw-register","vendor","main"];
             sourceRoot: "webpack:///"
         }),
         new NamedModulesPlugin({}),
-        new AotPlugin({
-            mainPath:"main.ts",
+        new AngularCompilerPlugin({
             hostReplacementPaths: {
                 "environments/environment.ts": "environments/environment.ts"
-            },
-            tsConfigPath: 'src/tsconfig.src.json',
-            skipCodeGeneration: true
+              },
+            mainPath:'main.ts',
+            tsConfigPath:'./src/tsconfig.src.json',
+            sourceMap: true
         })
     ]
 }
