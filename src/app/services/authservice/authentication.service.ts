@@ -5,12 +5,22 @@ export class AuthService {
     
      isLoggedIn = false;
 
-    setIsLoggedIn = (value: boolean) => {
-        this.isLoggedIn = value;
-        localStorage.setItem('loggedIn', value ? '1' : '0');
+     constructor(){
+         const token = localStorage.getItem('token')
+         if(token){
+             this.isLoggedIn = true
+         }
+     }
+
+    setIsLoggedIn = (token: string) => {
+        this.isLoggedIn = true;
+        localStorage.setItem('token', token);
     }
     getIsLoggedIn() {
-        let loggedIn = localStorage.getItem('loggedIn');
-        return loggedIn && loggedIn == '1';
+        return this.isLoggedIn
+    }
+    logout(){
+        localStorage.removeItem('token')
+        this.isLoggedIn = false
     }
 }

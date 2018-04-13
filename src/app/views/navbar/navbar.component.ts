@@ -44,11 +44,7 @@ export class Navbar implements OnDestroy {
     }
 
     logout = () => {
-        this.logoutSubscription = this.http.get('/logout').subscribe((res) => {
-            if(res.status) {
-                this.authService.setIsLoggedIn(false);
-            }
-        })
+        this.authService.logout();
        
     }
     ngOnDestroy() {

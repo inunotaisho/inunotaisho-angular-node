@@ -25,13 +25,12 @@ export class LoginComponent implements OnDestroy, OnInit{
         let login = this.http.post('/users/login', this.user).subscribe(data => {
             if(data.status === 200){
                 console.log(data);
-                this.authService.setIsLoggedIn(true);
+                this.authService.setIsLoggedIn(data['token']);
                 this.router.navigate(['/']);
             }
         }, err => { 
             console.log(err);
             console.log('user not logged in');
-            this.authService.setIsLoggedIn(false);
         })
     }
     ngOnDestroy(){
