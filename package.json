@@ -111,7 +111,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/inunotaisho26/inunotaisho.git"
+    "url": "git+https://github.com/inunotaisho26/inunotaisho-angular-node.git"
   },
   "keywords": [
     "example",
@@ -124,7 +124,7 @@
   "author": "Ethan Burrow Fairweather",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/inunotaisho26/inunotaisho/issues"
+    "url": "https://github.com/inunotaisho26/inunotaisho-angular-node/issues"
   },
-  "homepage": "https://github.com/inunotaisho26/inunotaisho#readme"
+  "homepage": "https://github.com/inunotaisho26/inunotaisho-angular-node/blob/master/README.md"
 }
