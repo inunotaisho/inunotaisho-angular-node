@@ -1,5 +1,5 @@
 import {Component, OnInit, OnDestroy, Input} from '@angular/core';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { NgForm, FormsModule } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
@@ -13,7 +13,7 @@ import {Router} from '@angular/router';
 })
 
 export class LoginComponent implements OnDestroy, OnInit{
-    constructor(private http: Http, private authService:AuthService, private router:Router) { 
+    constructor(private http: HttpClient, private authService:AuthService, private router:Router) { 
 
 
     }
@@ -23,7 +23,7 @@ export class LoginComponent implements OnDestroy, OnInit{
     
     loginUser = () => {
         let login = this.http.post('/users/login', this.user).subscribe(data => {
-            if(data.status === 200){
+            if(data['status'] === 200){
                 console.log(data);
                 this.authService.setIsLoggedIn(data['token']);
                 this.router.navigate(['/']);
