@@ -22,12 +22,11 @@ export class LoginComponent implements OnDestroy, OnInit{
     @Input() user:loginModel;
     
     loginUser = () => {
-        let login = this.http.post('/users/login', this.user).subscribe(data => {
-            if(data.status === 200){
+        console.log('function called');
+        let login = this.authService.login(this.user).subscribe(data => {
                 console.log(data);
                 this.authService.setIsLoggedIn(data['token']);
                 this.router.navigate(['/']);
-            }
         }, err => { 
             console.log(err);
             console.log('user not logged in');
