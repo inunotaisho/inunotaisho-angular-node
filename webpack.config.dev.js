@@ -6,7 +6,7 @@ const CircularDependencyPlugin = require('circular-dependency-plugin');
 
 const { HotModuleReplacementPlugin, ProvidePlugin, DefinePlugin, NoEmitOnErrorsPlugin, SourceMapDevToolPlugin, NamedModulesPlugin } = require('webpack');
 const { UglifyJsPlugin, CommonsChunkPlugin } = require('webpack').optimize;
-const  { AngularCompilerPlugin }= require('@ngtools/webpack');
+const { AotPlugin } = require('@ngtools/webpack');
 
 const nodeModules = path.join(projectRoot, 'node_modules');
 const realNodeModules = fs.realpathSync(nodeModules);
@@ -32,10 +32,10 @@ const entryPoints = ["inline","polyfills","sw-register","vendor","main"];
     },
     entry: {
         main: [
+            "./src/main.ts",
             "./node_modules/jquery/dist/jquery.slim.min.js",
             "./node_modules/froala-editor/js/froala_editor.pkgd.min.js",
-            "./src/main.ts"
-        ],
+                ],
         polyfills: [
             "./src/polyfills.ts"
         ]
@@ -52,7 +52,7 @@ const entryPoints = ["inline","polyfills","sw-register","vendor","main"];
             test: /\.js$/,
             loader: "source-map-loader",
             exclude: [
-            /\/node_modules\//
+                /\/node_modules\//
                 ]
             },{
             test: /\.json$/,
@@ -117,12 +117,13 @@ const entryPoints = ["inline","polyfills","sw-register","vendor","main"];
             sourceRoot: "webpack:///"
         }),
         new NamedModulesPlugin({}),
-        new AngularCompilerPlugin({
+        new AotPlugin({
+            mainPath:"main.ts",
             hostReplacementPaths: {
                 "environments/environment.ts": "environments/environment.ts"
-              },
-            mainPath:'main.ts',
-            tsConfigPath:'./src/tsconfig.src.json',
+            },
+            tsConfigPath: './src/tsconfig.src.json',
+            skipCodeGeneration: true,
             sourceMap: true
         })
     ]
