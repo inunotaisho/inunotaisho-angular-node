@@ -10,6 +10,7 @@ import { ProfileComponent } from '../views/profile/profile.component';
 import { WriteComponent } from '../views/write/write.component';
 import { ContactComponent } from '../views/contact/contact.component';
 import { RegComponent } from '../views/reg/reg.component';
+import { ErrorComponent } from '../views/errors/error.component';
 import portImgContainer from '../views/portfolio/images/portfolio.image.component';
 import FroalaEditor from '../views/write/froala-editor/froala.component';
 
@@ -26,5 +27,6 @@ export const routes: Routes = [
     {path:'write', component: WriteComponent, canActivate: [AuthGuard]},
     {path:'contact', component: ContactComponent},
     {path:'reg', component: RegComponent},
-    {path:'blogPost', component: BlogPostComponent}
+    {path:'blogPost', component: BlogPostComponent},
+    { path: '**',  component: ErrorComponent }
    ]
