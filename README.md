@@ -1,6 +1,6 @@
 # InuNoTaisho: Angular
 
-**Important note: This branch of this repo that is `master` is most likely the active version of Angular. Branchs that are `angular#` are probaly not running.**
+**Important note: The branch of this repo that is `master` is most likely the active version of Angular. Branchs that are `angular#` are probaly not running.**
 
 This is the Angular 5 fullstack version of my website which will be the upgrade for www.ebseiten.com.
 
