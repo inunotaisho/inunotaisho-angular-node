@@ -19,6 +19,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { WriteComponent } from './components/write/write.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { RegComponent } from './components/reg/reg.component';
+import { ErrorComponent } from './components/errors/error.component';
 import portImgContainer from './components/portfolio/images/portfolio.image.component';
 import FroalaEditor from './components/write/froala-editor/froala.component';
 
@@ -43,7 +44,8 @@ export function declarations(): any {
         PortfolioComponent,
         portImgContainer,
         RegComponent,
-        WriteComponent
+        WriteComponent,
+        ErrorComponent
     ]
 }
 

@@ -1,3 +1,4 @@
+import { Component } from '@angular/core';
 import { Routes, CanActivate } from '@angular/router';
 
 import { HomeComponent } from '../components/home/home.component';
@@ -10,6 +11,7 @@ import { ProfileComponent } from '../components/profile/profile.component';
 import { WriteComponent } from '../components/write/write.component';
 import { ContactComponent } from '../components/contact/contact.component';
 import { RegComponent } from '../components/reg/reg.component';
+import { ErrorComponent } from '../components/errors/error.component';
 import portImgContainer from '../components/portfolio/images/portfolio.image.component';
 import FroalaEditor from '../components/write/froala-editor/froala.component';
 
@@ -26,5 +28,6 @@ export const routes: Routes = [
     {path:'write', component: WriteComponent, canActivate: [AuthGuard]},
     {path:'contact', component: ContactComponent},
     {path:'reg', component: RegComponent},
-    {path:'blogPost', component: BlogPostComponent}
+    {path:'blogPost', component: BlogPostComponent},
+    { path: '**',  component: ErrorComponent }
    ]
