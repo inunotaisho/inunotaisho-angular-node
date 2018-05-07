@@ -4,7 +4,7 @@ import {Component} from '@angular/core';
     templateUrl:'./error.component.html' //template: loginComponent
 })
 
-export class ErrorClass {
+export class ErrorComponent {
 
 
     
