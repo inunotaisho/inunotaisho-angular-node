@@ -1,6 +1,6 @@
 # InuNoTaisho: Angular
 
-**Important note: The branch of this repo that is `master` is most likely the active version of Angular. Branchs that are `angular#` are probaly not running.**
+**Important note: The current branch you are viewing is `Angular4` and is not the active version of Angular I am using.**
 
 This is the Angular 4 fullstack version of my website which will be the upgrade for www.ebseiten.com.
 
@@ -25,7 +25,7 @@ Navigate to `localhost:5000` and you should be there.
 - https://docs.mongodb.com/manual/
 - https://expressjs.com/
 - https://webpack.js.org/configuration/
-- https://angular.io/docs
+- https://v4.angular.io/docs
 - http://www.typescriptlang.org/docs/home.html
 - https://github.com/DefinitelyTyped/DefinitelyTyped
 - http://lesscss.org/
