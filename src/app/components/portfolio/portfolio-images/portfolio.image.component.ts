@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { PortfolioComponent } from './../portfolio.component';
 //var portImgComponent = require('./portfolio.image.component.html');
 
 @Component({
