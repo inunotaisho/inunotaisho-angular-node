@@ -20,11 +20,11 @@ import { WriteComponent } from './components/write/write.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { RegComponent } from './components/reg/reg.component';
 import { ErrorComponent } from './components/errors/error.component';
-import portImgContainer from './components/portfolio/images/portfolio.image.component';
+import portImgContainer from './components/portfolio/portfolio-images/portfolio.image.component';
 import FroalaEditor from './components/write/froala-editor/froala.component';
 
 import { AuthService } from '../app/services/authservice/authentication.service';
-import { AuthGuard } from '../app/services/authguard/authguard.service';
+import { AuthGuard } from './common/authguard/authguard.guard';
 
 
 

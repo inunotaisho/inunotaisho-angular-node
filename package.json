@@ -99,7 +99,7 @@
     "zone.js": "^0.8.26"
   },
   "scripts": {
-    "assets": "cp -R node_modules/font-awesome/fonts ./public/fonts && cp -R src/app/images ./public/images",
+    "assets": "cp -R node_modules/font-awesome/fonts ./public/fonts && cp -R src/assets/images ./public/images",
     "bundle": "npm run less && npm run pack",
     "bundle:main": "browserify src/main.js -d -t stringify -o public/dist/main.bundle.js -v -p [minifyify src/main.js.map --output public/dist/main.bundle.js.map]",
     "clean": "rimraf public/* && npm run assets",
