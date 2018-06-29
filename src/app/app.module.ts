@@ -22,6 +22,7 @@ import { RegComponent } from './components/reg/reg.component';
 import { ErrorComponent } from './components/errors/error.component';
 import portImgContainer from './components/portfolio/portfolio-images/portfolio.image.component';
 import FroalaEditor from './components/write/froala-editor/froala.component';
+import socialBannerComponent from './common/banners/social/social.component';
 
 import { AuthService } from '../app/services/authservice/authentication.service';
 import { AuthGuard } from './common/authguard/authguard.guard';
@@ -45,7 +46,8 @@ export function declarations(): any {
         portImgContainer,
         RegComponent,
         WriteComponent,
-        ErrorComponent
+        ErrorComponent,
+        socialBannerComponent
     ]
 }
 
