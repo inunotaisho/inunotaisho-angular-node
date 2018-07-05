@@ -5,15 +5,15 @@ import { Subscription } from 'rxjs/Subscription';
 
 
 
-import { HomeComponent } from '../home/home.component';
-import { EdComponent } from '../education/ed.component';
-import { PortfolioComponent }  from '../portfolio/portfolio.component';
-import { BlogComponent } from '../blog/blog.component';
-import { LoginComponent } from '../login/login.component';
-import { ProfileComponent } from '../profile/profile.component';
-import { WriteComponent } from '../write/write.component';
-import { ContactComponent } from '../contact/contact.component';
-import { RegComponent } from '../reg/reg.component';
+import { HomeComponent } from '../../components/home/home.component';
+import { EdComponent } from '../../components/education/ed.component';
+import { PortfolioComponent }  from '../../components/portfolio/portfolio.component';
+import { BlogComponent } from '../../components/blog/blog.component';
+import { LoginComponent } from '../../components/login/login.component';
+import { ProfileComponent } from '../../components/profile/profile.component';
+import { WriteComponent } from '../../components/write/write.component';
+import { ContactComponent } from '../../components/contact/contact.component';
+import { RegComponent } from '../../components/reg/reg.component';
 
 import { AuthService } from '../../services/authservice/authentication.service';
 

@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, CanActivate } from '@angular/router';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
-import { Navbar} from './components/navbar/navbar.component';
+import { Navbar} from './common/navbar/navbar.component';
 import { routes } from "./routes/routes.module";
 import { HomeComponent } from './components/home/home.component';
 import { EdComponent } from './components/education/ed.component';
