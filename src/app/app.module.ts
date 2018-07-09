@@ -3,12 +3,35 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Injectable} from '@angular/core';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { RouterModule, CanActivate } from '@angular/router';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
+
+// for AoT support, https://github.com/ocombe/"@ngx-translate/core"#aot
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+import { SimpleNotificationsModule } from 'angular2-notifications';
+
+/**
+ * common
+ */
+
 import { Navbar} from './common/navbar/navbar.component';
+import { SocialBannerComponent } from './common/banners/social/social.component';
+import { LanguagePickerComponent } from './common/languagePicker/languagePicker.component';
+
+/**
+ * routes
+ */
+
 import { routes } from "./routes/routes.module";
+
+/**
+ * components
+ */
+
 import { HomeComponent } from './components/home/home.component';
 import { EdComponent } from './components/education/ed.component';
 import { PortfolioComponent } from './components/portfolio/portfolio.component';
@@ -22,10 +45,16 @@ import { RegComponent } from './components/reg/reg.component';
 import { ErrorComponent } from './components/errors/error.component';
 import portImgContainer from './components/portfolio/portfolio-images/portfolio.image.component';
 import FroalaEditor from './components/write/froala-editor/froala.component';
-import socialBannerComponent from './common/banners/social/social.component';
 
 import { AuthService } from '../app/services/authservice/authentication.service';
 import { AuthGuard } from './common/authguard/authguard.guard';
+import { TranslateService } from './services/translate/translate.service';
+
+
+/* translate support */
+export function createTranslateLoader(http: HttpClient) {
+    return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
+  }
 
 
 
@@ -33,12 +62,14 @@ import { AuthGuard } from './common/authguard/authguard.guard';
 export function declarations(): any {
     return [
         AppComponent,
+        /* our app's components imported in the root module*/
         BlogComponent,
         BlogPostComponent,
         ContactComponent,
         EdComponent,
         FroalaEditor,
         HomeComponent,
+        LanguagePickerComponent,
         LoginComponent,
         Navbar,
         ProfileComponent,
@@ -47,7 +78,7 @@ export function declarations(): any {
         RegComponent,
         WriteComponent,
         ErrorComponent,
-        socialBannerComponent
+        SocialBannerComponent
     ]
 }
 
@@ -58,17 +89,35 @@ export function declarations(): any {
    ],      
    imports: [
       BrowserModule,
+
+      SimpleNotificationsModule.forRoot(),
+
       RouterModule.forRoot(routes),
+
       TooltipModule.forRoot(),
+
       FormsModule,
+
       HttpClientModule,
+
       CollapseModule,
+
+      TranslateModule.forRoot({
+        loader: {
+          provide: TranslateLoader,
+          useFactory: (createTranslateLoader),
+          deps: [HttpClient],
+        },
+      }),
+
       FroalaEditorModule.forRoot(),
+
       FroalaViewModule.forRoot()
    ],
    providers: [
        AuthService,
-       AuthGuard
+       AuthGuard,
+       TranslateService
    ],
    bootstrap: [AppComponent]
 })
