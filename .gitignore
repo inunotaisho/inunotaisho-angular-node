@@ -14,5 +14,5 @@ src/**/*.js
 
 # Distribution files
 public/dist
-public/fonts
-public/images
+public/assets/i18n
+public/assets/images
