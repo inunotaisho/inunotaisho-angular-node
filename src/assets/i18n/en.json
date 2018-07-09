@@ -10,8 +10,12 @@
     "Navigate-Logout":"Logout",
     "Navigate-Contact":"Contact",
 
+    "---------------- THIS IS A COMMENT : SubNavbar (TBT)  -------------": "",
+    "Subnavigate-Blog":"犬の大将's Blog",
+    "Subnavigate-Endorsing":"",
+
     "---------------- THIS IS A COMMENT : Page Not Found Component  (TBT)  -------------": "",
-    "PageNotFoundComponent-ERROR_TEXT": "Magnitude 404 - Page Not Found",
+    "PageNotFoundComponent-ERROR_TEXT": "Error 404 - Page Not Found",
 
     
     "---------------- THIS IS A COMMENT : Errors  (TBT)  -------------": "",
