@@ -6,7 +6,7 @@ import {Component, OnInit} from '@angular/core';
     templateUrl:'./social.component.html' //template: portImgComponent
 })
 
-export default class socialBannerComponent {
+export  class SocialBannerComponent {
     constructor(){
 
     }
