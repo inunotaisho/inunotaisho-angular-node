@@ -7,7 +7,7 @@ export class TranslateService {
 
    constructor(private http: HttpClient) {
         this.getJSON().subscribe(data => {
-            console.log(data)
+            
         });
     }
 
