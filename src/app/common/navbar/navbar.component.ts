@@ -4,18 +4,8 @@ import { HttpClient} from '@angular/common/http';
 import { Subscription } from 'rxjs/Subscription';
 
 
-
-import { HomeComponent } from '../../components/home/home.component';
-import { EdComponent } from '../../components/education/ed.component';
-import { PortfolioComponent }  from '../../components/portfolio/portfolio.component';
-import { BlogComponent } from '../../components/blog/blog.component';
-import { LoginComponent } from '../../components/login/login.component';
-import { ProfileComponent } from '../../components/profile/profile.component';
-import { WriteComponent } from '../../components/write/write.component';
-import { ContactComponent } from '../../components/contact/contact.component';
-import { RegComponent } from '../../components/reg/reg.component';
-
 import { AuthService } from '../../services/authservice/authentication.service';
+import { TranslateService } from '../../services/translate/translate.service';
 
 //var navbarComponent = require('./navbar.component.html');
 
@@ -32,11 +22,18 @@ export function services(): any {
     providers: services()
 })
 
-export class Navbar implements OnDestroy {
+export class Navbar implements OnInit, OnDestroy {
     logoutSubscription:Subscription;
+    data: any = {};
 
-    constructor(private http:HttpClient, private authService: AuthService){
+    constructor(private http:HttpClient, private authService: AuthService, private translateService: TranslateService){
 
+    }
+
+    ngOnInit(){
+        this.translateService.getJSON().subscribe(data => {
+             this.data = data;
+         });
     }
     
     isUserLoggedIn = () =>{
