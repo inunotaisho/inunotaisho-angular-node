@@ -36,7 +36,7 @@
                 <a class="mobile" routerLink="/write" routerLinkActive="active">{{ data['Navigate-Write'] }}</a>
             </li>
             <li [ngClass]="{'hidden': !isUserLoggedIn()}">
-                <a class="mobile" routerLink="/" routerLinkActive="active" (click)="logout()">{{ data['Navigate-Home'] }}</a>
+                <a class="mobile" routerLink="/" routerLinkActive="active" (click)="logout()">{{ data['Navigate-Logout'] }}</a>
             </li>
             <li [ngClass]="{'hidden': isUserLoggedIn()}">
                 <a class="mobile" routerLink="/contact" routerLinkActive="active">{{ data['Navigate-Contact'] }}</a>
