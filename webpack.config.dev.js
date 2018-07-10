@@ -6,7 +6,7 @@ const CircularDependencyPlugin = require('circular-dependency-plugin');
 
 const { HotModuleReplacementPlugin, ProvidePlugin, DefinePlugin, NoEmitOnErrorsPlugin, SourceMapDevToolPlugin, NamedModulesPlugin } = require('webpack');
 const { UglifyJsPlugin, CommonsChunkPlugin } = require('webpack').optimize;
-const { AotPlugin } = require('@ngtools/webpack');
+const AotPlugin = require('@ngtools/webpack').AngularCompilerPlugin;
 
 const nodeModules = path.join(projectRoot, 'node_modules');
 const realNodeModules = fs.realpathSync(nodeModules);
@@ -122,7 +122,7 @@ const entryPoints = ["inline","polyfills","sw-register","vendor","main"];
             hostReplacementPaths: {
                 "environments/environment.ts": "environments/environment.ts"
             },
-            tsConfigPath: './src/tsconfig.src.json',
+            tsConfigPath: './src/tsconfig.app.json',
             skipCodeGeneration: true,
             sourceMap: true
         })

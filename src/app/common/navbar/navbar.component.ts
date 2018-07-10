@@ -1,13 +1,10 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
-import { NgIf } from '@angular/common';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
-import { Subscription } from 'rxjs/Subscription';
-
+import { Subscription } from 'rxjs';
 
 import { AuthService } from '../../services/authservice/authentication.service';
 import { TranslateService } from '../../services/translate/translate.service';
 
-//var navbarComponent = require('./navbar.component.html');
 
 export function services(): any {
 

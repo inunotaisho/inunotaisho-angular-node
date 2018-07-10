@@ -1,14 +1,11 @@
-import {Component, OnInit, OnDestroy, Input} from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NgForm, FormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
-import { Observable } from 'rxjs/Observable';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 import {UserRegistration } from '../../models/reg.model';
-//var regComponent = require('./reg.component.html');
-
 
 @Component({
-    templateUrl:'./reg.component.html' //template: regComponent
+    templateUrl:'./reg.component.html'
 })
 
 export class RegComponent implements OnDestroy{
