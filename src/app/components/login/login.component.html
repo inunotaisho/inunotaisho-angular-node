@@ -3,11 +3,11 @@
     <div class="lpadding">
         <div class="loginpos">
             <div class="container">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h2 class="panel-title">Blog Login</h2>
+                <div class="card panel-default">
+                    <div class="card-header">
+                        <h2 class="card-title">Blog Login</h2>
                     </div>
-                    <div class="panel-body">
+                    <div class="card-body">
                         <form #login="ngForm">
                             <div class="form-group">
                                 <label>Username</label>
@@ -15,7 +15,7 @@
                                 <label>Password</label>
                                 <input class="form-control" [(ngModel)]="user.Password" type="password" name="password" required>
                                 <div class="btnpadding">
-                                    <button class="btn btn-default" (click)="loginUser()" type="submit">Login</button>
+                                    <button class="btn btn-secondary" (click)="loginUser()" type="submit">Login</button>
                                 </div>
                             </div>
                         </form>

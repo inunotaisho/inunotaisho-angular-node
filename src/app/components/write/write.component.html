@@ -2,11 +2,11 @@
     <navbar></navbar>
     <div class="writepos">
             <div class="container">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h2 class="panel-title">Write Post</h2>
+                <div class="card panel-default">
+                    <div class="card-header">
+                        <h2 class="card-title">Write Post</h2>
                     </div>
-                    <div class="widget-area panel-body">
+                    <div class="widget-area card-body">
                         <form (ngSubmit)="blogPost()">
                             <div class="form-group status-upload">
                                 <label>Topic</label>
@@ -15,7 +15,7 @@
                                 <!--<textarea [(ngModel)]="post" class="form-control" name="post" rows="6" required></textarea>-->
                                 <froala-editor [post]="post" (onChange)="handlePostChange($event)"></froala-editor>
                                 <div class="btnpadding">
-                                    <button class="btn btn-default" type="submit">Submit</button> 
+                                    <button class="btn btn-secondary" type="submit">Submit</button> 
                                 </div>
                             </div>
                         </form>
