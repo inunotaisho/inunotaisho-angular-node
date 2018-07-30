@@ -16,3 +16,5 @@ src/**/*.js
 public/dist
 public/assets/i18n
 public/assets/images
+server/app.js
+server/assets/resumetemplate.pdf
