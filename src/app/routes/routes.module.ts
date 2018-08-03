@@ -12,7 +12,7 @@ import { ContactComponent } from '../components/contact/contact.component';
 import { RegComponent } from '../components/reg/reg.component';
 import { ErrorComponent } from '../components/errors/error.component';
 import portImgContainer from '../components/portfolio/portfolio-images/portfolio.image.component';
-import FroalaEditor from '../components/write/froala-editor/froala.component';
+import EditorComponent from '../components/write/editor/editor.component';
 import { SocialBannerComponent } from '../common/banners/social/social.component';
 
 import { AuthGuard } from "../common/authguard/authguard.guard";

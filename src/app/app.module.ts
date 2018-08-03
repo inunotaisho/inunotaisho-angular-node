@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { RouterModule, CanActivate } from '@angular/router';
-import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+import { CKEditorModule } from 'ng2-ckeditor';
 
 
 // for AoT support, https://github.com/ocombe/"@ngx-translate/core"#aot
@@ -44,7 +44,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { RegComponent } from './components/reg/reg.component';
 import { ErrorComponent } from './components/errors/error.component';
 import portImgContainer from './components/portfolio/portfolio-images/portfolio.image.component';
-import FroalaEditor from './components/write/froala-editor/froala.component';
+import EditorComponent from './components/write/editor/editor.component';
 
 import { AuthService } from '../app/services/authservice/authentication.service';
 import { AuthGuard } from './common/authguard/authguard.guard';
@@ -67,7 +67,7 @@ export function declarations(): any {
         BlogPostComponent,
         ContactComponent,
         EdComponent,
-        FroalaEditor,
+        EditorComponent,
         HomeComponent,
         LanguagePickerComponent,
         LoginComponent,
@@ -90,17 +90,19 @@ export function declarations(): any {
    imports: [
       BrowserModule,
 
-      SimpleNotificationsModule.forRoot(),
+      CKEditorModule,
 
-      RouterModule.forRoot(routes),
-
-      TooltipModule.forRoot(),
+      CollapseModule,
 
       FormsModule,
 
       HttpClientModule,
 
-      CollapseModule,
+      RouterModule.forRoot(routes),
+
+      SimpleNotificationsModule.forRoot(),
+
+      TooltipModule.forRoot(),
 
       TranslateModule.forRoot({
         loader: {
@@ -110,9 +112,6 @@ export function declarations(): any {
         },
       }),
 
-      FroalaEditorModule.forRoot(),
-
-      FroalaViewModule.forRoot()
    ],
    providers: [
        AuthService,

@@ -32,9 +32,7 @@ const entryPoints = ["inline","polyfills","sw-register","vendor","main"];
     },
     entry: {
         main: [
-            "./src/main.ts",
-            "./node_modules/jquery/dist/jquery.slim.min.js",
-            "./node_modules/froala-editor/js/froala_editor.pkgd.min.js",
+            "./src/main.ts"
                 ],
         polyfills: [
             "./src/polyfills.ts"

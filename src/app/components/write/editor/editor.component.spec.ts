@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import FroalaEditor from './froala.component';
+import Editor from './editor.component';
 
-describe('FroalaEditor', () => {
-  let component: FroalaEditor;
-  let fixture: ComponentFixture<FroalaEditor>;
+describe('Editor', () => {
+  let component: Editor;
+  let fixture: ComponentFixture<Editor>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FroalaEditor ]
+      declarations: [ Editor ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FroalaEditor);
+    fixture = TestBed.createComponent(Editor);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
