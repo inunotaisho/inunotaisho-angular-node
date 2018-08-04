@@ -58,7 +58,6 @@ export function handleErrors(error: any, ts: TranslateService, ns: Notifications
     (key: string) => ns.error(
       ts.instant(title),
       ts.instant(key),
-      AppSettings.NOTIFICATIONS_ERROR_OPTIONS,
     ),
   );
 }
