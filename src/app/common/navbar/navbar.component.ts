@@ -39,7 +39,6 @@ export class Navbar implements OnInit, OnDestroy {
 
     logout = () => {
         this.authService.logout();
-       
     }
     ngOnDestroy() {
         if (this.logoutSubscription != undefined) {
