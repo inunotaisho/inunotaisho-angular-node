@@ -15,7 +15,7 @@ import portImgContainer from '../components/portfolio/portfolio-images/portfolio
 import EditorComponent from '../components/write/editor/editor.component';
 import { SocialBannerComponent } from '../common/banners/social/social.component';
 
-import { AuthGuard } from "../common/authguard/authguard.guard";
+import { AuthGuard, alreadyLoggedIn } from "../common/authguard/authguard.guard";
 
 
 export const routes: Routes = [
@@ -23,7 +23,7 @@ export const routes: Routes = [
     {path:'education', component:EdComponent},
     {path:'portfolio', component: PortfolioComponent},
     {path:'blog', component:BlogComponent},
-    {path:'login', component: LoginComponent},
+    {path:'login', component: LoginComponent, canActivate: [alreadyLoggedIn]},
     {path:'profile', component: ProfileComponent, canActivate: [AuthGuard]},
     {path:'write', component: WriteComponent, canActivate: [AuthGuard]},
     {path:'contact', component: ContactComponent},

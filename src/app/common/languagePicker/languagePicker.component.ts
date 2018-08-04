@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-// import { GlobalLoaderFacade } from '../../sharedServices/globalLoaderFacade/global-loader-facade.service';
+import { GlobalLoaderFacade } from '../../services/globalLoaderFacade/global-loader-facade.service';
 import { NotificationsService } from 'angular2-notifications';
 import { AppSettings } from '../../common/config';
 import { Language, LANGUAGE_CONFIG } from './language.model';
@@ -17,9 +17,11 @@ export class LanguagePickerComponent implements OnInit {
 
     isChangingLanguages: boolean = false;
 
-    constructor(private translateService: TranslateService,
-        // private globalLoaderService: GlobalLoaderFacade,
-        private notificationService: NotificationsService) {
+    constructor(
+        private translateService: TranslateService,
+        private globalLoaderService: GlobalLoaderFacade,
+        private notificationService: NotificationsService
+    ) {
     }
 
     ngOnInit() {
@@ -58,7 +60,7 @@ export class LanguagePickerComponent implements OnInit {
 
         this.selectedLanguage = lang;
 
-        // this.globalLoaderService.start();
+        this.globalLoaderService.start();
 
         this.translateService
             .use(
@@ -67,16 +69,15 @@ export class LanguagePickerComponent implements OnInit {
             .subscribe(
                 (success) => {
                     this.isChangingLanguages = false;
-                    // this.globalLoaderService.complete();
+                    this.globalLoaderService.complete();
                 },
                 (error) => {
                     this.isChangingLanguages = false;
-                    // this.globalLoaderService.complete();
+                    this.globalLoaderService.complete();
 
                     this.notificationService.error(
                         this.translateService.instant('LanguagePickerComponent-TITLE'),
                         this.translateService.instant('LanguagePickerComponent-FAILED_TO_CHANGE'),
-                        AppSettings.NOTIFICATIONS_ERROR_OPTIONS,
                     );
                 },
         );

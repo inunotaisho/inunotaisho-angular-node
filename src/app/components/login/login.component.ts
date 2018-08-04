@@ -9,31 +9,22 @@ import { loginModel } from '../../models/login.model'
     templateUrl:'./login.component.html'
 })
 
-export class LoginComponent implements OnDestroy, OnInit{
-    constructor(private http: HttpClient, private authService:AuthService, private router:Router) { 
+export class LoginComponent implements OnInit{
+    constructor(
+        private http: HttpClient, 
+        private authService:AuthService, 
+        private router:Router
+    ) { 
 
 
     }
-    login: Subscription
 
     @Input() user:loginModel;
     
     loginUser = () => {
-        console.log('function called');
-        let login = this.authService.login(this.user).subscribe(data => {
-                console.log(data);
-                this.authService.setIsLoggedIn(data['token']);
-                this.router.navigate(['/']);
-        }, err => { 
-            console.log(err);
-            console.log('user not logged in');
-        })
+        this.authService.loginUser(this.user);
     }
-    ngOnDestroy(){
-        if (this.login != undefined){
-            this.login.unsubscribe();
-        }
-    }
+    
     ngOnInit():void{
         this.user = new loginModel();
     }

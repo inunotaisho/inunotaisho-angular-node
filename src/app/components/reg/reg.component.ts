@@ -33,12 +33,10 @@ export class RegComponent implements OnDestroy{
     onSubmit(form:NgForm){
         this.reg = this.http.post('/users/register', this.user).subscribe((res) => {
             // success status code 2xx
-            console.log(res);
             this.errorMessage = '';
             form.reset();
         }, (error) => {
             // non success status code
-            console.log(error);
             this.errorMessage = error.json().message;
         });
 
