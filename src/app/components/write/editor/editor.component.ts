@@ -1,6 +1,9 @@
+import { AppSettings } from './../../../common/config';
 import { Component, OnInit, Input, Output, EventEmitter  } from '@angular/core';
 import { FroalaEditorModule } from 'angular-froala-wysiwyg';
 import * as Cloudinary from '@cloudinary/angular-5.x';
+
+declare var $ :any;
 
 @Component({
     selector:'editor',
@@ -21,14 +24,22 @@ export default class EditorComponent implements OnInit {
         this.editorOptions = {
             placeholderText: 'Enter post here',
             charCounterCount: true,
+
+            // Set the file upload types.
+            fileAllowedTypes: AppSettings.ALLOWED_DOCUMENT_TYPES,
+
+            // Set the file upload parameter.
+            fileUploadParam: AppSettings.GET_FILE_REQUEST,
+
+            // Allow to upload PNG and JPG.
+            imageAllowedTypes: AppSettings.EDITOR_ALLOWED_IMAGE_TYPES,
+
             // Set the image upload parameter.
-            imageUploadParam: 'file',
+            imageUploadParam: AppSettings.GET_FILE_REQUEST,
     
             // Set max image size to 5MB.
-            imageMaxSize: 5 * 1024 * 1024,
+            imageMaxSize: AppSettings.MAXIMUM_IMAGE_UPLOAD_SIZE,
     
-            // Allow to upload PNG and JPG.
-            imageAllowedTypes: ['jpeg', 'jpg', 'png'],
             //params for handling image upload
              events: {
                 'froalaEditor.image.error': (e, editor, error, response) => {
