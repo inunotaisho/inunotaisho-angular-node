@@ -5,7 +5,8 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { RouterModule, CanActivate } from '@angular/router';
-import { CKEditorModule } from 'ng2-ckeditor';
+import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 
 // for AoT support, https://github.com/ocombe/"@ngx-translate/core"#aot
@@ -46,10 +47,19 @@ import { ErrorComponent } from './components/errors/error.component';
 import portImgContainer from './components/portfolio/portfolio-images/portfolio.image.component';
 import EditorComponent from './components/write/editor/editor.component';
 
-import { AuthService } from '../app/services/authservice/authentication.service';
-import { AuthGuard } from './common/authguard/authguard.guard';
-import { TranslateService } from './services/translate/translate.service';
+/**
+ * Guards
+ */
 
+import { AuthGuard, alreadyLoggedIn } from './common/authguard/authguard.guard';
+
+/**
+ * services
+ */
+
+import { AuthService } from '../app/services/authservice/authentication.service';
+import { TranslateService } from './services/translate/translate.service';
+import { GlobalLoaderFacade } from './services/globalLoaderFacade/global-loader-facade.service';
 
 /* translate support */
 export function createTranslateLoader(http: HttpClient) {
@@ -85,22 +95,26 @@ export function declarations(): any {
 @NgModule({
    declarations: [ 
        AppComponent,
-       declarations()
+       declarations(),
    ],      
    imports: [
       BrowserModule,
 
-      CKEditorModule,
-
       CollapseModule,
 
       FormsModule,
+
+      FroalaEditorModule.forRoot(),
+    
+      FroalaViewModule.forRoot(),
 
       HttpClientModule,
 
       RouterModule.forRoot(routes),
 
       SimpleNotificationsModule.forRoot(),
+
+      SlimLoadingBarModule,
 
       TooltipModule.forRoot(),
 
@@ -116,7 +130,9 @@ export function declarations(): any {
    providers: [
        AuthService,
        AuthGuard,
-       TranslateService
+       alreadyLoggedIn,
+       TranslateService,
+       GlobalLoaderFacade,
    ],
    bootstrap: [AppComponent]
 })
