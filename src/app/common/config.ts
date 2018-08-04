@@ -14,65 +14,18 @@ export class AppSettings {
     return '';
   }
 
-  public static get LOCAL_STORAGE_TOKEN_KEY(): string {
+  public static get JWT_TOKEN_KEY(): string {
     return 'token';
   }
 
-  public static get LOCAL_STORAGE_PROFILE_KEY(): string {
+  public static get PROFILE_KEY(): string {
     return 'profile';
-  }
-
-  public static get LOCAL_STORAGE_TOKEN_EXPIRATION_KEY(): string {
-    return 'expiration';
-  }
-
-
-  public static get LOGIN_EXPIRATION_TIMEOUT(): number {
-    return this.ONE_DAY_IN_MILLISECONDS * 7;
-  }
-
-  public static get DEFAULT_TOAST_TIMER(): number {
-    return 4000;
-  }
-
-  public static get MAXIMUM_WIDTH_FOR_HAMBURGER(): number {
-    return 993;
-  }
-
-  public static get ORGANIZATION_TYPES(): object {
-    return {
-      CSLO: 3,
-      INGO: 4,
-    };
-  }
-
-  /*******************
-   * SalesForce
-   */
-
-  public static get SALESFORCE_CLIENT_ID(): string {
-    return '';
-  }
-
-  public static get SALESFORCE_AUTHORIZE_URL(): string {
-    return '';
-  }
-
-  public static get SALESFORCE_CREATE_CONTACT_URL(): string {
-    return '';
-  }
-
-  public static get SALES_FORCE_WEB2LEAD_URL(): string {
-    return '';
   }
 
     /*******************
      * Time Constants
      */
 
-  public static get GOB_EXPIRATION_TIME_IN_MILLISECONDS(): number {
-    return this.ONE_DAY_IN_MILLISECONDS * 90;
-  }
 
   public static get ONE_DAY_IN_MILLISECONDS(): number {
     return 86400000;
@@ -114,36 +67,32 @@ export class AppSettings {
     return 'yyyy-mm-dd';
   }
 
-  public static get MINIMUM_YEAR(): number {
-    return 1850;
-  }
-
-  public static get MAXIMUM_YEAR(): number {
-    return 2150;
-  }
-
-  /* todo */
-  public static get DEFAULT_PICKADATE_DATE_AND_TIME_PERSISTENCE_FORMAT(): string {
-    return 'todo';
-  }
 
   /*******************
    * File Upload Constants
    */
 
   public static get MAXIMUM_IMAGE_UPLOAD_SIZE(): number {
-    return 2000000; // 2MB
+    return 1024 * 1024 * 5; // 5MB
   }
 
   public static get DEFAULT_ALLOWED_IMAGE_TYPES(): string[] {
     return ['image/png', 'image/jpeg'];
+  }
+  
+  public static get EDITOR_ALLOWED_IMAGE_TYPES(): string[] {
+    return ['jpeg', 'jpg', 'png'];
+  }
+
+  public static get GET_FILE_REQUEST(): string {
+      return 'file';
   }
 
   public static get MAXIMUM_DOCUMENT_UPLOAD_SIZE(): number {
     return 8000000; // 8MB
   }
 
-  public static get DEFAULT_ALLOWED_DOCUMENT_TYPES(): string[] {
+  public static get ALLOWED_DOCUMENT_TYPES(): string[] {
     return [
       'text/csv',
       'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
@@ -206,11 +155,6 @@ export class AppSettings {
     );
   }
 
-  public static get US_CURRENCY_REGEX_PATTERN(): RegExp {
-    // thanks to http://stackoverflow.com/a/11799630
-    return /^\$?\d+(,\d{3})*(\.\d*)?$/;
-  }
-
   public static get TWITTER_USERNAME_REGEX_PATTERN(): RegExp {
     // thanks to http://stackoverflow.com/a/2304640
     return /@([A-Za-z0-9_]+)/;
@@ -222,46 +166,5 @@ export class AppSettings {
 
   public static get POSITIVE_WHOLE_NUMBER_REGEX_PATTERN(): RegExp {
     return /^\d+$/;
-  }
-
-  /********************
-   * ng2-notifications constants
-   */
-  public static get NOTIFICATIONS_ERROR_OPTIONS(): Options {
-    return {
-      timeOut: 0, // do not hide error messages after timeout
-      showProgressBar: false, // no progress bar to display when no timeout
-      pauseOnHover: true,
-      // lastOnBottom: boolean,
-      clickToClose: true,
-      // maxLength?: number;
-      // maxStacks?: number;
-      // preventDuplicates?: number;
-      // preventLastDuplicates?: boolean | string;
-      // theClass?: string;
-      // rtl?: boolean;
-      // animate?: "fromRight" | "fromLeft" | "rotate" | "scale";
-      // icons?: Icons;
-      position: ['bottom', 'right'],
-    };
-  }
-
-  public static get NOTIFICATIONS_DEFAULT_OPTIONS(): Options {
-    return {
-      timeOut: 3000,
-      showProgressBar: true,
-      pauseOnHover: true,
-      // lastOnBottom: boolean,
-      clickToClose: true,
-      // maxLength?: number;
-      // maxStacks?: number;
-      // preventDuplicates: true,
-      preventLastDuplicates: 'visible', // prevent display of multiple identical errors
-      // theClass?: string;
-      // rtl?: boolean;
-      // animate?: "fromRight" | "fromLeft" | "rotate" | "scale";
-      // icons?: Icons;
-      position: ['bottom', 'right'],
-    };
   }
 }
