@@ -13,7 +13,7 @@
                                 <input [(ngModel)]="subject" class="form-control" type="text" name="subject" required>
                                 <label>Post</label>
                                 <!--<textarea [(ngModel)]="post" class="form-control" name="post" rows="6" required></textarea>-->
-                                <editor></editor>
+                                <editor [post]="post" (onChange)="handlePostChange($event)"></editor>
                                 <div class="btnpadding">
                                     <button class="btn btn-secondary" type="submit">Submit</button> 
                                 </div>
