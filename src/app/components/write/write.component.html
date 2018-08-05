@@ -1,26 +1,26 @@
 <div class="app">
     <navbar></navbar>
     <div class="writepos">
-            <div class="container">
-                <div class="card panel-default">
-                    <div class="card-header">
-                        <h2 class="card-title">Write Post</h2>
-                    </div>
-                    <div class="widget-area card-body">
-                        <form (ngSubmit)="blogPost()">
-                            <div class="form-group status-upload">
-                                <label>Topic</label>
-                                <input [(ngModel)]="subject" class="form-control" type="text" name="subject" required>
-                                <label>Post</label>
-                                <!--<textarea [(ngModel)]="post" class="form-control" name="post" rows="6" required></textarea>-->
-                                <editor [post]="post" (onChange)="handlePostChange($event)"></editor>
-                                <div class="btnpadding">
-                                    <button class="btn btn-secondary" type="submit">Submit</button> 
-                                </div>
+        <div class="container">
+            <div class="card panel-default">
+                <div class="card-header">
+                    <h2 class="card-title">Write Post</h2>
+                </div>
+                <div class="widget-area card-body">
+                    <form (ngSubmit)="blogPost()">
+                        <div class="form-group status-upload">
+                            <label>Topic</label>
+                            <input [(ngModel)]="subject" class="form-control" type="text" name="subject" required>
+                            <label>Post</label>
+                            <!--<textarea [(ngModel)]="post" class="form-control" name="post" rows="6" required></textarea>-->
+                            <editor [post]="post" (onChange)="handlePostChange($event)"></editor>
+                            <div class="btnpadding">
+                                <button class="btn btn-secondary" type="submit">Submit</button>
                             </div>
-                        </form>
-                    </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
+    </div>
 </div>
