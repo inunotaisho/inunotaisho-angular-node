@@ -117,7 +117,7 @@
     "bundle:server": "",
     "bundle:main": "browserify src/main.js -d -t stringify -o public/dist/main.bundle.js -v -p [minifyify src/main.js.map --output public/dist/main.bundle.js.map]",
     "clean": "rimraf public/* && npm run assets",
-    "fonts": "cp -R node_modules/font-awesome/fonts ./public/fonts",
+    "fonts": "cp -R node_modules/font-awesome/fonts ./public && cp -R node_modules/@mdi/font/fonts ./public",
     "images": "cp -R src/assets/images ./public/assets/images",
     "i18n": "cp -R src/assets/i18n ./public/assets/i18n",
     "less": "mkdirp public/dist && lessc ./src/app/styles/main.less > ./public/dist/app.css --clean-css=\"--s0 --advanced\"",
