@@ -6,10 +6,18 @@
                 <div class="card panel-default">
                     <div class="iconpadding">
                         <div class="iconpos">
-                            <a class="socicon" href="" rel="nofollow"><i class="fa fa-facebook-official fa-3x" aria-hidden="true"></i></a>
-                            <a class="socicon" href="" rel="nofollow"><i class="fa fa-linkedin-square fa-3x" aria-hidden="true"></i></a>
-                            <a class="socicon" href="" rel="nofollow"><i class="fa fa-github fa-3x" aria-hidden="true"></i></a>
-                            <a class="socicon" href="" rel="nofollow"><i class="fa fa-twitter fa-3x" aria-hidden="true"></i></a>
+                            <a class="socicon" href="" rel="nofollow">
+                                <i class="fa fa-facebook-official fa-3x" aria-hidden="true"></i>
+                            </a>
+                            <a class="socicon" href="" rel="nofollow">
+                                <i class="fa fa-linkedin-square fa-3x" aria-hidden="true"></i>
+                            </a>
+                            <a class="socicon" href="" rel="nofollow">
+                                <i class="fa fa-github fa-3x" aria-hidden="true"></i>
+                            </a>
+                            <a class="socicon" href="" rel="nofollow">
+                                <i class="fa fa-twitter fa-3x" aria-hidden="true"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -27,19 +35,23 @@
                                 <input type="text" name="_gotcha" style="display: none">
                                 <!--<label>Contact</label>
                                 <select class="form-control" required>{{user.email}}</select>-->
-                                <label>First Name</label>
-                                <input class="form-control" type="text" name="firstName" ngModel required #firstName="ngModel">
-                                <label>Last Name</label>
-                                <input class="form-control" type="text" name="lastName" ngModel required #lastName="ngModel">
-                                <label>Email</label>
-                                <div class="form-group" [ngClass]="{ 'has-error': submitted && !valid }">
-                                    <input class ="form-control" type="email" name="email" ngModel required #email="ngModel">
-                                    <p *ngIf="errors && errors.uniqueUsername">Email is not valid</p>
-                                </div>
-                                <label>Subject</label>
-                                <input class="form-control" type="text" name="subject" ngModel required #subject="ngModel">
-                                <label>Message</label>
-                                <textarea class="form-control" name="message" rows="6" required ngModel></textarea>
+                                <fieldset>
+                                    <label for="firstName">First Name</label>
+                                    <input class="form-control" type="text" id="firstName" name="firstName" ngModel required #firstName="ngModel">
+                                    <label for="lastName">Last Name</label>
+                                    <input class="form-control" type="text" id="lastName" name="lastName" ngModel required #lastName="ngModel">
+                                    <label for="email">Email</label>
+                                    <div class="form-group" [ngClass]="{ 'has-error': submitted && !valid }">
+                                        <input class="form-control" id="email" type="email" name="email" ngModel required #email="ngModel">
+                                        <p *ngIf="errors && errors.uniqueUsername">Email is not valid</p>
+                                    </div>
+                                </fieldset>
+                                <fieldset>
+                                    <label for="subject">Subject</label>
+                                    <input class="form-control" id="subject" type="text" name="subject" ngModel required #subject="ngModel">
+                                    <label for="message">Message</label>
+                                    <textarea class="form-control" id="message" name="message" rows="6" required ngModel></textarea>
+                                </fieldset>
                                 <div class="btnpadding">
                                     <button class="btn btn-secondary" type="submit">Submit</button>
                                 </div>
