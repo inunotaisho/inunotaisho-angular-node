@@ -22,6 +22,7 @@ import { SimpleNotificationsModule } from 'angular2-notifications';
 import { Navbar} from './common/navbar/navbar.component';
 import { SocialBannerComponent } from './common/banners/social/social.component';
 import { LanguagePickerComponent } from './common/languagePicker/languagePicker.component';
+import { ReturnButtonComponent } from './common/banners/returnbutton/returnbutton.component';
 
 /**
  * routes
@@ -86,6 +87,7 @@ export function declarations(): any {
         PortfolioComponent,
         portImgContainer,
         RegComponent,
+        ReturnButtonComponent,
         WriteComponent,
         ErrorComponent,
         SocialBannerComponent
