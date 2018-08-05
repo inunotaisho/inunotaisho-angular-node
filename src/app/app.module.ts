@@ -1,10 +1,10 @@
 import { CollapseModule, TooltipModule } from 'ngx-bootstrap';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, Injectable} from '@angular/core';
+import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { RouterModule, CanActivate } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
