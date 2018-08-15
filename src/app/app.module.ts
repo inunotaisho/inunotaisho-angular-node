@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
-import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+import { QuillModule } from 'ngx-quill';
 
 
 // for AoT support, https://github.com/ocombe/"@ngx-translate/core"#aot
@@ -19,7 +19,7 @@ import { SimpleNotificationsModule } from 'angular2-notifications';
  * common
  */
 
-import { Navbar} from './common/navbar/navbar.component';
+import { NavbarComponent } from './common/navbar/navbar.component';
 import { SocialBannerComponent } from './common/banners/social/social.component';
 import { LanguagePickerComponent } from './common/languagePicker/languagePicker.component';
 import { ReturnButtonComponent } from './common/banners/returnbutton/returnbutton.component';
@@ -82,7 +82,7 @@ export function declarations(): any {
         HomeComponent,
         LanguagePickerComponent,
         LoginComponent,
-        Navbar,
+        NavbarComponent,
         ProfileComponent,
         PortfolioComponent,
         portImgContainer,
@@ -106,11 +106,9 @@ export function declarations(): any {
 
       FormsModule,
 
-      FroalaEditorModule.forRoot(),
-    
-      FroalaViewModule.forRoot(),
-
       HttpClientModule,
+
+      QuillModule,
 
       RouterModule.forRoot(routes),
 

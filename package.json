@@ -64,8 +64,10 @@
     "minifyify": "^7.3.5",
     "mkdirp": "^0.5.1",
     "ngx-bootstrap": "^2.0.3",
+    "ngx-quill": "^3.4.0",
     "nodemon": "latest",
     "protractor": "~5.1.2",
+    "quill-image-resize-module": "^3.0.0",
     "raw-loader": "^0.5.1",
     "rimraf": "~2.6.1",
     "rxjs": "6.2.1",
@@ -117,7 +119,7 @@
     "bundle:server": "",
     "bundle:main": "browserify src/main.js -d -t stringify -o public/dist/main.bundle.js -v -p [minifyify src/main.js.map --output public/dist/main.bundle.js.map]",
     "clean": "rimraf public/* && npm run assets",
-    "fonts": "cp -R node_modules/font-awesome/fonts ./public && cp -R node_modules/@mdi/font/fonts ./public",
+    "fonts": "concurrently -r \"cp -R node_modules/font-awesome/fonts ./public\" \"cp -R node_modules/@mdi/font/fonts ./public\"",
     "images": "cp -R src/assets/images ./public/assets/images",
     "i18n": "cp -R src/assets/i18n ./public/assets/i18n",
     "less": "mkdirp public/dist && lessc ./src/app/styles/main.less > ./public/dist/app.css --clean-css=\"--s0 --advanced\"",
@@ -128,7 +130,7 @@
     "pack": "webpack --config webpack.config.dev.js --watch",
     "test": "karma start ./karma.conf.js",
     "ts": "tsc -p .",
-    "tslint": ""
+    "tslint": "tslint \"src/**/*.ts\""
   },
   "repository": {
     "type": "git",
