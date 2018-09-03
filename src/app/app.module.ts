@@ -5,8 +5,10 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+
+
 import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
-import { QuillModule } from 'ngx-quill';
+import { FileSelectDirective } from 'ng2-file-upload';
 
 
 // for AoT support, https://github.com/ocombe/"@ngx-translate/core"#aot
@@ -39,7 +41,7 @@ import { EdComponent } from './components/education/ed.component';
 import { PortfolioComponent } from './components/portfolio/portfolio.component';
 import { BlogComponent } from './components/blog/blog.component';
 import { BlogPostComponent } from './components/blogpost/blogpost.component';
-import { LoginComponent }from './components/login/login.component';
+import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { WriteComponent } from './components/write/write.component';
 import { ContactComponent } from './components/contact/contact.component';
@@ -65,7 +67,7 @@ import { GlobalLoaderFacade } from './services/globalLoaderFacade/global-loader-
 /* translate support */
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
-  }
+}
 
 
 
@@ -90,53 +92,52 @@ export function declarations(): any {
         ReturnButtonComponent,
         WriteComponent,
         ErrorComponent,
-        SocialBannerComponent
+        SocialBannerComponent,
+        FileSelectDirective
     ]
 }
 
 @NgModule({
-   declarations: [ 
-       AppComponent,
-       declarations(),
-   ],      
-   imports: [
-      BrowserModule,
+    declarations: [
+        AppComponent,
+        declarations(),
+    ],
+    imports: [
+        BrowserModule,
 
-      CollapseModule,
+        CollapseModule,
 
-      FormsModule,
+        FormsModule,
 
-      HttpClientModule,
+        HttpClientModule,
 
-      QuillModule,
+        RouterModule.forRoot(routes),
 
-      RouterModule.forRoot(routes),
+        SimpleNotificationsModule.forRoot(),
 
-      SimpleNotificationsModule.forRoot(),
+        SlimLoadingBarModule,
 
-      SlimLoadingBarModule,
+        TooltipModule.forRoot(),
 
-      TooltipModule.forRoot(),
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: (createTranslateLoader),
+                deps: [HttpClient],
+            },
+        }),
 
-      TranslateModule.forRoot({
-        loader: {
-          provide: TranslateLoader,
-          useFactory: (createTranslateLoader),
-          deps: [HttpClient],
-        },
-      }),
-
-   ],
-   providers: [
-       AuthService,
-       AuthGuard,
-       alreadyLoggedIn,
-       TranslateService,
-       GlobalLoaderFacade,
-   ],
-   bootstrap: [AppComponent]
+    ],
+    providers: [
+        AuthService,
+        AuthGuard,
+        alreadyLoggedIn,
+        TranslateService,
+        GlobalLoaderFacade,
+    ],
+    bootstrap: [AppComponent]
 })
-export class AppModule { 
-  
+export class AppModule {
+
 }
 
