@@ -6,7 +6,7 @@ import { AppSettings } from '../../common/config';
 import { Language, LANGUAGE_CONFIG } from './language.model';
 
 @Component({
-    selector: 'languageSelector',
+    selector: 'sg-language-selector',
     templateUrl: './languagePicker.component.html',
 })
 

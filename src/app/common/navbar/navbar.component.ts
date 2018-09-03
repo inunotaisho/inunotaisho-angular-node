@@ -19,7 +19,7 @@ export function services(): any {
     providers: services()
 })
 
-export class Navbar implements OnInit, OnDestroy {
+export class NavbarComponent implements OnInit, OnDestroy {
     logoutSubscription:Subscription;
     data: any = {};
 
