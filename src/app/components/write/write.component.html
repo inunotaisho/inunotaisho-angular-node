@@ -1,26 +1,11 @@
 <div class="app">
     <navbar></navbar>
-    <div class="writepos">
-        <div class="container">
-            <div class="card panel-default">
-                <div class="card-header">
-                    <h2 class="card-title">Write Post</h2>
-                </div>
-                <div class="widget-area card-body">
-                    <form (ngSubmit)="blogPost()">
-                        <div class="form-group status-upload">
-                            <label>Topic</label>
-                            <input [(ngModel)]="subject" class="form-control" type="text" name="subject" required>
-                            <label>Post</label>
-                            <!--<textarea [(ngModel)]="post" class="form-control" name="post" rows="6" required></textarea>-->
-                            <sg-editor [post]="post" (onChange)="handlePostChange($event)"></sg-editor>
-                            <div class="btnpadding">
-                                <button class="btn btn-secondary" type="submit">Submit</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+    <form (ngSubmit)="blogPost()">
+        <div>
+            <sg-editor [post]="post" (onChange)="handlePostChange($event)"></sg-editor>
+            <div class="btnpadding">
+                <button class="btn btn-secondary" type="submit">Submit</button>
             </div>
         </div>
-    </div>
+    </form>
 </div>
