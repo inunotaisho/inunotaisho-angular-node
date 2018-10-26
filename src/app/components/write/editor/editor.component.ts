@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, HostListener, NgZone } from '@angular/core';
 import { AppSettings } from './../../../common/config';
+import { ListenerDefaults, Combo, Listener } from 'keypress.js';
 
 @Component({
     selector: 'sg-editor',
@@ -19,20 +20,20 @@ export default class EditorComponent implements OnInit {
 
         }
 
-        toolTipMenu($event){
-            if () {
-                document.getElementById("tooltipbutton").classList.add('is-scaled');
-            } else {
-                document.getElementById("tooltipbutton").classList.remove('is-scaled');
-            }
-        }
+        // toolTipMenu($event){
+        //     if () {
+        //         document.getElementById("tooltipbutton").classList.add('is-scaled');
+        //     } else {
+        //         document.getElementById("tooltipbutton").classList.remove('is-scaled');
+        //     }
+        // }
 
-        textAdded($event){
-            if () {
-                document.getElementById("tooltipbutton").classList.remove('is-active');
-            } else {
-                document.getElementById("tooltipbutton").classList.add('is-active');
-            }
-        }
+        // textAdded($event){
+        //     if () {
+        //         document.getElementById("tooltipbutton").classList.remove('is-active');
+        //     } else {
+        //         document.getElementById("tooltipbutton").classList.add('is-active');
+        //     }
+        // }
 
     }
