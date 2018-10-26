@@ -11,7 +11,7 @@ import { WriteComponent } from '../components/write/write.component';
 import { ContactComponent } from '../components/contact/contact.component';
 import { RegComponent } from '../components/reg/reg.component';
 import { ErrorComponent } from '../components/errors/error.component';
-import portImgContainer from '../components/portfolio/portfolio-images/portfolio.image.component';
+import portImgContainerComponent from '../components/portfolio/portfolio-images/portfolio.image.component';
 import EditorComponent from '../components/write/editor/editor.component';
 import { SocialBannerComponent } from '../common/banners/social/social.component';
 
