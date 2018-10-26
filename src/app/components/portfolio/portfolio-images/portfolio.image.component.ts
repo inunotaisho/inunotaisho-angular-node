@@ -7,7 +7,7 @@ import { PortfolioComponent } from './../portfolio.component';
     templateUrl:'./portfolio.image.component.html'
 })
 
-export default class portImgContainer {
+export default class portImgContainerComponent {
     constructor(){
 
     }

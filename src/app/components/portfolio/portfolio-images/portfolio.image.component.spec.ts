@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import portImgContainer from './portfolio.image.component';
+import portImgContainerComponent from './portfolio.image.component';
 
-describe('portImgContainer', () => {
-  let component: portImgContainer;
-  let fixture: ComponentFixture<portImgContainer>;
+describe('portImgContainerComponent', () => {
+  let component: portImgContainerComponent;
+  let fixture: ComponentFixture<portImgContainerComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ portImgContainer ]
+      declarations: [ portImgContainerComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(portImgContainer);
+    fixture = TestBed.createComponent(portImgContainerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
