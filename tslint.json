@@ -4,12 +4,16 @@
     "angular-whitespace": [true, "check-interpolation", "check-pipe", "check-semicolon"],
     "banana-in-box": true,
     "templates-no-negated-async": true,
-    "directive-selector": [true, "attribute", "sg", "camelCase"],
-    "component-selector": [true, "element", "sg", "kebab-case"],
+    "directive-selector": [true, "attribute", "camelCase"],
+    "component-selector": [true, "element", "kebab-case"],
     "use-input-property-decorator": true,
     "use-output-property-decorator": true,
     "use-host-property-decorator": true,
     "use-view-encapsulation": true,
+    "max-line-length": [
+      true,
+      140
+    ],
     "no-attribute-parameter-decorator": true,
     "no-input-rename": true,
     "no-output-rename": true,
