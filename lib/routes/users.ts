@@ -1,7 +1,7 @@
 import { Router, Request, Response } from 'express';
 import { User } from '../../models/user';
 
-export default class Users {
+export class USERS {
     
     constructor(private router: Router){
 
@@ -13,3 +13,5 @@ export default class Users {
         }) 
     }
 }
+
+export default USERS;

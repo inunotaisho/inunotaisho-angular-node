@@ -3,7 +3,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { CONTACT } from './routes/contact';
 import { BLOG } from './routes/blog';
-import { USERS } from './routes/users';
+import  { USERS } from './routes/users';
 
 
 interface IROUTER {
