@@ -1,5 +1,6 @@
 import { CollapseModule, TooltipModule } from 'ngx-bootstrap';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule }from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
@@ -40,7 +41,7 @@ import { HomeComponent } from './components/home/home.component';
 import { EdComponent } from './components/education/ed.component';
 import { PortfolioComponent } from './components/portfolio/portfolio.component';
 import { BlogComponent } from './components/blog/blog.component';
-import { BlogPostComponent } from './components/blogpost/blogpost.component';
+import { BlogPostComponent } from './components/blogpost/blogPost.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { WriteComponent } from './components/write/write.component';
@@ -103,6 +104,9 @@ export function declarations(): any {
         declarations(),
     ],
     imports: [
+
+        BrowserAnimationsModule,
+        
         BrowserModule,
 
         CollapseModule,
