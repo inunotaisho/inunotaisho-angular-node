@@ -5,15 +5,13 @@ const ProgressPlugin = require('webpack/lib/ProgressPlugin');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 
 const { HotModuleReplacementPlugin, ProvidePlugin, DefinePlugin, NoEmitOnErrorsPlugin, SourceMapDevToolPlugin, NamedModulesPlugin } = require('webpack');
-const { UglifyJsPlugin, CommonsChunkPlugin } = require('webpack').optimize;
-const AotPlugin = require('@ngtools/webpack').AngularCompilerPlugin;
+
+const AngularCompilerPlugin = require('@ngtools/webpack').AngularCompilerPlugin;
 
 const nodeModules = path.join(projectRoot, 'node_modules');
-const realNodeModules = fs.realpathSync(nodeModules);
-const genDirNodeModules = path.join(projectRoot, 'src','$$_gendir','node_modules');
-const entryPoints = ["inline","polyfills","sw-register","vendor","main"];
  
  module.exports = {
+    mode: 'development',
     devtool: "source-map",
     resolve: {
     extensions: [
@@ -85,31 +83,7 @@ const entryPoints = ["inline","polyfills","sw-register","vendor","main"];
               __DEV__: true
           }),
         new HotModuleReplacementPlugin(),
-        new CommonsChunkPlugin({
-            minChunks: 2,
-            async: "common"
-            }),
-        new CommonsChunkPlugin({
-        name: [
-            "inline"
-            ],
-            "minChunks": null
-        }),
-        new CommonsChunkPlugin({
-            name: [
-                "vendor"
-            ],
-            minChunks: (module) => {
-                        return module.resource
-                            && (module.resource.startsWith(nodeModules)
-                                || module.resource.startsWith(genDirNodeModules)
-                                || module.resource.startsWith(realNodeModules));
-                    },
-            chunks: [
-                "main"
-            ]
-        }),
-
+       
         new SourceMapDevToolPlugin({
             filename: "[file].map[query]",
             moduleFilenameTemplate: "[resource-path]",
@@ -117,7 +91,7 @@ const entryPoints = ["inline","polyfills","sw-register","vendor","main"];
             sourceRoot: "webpack:///"
         }),
         new NamedModulesPlugin({}),
-        new AotPlugin({
+        new AngularCompilerPlugin({
             mainPath:"main.ts",
             hostReplacementPaths: {
                 "environments/environment.ts": "environments/environment.ts"
@@ -126,5 +100,16 @@ const entryPoints = ["inline","polyfills","sw-register","vendor","main"];
             skipCodeGeneration: true,
             sourceMap: true
         })
-    ]
+    ],
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                commons: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: "vendors",
+                    chunks: "all"
+                }
+            }
+        }
+    }
 }
