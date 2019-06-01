@@ -2,7 +2,7 @@
 
 **Important note: The branch of this repo that is `master` is most likely the active version of Angular. Branchs that are `angular#` are probaly not running.**
 
-This is the Angular 5 fullstack version of my website which will be the upgrade for www.ebseiten.com.
+This is the Angular 7 fullstack version of my website which will be the upgrade for www.ebseiten.com.
 
 Its about 62% of the way complete. It runs so long as you have `mongodb`.
 
