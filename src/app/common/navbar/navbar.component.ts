@@ -1,9 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Subscription } from 'rxjs';
+// import { TranslateService } from '@ngx-translate/core';
 
 import { AuthService } from '../../services/authservice/authentication.service';
-import { TranslateService } from '../../services/translate/translate.service';
+ import { TranslateService } from '../../services/translate/translate.service';
 
 
 export function services(): any {
