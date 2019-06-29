@@ -5,24 +5,24 @@ const mongoose = require("mongoose"),
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
-    Username: String,
-    Email:String,
-    FirstName:String,
-    LastName:String,
-    Salt: {type: String, required: true },
-    Hash: {type: String, required: true }
+    username: String,
+    email:String,
+    firstName:String,
+    lastName:String,
+    salt: {type: String, required: true },
+    hash: {type: String, required: true }
 });
 
 UserSchema.methods.setPassword = function(password) {
-  this.Salt = crypto.randomBytes(16).toString("hex");
-  this.Hash = crypto.pbkdf2Sync(password, this.Salt, 10000, 512,'sha512').toString('hex');
+  this.salt = crypto.randomBytes(16).toString("hex");
+  this.hash = crypto.pbkdf2Sync(password, this.salt, 10000, 512,'sha512').toString('hex');
 }
 
 
 
 UserSchema.methods.comparePassword = function (password) {
-  const hash = crypto.pbkdf2Sync(password, this.Salt, 10000, 512,'sha512').toString('hex')
-  return this.Hash === hash;
+  const hash = crypto.pbkdf2Sync(password, this.salt, 10000, 512,'sha512').toString('hex')
+  return this.hash === hash;
 }
 
 UserSchema.methods.generateJWT = function () {
@@ -31,7 +31,7 @@ UserSchema.methods.generateJWT = function () {
   exp.setDate(today.getDate() + 5);
   return jwt.sign({
       id: this._id,
-      Username: this.Username,
+      username: this.username,
       exp: parseInt(exp.getTime() / 1000)
   }, process.env.SECRET)
 }

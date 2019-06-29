@@ -18,6 +18,10 @@ export class AppSettings {
     return 'token';
   }
 
+  public static get USERNAME(): string {
+    return 'username';
+  }
+
   public static get PROFILE_KEY(): string {
     return 'profile';
   }

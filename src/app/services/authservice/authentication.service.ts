@@ -17,6 +17,7 @@ export class AuthService {
     public errorText: string;
     public isLoggedIn: boolean;
     public jwtToken: string;
+    public username: string;
 
     public attemptingToLogIn: boolean;
     public redirectUrl: string;
@@ -34,10 +35,11 @@ export class AuthService {
      */
 
         const clientJWT = localStorage.getItem(AppSettings.JWT_TOKEN_KEY);
+        const username = localStorage.getItem(AppSettings.USERNAME);
         const clientProfile = localStorage.getItem(AppSettings.PROFILE_KEY);
 
         if (clientJWT) {
-            this.loginHelper(clientJWT);
+            this.loginHelper({token: clientJWT, username});
         } else {
             this.reset();
         }
@@ -54,16 +56,18 @@ export class AuthService {
 
         this.errorText = null;
 
-        localStorage.removeItem(AppSettings.JWT_TOKEN_KEY)
+        localStorage.clear();
     }
 
-    loginHelper(token: string): void {
-
+    loginHelper(response: object): void {
+        console.log('ressssssspppppppooo', response);
         this.isLoggedIn = true;
-        this.jwtToken = token;
+        this.jwtToken = response['token'];
+        this.username = response['username'];
 
         // persist to cache
         localStorage.setItem(AppSettings.JWT_TOKEN_KEY, this.jwtToken);
+        localStorage.setItem(AppSettings.USERNAME, response['username']);
     }
 
     getIsLoggedIn() {
@@ -83,7 +87,7 @@ export class AuthService {
                     this.reset();
 
                     this.loginHelper(
-                        response['token']
+                        response
                     );
 
                     let navigateTarget = '/';
@@ -119,5 +123,9 @@ export class AuthService {
 
     getToken(): string {
         return this.jwtToken;
+    }
+
+    getUsername(): string {
+        return this.username;
     }
 }
