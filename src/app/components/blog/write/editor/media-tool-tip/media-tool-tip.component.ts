@@ -1,4 +1,4 @@
-import { ImageUploadService } from './../../../../services/imageUpload/image-upload.service';
+import { ImageUploadService } from '../../../../../services/imageUpload/image-upload.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

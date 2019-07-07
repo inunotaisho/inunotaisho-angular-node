@@ -43,24 +43,24 @@ import { routes } from "./routes/routes.module";
 import { HomeComponent } from './components/home/home.component';
 import { EdComponent } from './components/education/ed.component';
 import { PortfolioComponent } from './components/portfolio/portfolio.component';
-import { BlogComponent } from './components/blog/blog.component';
-import { BlogPostComponent } from './components/blogpost/blogPost.component';
+import { BlogPreviewComponent } from './components/blog/blog-preview/blog-preview.component';
+import { BlogPostComponent } from './components/blog/blogpost/blogpost.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { WriteComponent } from './components/write/write.component';
+import { WriteComponent } from './components/blog/write/write.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { RegComponent } from './components/reg/reg.component';
 import { ErrorComponent } from './components/errors/error.component';
-import { MediaToolTipComponent } from './components/write/editor/media-tool-tip/media-tool-tip.component';
-import { ActionScopeComponent } from './components/write/editor/action-scope/action-scope.component';
-import { MasterFooterComponent } from './components/blogpost/master-footer/master-footer.component';
-import { ClapAndTagsComponent } from './components/blogpost/master-footer/clap-and-tags/clap-and-tags.component';
-import { FollowComponent } from './components/blogpost/master-footer/follow/follow.component';
-import { CommentsComponent } from './components/blogpost/master-footer/comments/comments.component';
-import { ResponsesComponent } from './components/blogpost/master-footer/responses/responses.component';
-import { ResponseEditorComponent } from './components/blogpost/master-footer/response-editor/response-editor.component';
+import { MediaToolTipComponent } from './components/blog/write/editor/media-tool-tip/media-tool-tip.component';
+import { ActionScopeComponent } from './components/blog/write/editor/action-scope/action-scope.component';
+import { MasterFooterComponent } from './components/blog/blogpost/master-footer/master-footer.component';
+import { ClapAndTagsComponent } from './components/blog/blogpost/master-footer/clap-and-tags/clap-and-tags.component';
+import { FollowComponent } from './components/blog/blogpost/master-footer/follow/follow.component';
+import { CommentsComponent } from './components/blog/blogpost/master-footer/comments/comments.component';
+import { ResponsesComponent } from './components/blog/blogpost/master-footer/responses/responses.component';
+import { ResponseEditorComponent } from './components/blog/blogpost/master-footer/response-editor/response-editor.component';
 import portImgContainerComponent from './components/portfolio/portfolio-images/portfolio.image.component';
-import EditorComponent from './components/write/editor/editor.component';
+import { EditorComponent } from './components/blog/write/editor/editor.component';
 
 /**
  * Guards
@@ -89,7 +89,7 @@ export function declarations(): any {
     return [
         AppComponent,
         /* our app's components imported in the root module*/
-        BlogComponent,
+        BlogPreviewComponent,
         BlogPostComponent,
         ContactComponent,
         EdComponent,

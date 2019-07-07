@@ -4,9 +4,9 @@ import { HttpClient } from '@angular/common/http';
 
 
 @Component({
-    templateUrl:'./blog.component.html'
+    templateUrl:'./blog-preview.component.html'
 })
-export class BlogComponent implements OnInit{
+export class BlogPreviewComponent implements OnInit{
     items: {};
     constructor(private http:HttpClient) {
 
