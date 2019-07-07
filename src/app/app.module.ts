@@ -9,7 +9,9 @@ import { RouterModule } from '@angular/router';
 
 
 import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
-import { FileSelectDirective } from 'ng2-file-upload';
+import { FileUploadModule } from 'ng2-file-upload';
+import {CloudinaryModule, CloudinaryConfiguration, provideCloudinary} from '@cloudinary/angular-5.x';
+import * as cloudinary from 'cloudinary-core';
 
 
 // for AoT support, https://github.com/ocombe/"@ngx-translate/core"#aot
@@ -26,6 +28,7 @@ import { NavbarComponent } from './common/navbar/navbar.component';
 import { SocialBannerComponent } from './common/banners/social/social.component';
 import { LanguagePickerComponent } from './common/languagePicker/languagePicker.component';
 import { ReturnButtonComponent } from './common/banners/returnbutton/returnbutton.component';
+import { AppSettings } from './common/config';
 
 /**
  * routes
@@ -48,6 +51,14 @@ import { WriteComponent } from './components/write/write.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { RegComponent } from './components/reg/reg.component';
 import { ErrorComponent } from './components/errors/error.component';
+import { MediaToolTipComponent } from './components/write/editor/media-tool-tip/media-tool-tip.component';
+import { ActionScopeComponent } from './components/write/editor/action-scope/action-scope.component';
+import { MasterFooterComponent } from './components/blogpost/master-footer/master-footer.component';
+import { ClapAndTagsComponent } from './components/blogpost/master-footer/clap-and-tags/clap-and-tags.component';
+import { FollowComponent } from './components/blogpost/master-footer/follow/follow.component';
+import { CommentsComponent } from './components/blogpost/master-footer/comments/comments.component';
+import { ResponsesComponent } from './components/blogpost/master-footer/responses/responses.component';
+import { ResponseEditorComponent } from './components/blogpost/master-footer/response-editor/response-editor.component';
 import portImgContainerComponent from './components/portfolio/portfolio-images/portfolio.image.component';
 import EditorComponent from './components/write/editor/editor.component';
 
@@ -64,6 +75,7 @@ import { AuthGuard, alreadyLoggedIn } from './common/authguard/authguard.guard';
 import { AuthService } from '../app/services/authservice/authentication.service';
 import { TranslateService } from './services/translate/translate.service';
 import { GlobalLoaderFacade } from './services/globalLoaderFacade/global-loader-facade.service';
+import { ImageUploadService } from './services/imageUpload/image-upload.service';
 
 /* translate support */
 export function createTranslateLoader(http: HttpClient) {
@@ -94,14 +106,21 @@ export function declarations(): any {
         WriteComponent,
         ErrorComponent,
         SocialBannerComponent,
-        FileSelectDirective
+        MediaToolTipComponent,
+        ActionScopeComponent,
+        MasterFooterComponent,
+        ClapAndTagsComponent,
+        FollowComponent,
+        CommentsComponent,
+        ResponsesComponent,
+        ResponseEditorComponent
     ]
 }
 
 @NgModule({
     declarations: [
         AppComponent,
-        declarations(),
+        declarations()
     ],
     imports: [
 
@@ -109,7 +128,11 @@ export function declarations(): any {
         
         BrowserModule,
 
+        CloudinaryModule.forRoot(cloudinary, AppSettings.cloudinaryConfiguration),
+
         CollapseModule,
+
+        FileUploadModule,
 
         FormsModule,
 
@@ -138,6 +161,7 @@ export function declarations(): any {
         alreadyLoggedIn,
         TranslateService,
         GlobalLoaderFacade,
+        ImageUploadService
     ],
     bootstrap: [AppComponent]
 })

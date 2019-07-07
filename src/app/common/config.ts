@@ -171,4 +171,12 @@ export class AppSettings {
   public static get POSITIVE_WHOLE_NUMBER_REGEX_PATTERN(): RegExp {
     return /^\d+$/;
   }
+
+   /********************
+   * Cloudinary Creds
+   */
+
+  public static get cloudinaryConfiguration(): any {
+    return {}
+  }
 }
