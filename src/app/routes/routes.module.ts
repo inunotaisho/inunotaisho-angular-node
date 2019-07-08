@@ -22,7 +22,7 @@ export const routes: Routes = [
     {path:'', pathMatch:'full', component:HomeComponent},
     {path:'education', component:EdComponent},
     {path:'portfolio', component: PortfolioComponent},
-    {path:'blog', component:BlogPreviewComponent},
+    {path:'blog-preview', component:BlogPreviewComponent},
     {path:'login', component: LoginComponent, canActivate: [alreadyLoggedIn]},
     {path:'profile', component: ProfileComponent, canActivate: [AuthGuard]},
     {path:'write', component: WriteComponent, canActivate: [AuthGuard]},

@@ -1,10 +1,108 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { CollapseModule, TooltipModule } from 'ngx-bootstrap';
+import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
+import { SimpleNotificationsModule } from 'angular2-notifications';
+
+/**
+ * common
+ */
+import { NavbarComponent } from '../navbar/navbar.component';
+import { SocialBannerComponent } from '../banners/social/social.component';
+import { LanguagePickerComponent } from '../languagePicker/languagePicker.component';
+import { ReturnButtonComponent } from '../banners/returnbutton/returnbutton.component';
+
+/**
+ * routes
+ */
+
+import { routes } from "../../routes/routes.module";
+
+/**
+ * Guards
+ */
+
+import { AuthGuard, alreadyLoggedIn } from '../authguard/authguard.guard';
+
+/**
+ * services
+ */
+
+import { AuthService } from '../../services/authservice/authentication.service';
+import { TranslationService } from '../../services/translation/translation.service';
+import { GlobalLoaderFacade } from '../../services/globalLoaderFacade/global-loader-facade.service';
+import { ImageUploadService } from '../../services/imageUpload/image-upload.service';
+
+// for AoT support, https://github.com/ocombe/"@ngx-translate/core"#aot
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+/*
+export function declarations(): any {
+  return [
+      NavbarComponent,
+
+  ]
+}
+*/
+
+/* translate support */
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
+}
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    NavbarComponent,
+    SocialBannerComponent,
+    LanguagePickerComponent,
+    ReturnButtonComponent,
+  ],
   imports: [
-    CommonModule
-  ]
+    FormsModule,
+
+    CommonModule,
+
+    CollapseModule,
+
+    HttpClientModule,
+
+    RouterModule.forChild(routes),
+
+    SlimLoadingBarModule,
+
+    SimpleNotificationsModule.forRoot(),
+
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient],
+      },
+    }),
+
+    TooltipModule.forRoot(),
+
+  ],
+  exports: [
+    NavbarComponent,
+    SocialBannerComponent,
+    LanguagePickerComponent,
+    ReturnButtonComponent,
+    CommonModule,
+    FormsModule,
+    HttpClientModule,
+  ],
+  providers: [
+    AuthService,
+    AuthGuard,
+    alreadyLoggedIn,
+    TranslationService,
+    GlobalLoaderFacade,
+    ImageUploadService
+  ],
 })
 export class SharedModule { }

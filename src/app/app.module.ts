@@ -1,33 +1,16 @@
-import { CollapseModule, TooltipModule } from 'ngx-bootstrap';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule }from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { SharedModule } from './common/shared/shared.module';
 
 
-import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
 import { FileUploadModule } from 'ng2-file-upload';
 import {CloudinaryModule, CloudinaryConfiguration, provideCloudinary} from '@cloudinary/angular-5.x';
 import * as cloudinary from 'cloudinary-core';
 
-
-// for AoT support, https://github.com/ocombe/"@ngx-translate/core"#aot
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-
-import { SimpleNotificationsModule } from 'angular2-notifications';
-
-/**
- * common
- */
-
-import { NavbarComponent } from './common/navbar/navbar.component';
-import { SocialBannerComponent } from './common/banners/social/social.component';
-import { LanguagePickerComponent } from './common/languagePicker/languagePicker.component';
-import { ReturnButtonComponent } from './common/banners/returnbutton/returnbutton.component';
 import { AppSettings } from './common/config';
 
 /**
@@ -62,27 +45,6 @@ import { ResponseEditorComponent } from './components/blog/blogpost/master-foote
 import portImgContainerComponent from './components/portfolio/portfolio-images/portfolio.image.component';
 import { EditorComponent } from './components/blog/write/editor/editor.component';
 
-/**
- * Guards
- */
-
-import { AuthGuard, alreadyLoggedIn } from './common/authguard/authguard.guard';
-
-/**
- * services
- */
-
-import { AuthService } from '../app/services/authservice/authentication.service';
-import { TranslateService } from './services/translate/translate.service';
-import { GlobalLoaderFacade } from './services/globalLoaderFacade/global-loader-facade.service';
-import { ImageUploadService } from './services/imageUpload/image-upload.service';
-
-/* translate support */
-export function createTranslateLoader(http: HttpClient) {
-    return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
-}
-
-
 
 
 export function declarations(): any {
@@ -95,17 +57,13 @@ export function declarations(): any {
         EdComponent,
         EditorComponent,
         HomeComponent,
-        LanguagePickerComponent,
         LoginComponent,
-        NavbarComponent,
         ProfileComponent,
         PortfolioComponent,
         portImgContainerComponent,
         RegComponent,
-        ReturnButtonComponent,
         WriteComponent,
         ErrorComponent,
-        SocialBannerComponent,
         MediaToolTipComponent,
         ActionScopeComponent,
         MasterFooterComponent,
@@ -130,38 +88,14 @@ export function declarations(): any {
 
         CloudinaryModule.forRoot(cloudinary, AppSettings.cloudinaryConfiguration),
 
-        CollapseModule,
-
         FileUploadModule,
-
-        FormsModule,
 
         HttpClientModule,
 
         RouterModule.forRoot(routes),
 
-        SimpleNotificationsModule.forRoot(),
-
-        SlimLoadingBarModule,
-
-        TooltipModule.forRoot(),
-
-        TranslateModule.forRoot({
-            loader: {
-                provide: TranslateLoader,
-                useFactory: (createTranslateLoader),
-                deps: [HttpClient],
-            },
-        }),
-
-    ],
-    providers: [
-        AuthService,
-        AuthGuard,
-        alreadyLoggedIn,
-        TranslateService,
-        GlobalLoaderFacade,
-        ImageUploadService
+        SharedModule
+        
     ],
     bootstrap: [AppComponent]
 })

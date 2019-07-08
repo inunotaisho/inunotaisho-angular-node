@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 // import { TranslateService } from '@ngx-translate/core';
 
 import { AuthService } from '../../services/authservice/authentication.service';
- import { TranslateService } from '../../services/translate/translate.service';
+ import { TranslationService } from '../../services/translation/translation.service';
 
 
 export function services(): any {
@@ -24,7 +24,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     logoutSubscription:Subscription;
     data: any = {};
 
-    constructor(private http:HttpClient, private authService: AuthService, private translateService: TranslateService){
+    constructor(private http:HttpClient, private authService: AuthService, private translateService: TranslationService){
 
     }
 

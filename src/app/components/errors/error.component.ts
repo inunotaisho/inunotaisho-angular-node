@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TranslateService } from '../../services/translate/translate.service';
+import { TranslationService } from '../../services/translation/translation.service';
 
 @Component({
     templateUrl:'./error.component.html' //template: loginComponent
@@ -9,7 +9,7 @@ export class ErrorComponent implements OnInit{
 
     data: any = {};
 
-    constructor( private translateService: TranslateService ){
+    constructor( private translateService: TranslationService ){
 
     }
 

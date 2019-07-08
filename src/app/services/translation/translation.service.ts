@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable()
-export class TranslateService {
+export class TranslationService {
 
    constructor(private http: HttpClient) {
         this.getJSON().subscribe(data => {
