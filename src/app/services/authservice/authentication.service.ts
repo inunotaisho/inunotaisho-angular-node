@@ -60,7 +60,6 @@ export class AuthService {
     }
 
     loginHelper(response: object): void {
-        console.log('ressssssspppppppooo', response);
         this.isLoggedIn = true;
         this.jwtToken = response['token'];
         this.username = response['username'];

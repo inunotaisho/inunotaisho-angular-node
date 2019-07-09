@@ -16,7 +16,7 @@ import { BlogPostComponent } from '../../components/blog/blogpost/blogpost.compo
 import { WriteComponent } from '../../components/blog/write/write.component';
 import { EditorComponent } from './write/editor/editor.component';
 import { MediaToolTipComponent } from '../../components/blog/write/editor/media-tool-tip/media-tool-tip.component';
-import { ActionScopeComponent } from '../../components/blog/write/editor/action-scope/action-scope.component';
+import { InlineToolbarComponent } from './write/editor/inline-toolbar/inline-toolbar.component';
 import { MasterFooterComponent } from '../../components/blog/blogpost/master-footer/master-footer.component';
 import { ClapAndTagsComponent } from '../../components/blog/blogpost/master-footer/clap-and-tags/clap-and-tags.component';
 import { FollowComponent } from '../../components/blog/blogpost/master-footer/follow/follow.component';
@@ -25,20 +25,27 @@ import { ResponsesComponent } from '../../components/blog/blogpost/master-footer
 import { ResponseEditorComponent } from '../../components/blog/blogpost/master-footer/response-editor/response-editor.component';
 
 
-@NgModule({
-  declarations: [
+export function blogDeclarations(): any {
+  return [
     BlogPreviewComponent,
     BlogPostComponent,
-    EditorComponent,
-    MediaToolTipComponent,
-    ActionScopeComponent,
-    MasterFooterComponent,
     ClapAndTagsComponent,
-    FollowComponent,
     CommentsComponent,
+    EditorComponent,
+    FollowComponent,
+    InlineToolbarComponent,
+    MasterFooterComponent,
+    MediaToolTipComponent,
     ResponsesComponent,
     ResponseEditorComponent,
     WriteComponent,
+      
+  ]
+}
+
+@NgModule({
+  declarations: [
+    blogDeclarations()
   ],
   imports: [
     SharedModule,
@@ -48,17 +55,7 @@ import { ResponseEditorComponent } from '../../components/blog/blogpost/master-f
     FileUploadModule
   ],
   exports: [
-    BlogPreviewComponent,
-    BlogPostComponent,
-    MediaToolTipComponent,
-    ActionScopeComponent,
-    MasterFooterComponent,
-    ClapAndTagsComponent,
-    FollowComponent,
-    CommentsComponent,
-    ResponsesComponent,
-    ResponseEditorComponent,
-    WriteComponent    
+    blogDeclarations()    
   ]
 })
 export class BlogModule { }

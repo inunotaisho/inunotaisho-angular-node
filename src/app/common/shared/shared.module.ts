@@ -40,14 +40,16 @@ import { ImageUploadService } from '../../services/imageUpload/image-upload.serv
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
-/*
+
 export function declarations(): any {
   return [
-      NavbarComponent,
+    NavbarComponent,
+    SocialBannerComponent,
+    LanguagePickerComponent,
+    ReturnButtonComponent,
 
   ]
 }
-*/
 
 /* translate support */
 export function createTranslateLoader(http: HttpClient) {
@@ -56,10 +58,7 @@ export function createTranslateLoader(http: HttpClient) {
 
 @NgModule({
   declarations: [
-    NavbarComponent,
-    SocialBannerComponent,
-    LanguagePickerComponent,
-    ReturnButtonComponent,
+    declarations()
   ],
   imports: [
     FormsModule,
@@ -88,10 +87,7 @@ export function createTranslateLoader(http: HttpClient) {
 
   ],
   exports: [
-    NavbarComponent,
-    SocialBannerComponent,
-    LanguagePickerComponent,
-    ReturnButtonComponent,
+    declarations(),
     CommonModule,
     FormsModule,
     HttpClientModule,

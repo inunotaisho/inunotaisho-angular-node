@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ActionScopeComponent } from './action-scope.component';
+import { ActionScopeComponent } from './inline-toolbar.component';
 
 describe('ActionScopeComponent', () => {
   let component: ActionScopeComponent;
