@@ -1,9 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../../services/authservice/authentication.service';
-import { MediaToolTipComponent } from './media-tool-tip/media-tool-tip.component';
-import { ListenerDefaults, Combo, Listener } from 'keypress.js';
-import { json } from 'body-parser';
 
 @Component({
     selector: 'sg-editor',
