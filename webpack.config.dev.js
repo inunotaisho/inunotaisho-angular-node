@@ -1,71 +1,76 @@
 const fs = require('fs');
 const path = require('path');
 const projectRoot = process.cwd();
+const sourcePath = path.join(__dirname, './src');
+const destPath = path.join(__dirname, './public');
 const ProgressPlugin = require('webpack/lib/ProgressPlugin');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const { HotModuleReplacementPlugin, ProvidePlugin, DefinePlugin, NoEmitOnErrorsPlugin, SourceMapDevToolPlugin, NamedModulesPlugin } = require('webpack');
 
 const AngularCompilerPlugin = require('@ngtools/webpack').AngularCompilerPlugin;
 
-const nodeModules = path.join(projectRoot, 'node_modules');
- 
- module.exports = {
+
+module.exports = {
     mode: 'development',
     devtool: "source-map",
     resolve: {
-    extensions: [
-      ".ts",
-      ".js"
-    ],
-    modules: [
-        "./node_modules"
-    ],
-    symlinks: true
+        extensions: [
+            ".ts",
+            ".js"
+        ],
+        modules: [
+            "./node_modules"
+        ],
+        symlinks: true
     },
     resolveLoader: {
         modules: [
-        "./node_modules"
+            "./node_modules"
         ]
     },
     entry: {
-        main: [
-            "./src/main.ts",
-            "./node_modules/jquery/dist/jquery.slim.min.js",
-            "./node_modules/froala-editor/js/froala_editor.pkgd.min.js",
-                ],
         polyfills: [
             "./src/polyfills.ts"
+        ],
+        main: [
+            "./src/main.ts",
+            "./node_modules/jquery/dist/jquery.slim.min.js"
         ]
     },
     target: 'web',
-      output: {
+    output: {
         path: `${__dirname}/public/dist/`,
         filename: "[name].bundle.js",
         chunkFilename: "[id].chunk.js"
-     },
-    module:{ 
+    },
+    module: {
         rules: [{
             enforce: "pre",
             test: /\.js$/,
             loader: "source-map-loader",
             exclude: [
                 /\/node_modules\//
-                ]
-            },{
+            ]
+        }, {
             test: /\.json$/,
             loader: "json-loader"
-            },{
+        }, {
             test: /\.html$/,
             use: [{
-                    loader: 'raw-loader'
-                }],
-            }, {
-            test: /\.ts$/,       
-            loader: '@ngtools/webpack'    
-            }]
+                loader: 'raw-loader'
+            }],
+        }, {
+            test: /\.ts$/,
+            loader: '@ngtools/webpack'
+        }]
     },
-    plugins:[
+    plugins: [
+        new HtmlWebpackPlugin({
+            filename: destPath + '/index.html',
+            template: sourcePath + '/index.html'
+        }),
         new ProvidePlugin({
             $: "jquery",
             jQuery: 'jquery'
@@ -77,13 +82,13 @@ const nodeModules = path.join(projectRoot, 'node_modules');
             failOnError: false,
             onDetected: false,
             cwd: projectRoot
-          }),
+        }),
         new DefinePlugin({
-             'process.env.NODE_ENV': JSON.stringify('development'),
-              __DEV__: true
-          }),
+            'process.env.NODE_ENV': JSON.stringify('development'),
+            __DEV__: true
+        }),
         new HotModuleReplacementPlugin(),
-       
+
         new SourceMapDevToolPlugin({
             filename: "[file].map[query]",
             moduleFilenameTemplate: "[resource-path]",
@@ -92,7 +97,7 @@ const nodeModules = path.join(projectRoot, 'node_modules');
         }),
         new NamedModulesPlugin({}),
         new AngularCompilerPlugin({
-            mainPath:"main.ts",
+            mainPath: "main.ts",
             hostReplacementPaths: {
                 "environments/environment.ts": "environments/environment.ts"
             },
