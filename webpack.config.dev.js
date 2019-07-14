@@ -1,15 +1,20 @@
-const fs = require('fs');
-const path = require('path');
-const projectRoot = process.cwd();
-const sourcePath = path.join(__dirname, './src');
-const destPath = path.join(__dirname, './public');
-const ProgressPlugin = require('webpack/lib/ProgressPlugin');
-const CircularDependencyPlugin = require('circular-dependency-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const fs = require('fs'),
+    path = require('path'),
+    projectRoot = process.cwd(),
+    sourcePath = path.join(__dirname, './src'),
+    destPath = path.join(__dirname, './public'),
+    ProgressPlugin = require('webpack/lib/ProgressPlugin'),
+    CircularDependencyPlugin = require('circular-dependency-plugin'),
+    rxPaths = require('rxjs/_esm5/path-mapping'),
+    HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const { HotModuleReplacementPlugin, ProvidePlugin, DefinePlugin, NoEmitOnErrorsPlugin, SourceMapDevToolPlugin, NamedModulesPlugin } = require('webpack');
 
 const AngularCompilerPlugin = require('@ngtools/webpack').AngularCompilerPlugin;
+
+const nodeModules = path.join(process.cwd(), 'node_modules'),
+    realNodeModules = fs.realpathSync(nodeModules),
+    genDirNodeModules = path.join(process.cwd(), 'src', '$$_gendir', 'node_modules');
 
 
 module.exports = {
@@ -23,7 +28,8 @@ module.exports = {
         modules: [
             "./node_modules"
         ],
-        symlinks: true
+        symlinks: true,
+        alias: rxPaths()
     },
     resolveLoader: {
         modules: [
@@ -109,12 +115,45 @@ module.exports = {
     optimization: {
         splitChunks: {
             cacheGroups: {
-                commons: {
+                vendors: {
                     test: /[\\/]node_modules[\\/]/,
                     name: "vendors",
-                    chunks: "all"
+                    chunks: "all",
+                    // maxSize: 10000
+                },
+                default: {
+                    name: "main",
+                    chunks: "all",
+                    "minChunks": 2
                 }
             }
         }
     }
+    // optimization: {
+    //     splitChunks: {
+    //         chunks: 'all',
+    //         minSize: 30000,
+    //         maxSize: 0,
+    //         minChunks: 2,
+    //         maxAsyncRequests: 5,
+    //         maxInitialRequests: 3,
+    //         cacheGroups: {
+    //             default: {
+    //                 name: 'main',
+    //                 minChunks: 2,
+    //                 priority: -20,
+    //                 reuseExistingChunk: true
+    //             },
+    //             vendors: {
+    //                 test: /[\\/]node_modules[\\/]/,
+    //                 name: 'vendor'
+    //             }
+    //         }
+    //     }
+    // },
+    // output: {
+    //     path: `${__dirname}/public/dist/`,
+    //     filename: "[name].bundle.js",
+    //     chunkFilename: "[id].chunk.js"
+    // },
 }
