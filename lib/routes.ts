@@ -1,34 +1,75 @@
 import * as express from 'express';
 import * as fs from 'fs';
-import * as path from 'path';
-import { CONTACT } from './routes/contact';
-import { BLOG } from './routes/blog';
-import  { USERS } from './routes/users';
+import { Contact } from './routes/contact';
+import { BlogGet } from './routes/blog/blogGet';
+import { BlogPost } from './routes/blog/blogPost';
+import { BlogPut } from './routes/blog/blogPut';
+import { BlogDelete } from './routes/blog/blogDelete';
+import { UserReg } from './routes/user/userReg';
+import { Login } from './routes/user/login';
+import { Logout } from './routes/user/logout';
+import { FileUpload } from './routes/blog/blogFile';
+
 
 
 interface IROUTER {
-    path: string;
-    middleware: any[];
     handler: express.Router;
+    middleware: any[];
+    path: string;
 }
 
 export const ROUTER: IROUTER[] = [{
-    handler: CONTACT,
+    handler: Contact,
     middleware: [],
     path:'/contact'
 },
 { 
-    handler: BLOG,
+    handler: BlogGet,
     middleware: [],
-    path:'/blog'
+    path:'/blogGet'
 
 },
 { 
-    handler: USERS,
-    middleware:[],
-    path:'/users'
+    handler: BlogPost,
+    middleware: [],
+    path:'/blogPost'
 
-}]
+},
+{ 
+    handler: BlogPut,
+    middleware: [],
+    path:'/blogPut'
+
+},
+{ 
+    handler: BlogDelete,
+    middleware: [],
+    path:'/blogDelete'
+
+},
+{
+    handler: FileUpload,
+    middleware: [],
+    path:'/logout'
+}
+{ 
+    handler: UserReg,
+    middleware:[],
+    path:'/register'
+
+},
+{
+    handler: Login,
+    middleware: [],
+    path:'/login'
+},
+{
+    handler: Logout,
+    middleware: [],
+    path:'/logout'
+}
+
+]
 
 export const ResumeRoute: express.Router = express.Router()
     .get("/pdf",(req, res) => {
@@ -44,8 +85,3 @@ export const CertRoute: express.Router = express.Router()
         res.setHeader('Content-Disposition', 'inline; filename=name.pdf');
         file.pipe(res);
     });
-    
-export const IndexRoute: express.Router = express.Router()
-    .get('*', (req, res) => {
-        res.sendFile(path.resolve(__dirname + './../src/index.html'));
-    })

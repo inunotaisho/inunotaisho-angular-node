@@ -1,19 +1,24 @@
-import * as mongoose from 'mongoose';
+import * as mongoose from "mongoose";
 import { Blog } from './blog';
 import { Contact } from './contact';
 import { User } from './user';
-const env       = process.env.NODE_ENV || 'development';
-const config    = require(__dirname + '/../config/config.json')[env];
+import { env } from 'process';
 
-export default class db {;
-    constructor(){
-    }
-    
-    if(config.use_env_variable){
-        var mongoose = mongoose.connect(config.use_env_variable);
+export class Database {
+    constructor() {
+        this.mongoSetup();
     }
 
-    db = {
+    models = {
         Blog, Contact, User
+    }
+
+    private mongoSetup(): void{
+        const environ = env.NODE_ENV || 'development';
+        const config = require(__dirname + '/../config/config.json')[env];
+        mongoose.Promise = global.Promise;
+        if (config.use_env_variable) {
+            mongoose.connect(config.use_env_variable);
+        }    
     }
 }
