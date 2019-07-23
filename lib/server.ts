@@ -15,14 +15,13 @@ import { UserReg } from '../lib/routes/user/userReg';
 
 
 
-export default class App {
+export class App {
 
   public app: express.Application = express();
-  // public regRoutePrv: UserReg = new UserReg(express.Router);
 
   constructor() {
     this.config();
-    // this.regRoutePrv.UserReg(this.app);
+    
   }
 
   private config() {
@@ -41,6 +40,10 @@ export default class App {
     this.app.use(express.static('public'));
 
     //requiring routes module
-    this.app.use(require('./routes'));
+    this.app.use(require('./routes/routes'));
+  }
+
+  public Start(): express.Application {
+    return this.app;
   }
 }

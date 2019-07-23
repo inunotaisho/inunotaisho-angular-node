@@ -1,14 +1,15 @@
 import * as express from 'express';
 import * as fs from 'fs';
-import { Contact } from './routes/contact';
-import { BlogGet } from './routes/blog/blogGet';
-import { BlogPost } from './routes/blog/blogPost';
-import { BlogPut } from './routes/blog/blogPut';
-import { BlogDelete } from './routes/blog/blogDelete';
-import { UserReg } from './routes/user/userReg';
-import { Login } from './routes/user/login';
-import { Logout } from './routes/user/logout';
-import { FileUpload } from './routes/blog/blogFile';
+import { promisify } from 'util';
+import { Contact } from './contact';
+import { BlogGet } from './blog/blogGet';
+import { BlogPost } from './blog/blogPost';
+import { BlogPut } from './blog/blogPut';
+import { BlogDelete } from './blog/blogDelete';
+import { UserReg } from './user/userReg';
+import { Login } from './user/login';
+import { Logout } from './user/logout';
+import { FileUpload } from './blog/blogFile';
 
 
 
