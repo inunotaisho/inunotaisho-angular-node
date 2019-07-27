@@ -26,6 +26,8 @@ import { ContactComponent } from './components/contact/contact.component';
 import { RegComponent } from './components/reg/reg.component';
 import { ErrorComponent } from './components/errors/error.component';
 import portImgContainerComponent from './components/portfolio/portfolio-images/portfolio.image.component';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './reducers';
 
 
 
@@ -62,7 +64,15 @@ export function declarations(): any {
 
         RouterModule.forRoot(routes),
 
-        SharedModule
+        SharedModule,
+
+        StoreModule.forRoot(reducers, {
+      metaReducers,
+      runtimeChecks: {
+        strictStateImmutability: true,
+        strictActionImmutability: true
+      }
+    })
         
     ],
     bootstrap: [AppComponent]
