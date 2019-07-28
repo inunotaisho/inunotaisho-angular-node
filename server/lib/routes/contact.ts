@@ -47,7 +47,8 @@ export class Contact {
                     res
                         .send(
                             '<div class="alert alert--success row">' +
-                            '<h4 class="col-xs-offset-5 col-xs-4 col-sm-offset-5 col-sm-4 col-md-offset-5 col-md-4" >Message sent!</h4></div>'
+                            '<h4 class="col-xs-offset-5 col-xs-4 col-sm-offset-5 col-sm-4 col-md-offset-5 col-md-4" >' + 
+                            'Message sent!</h4></div>'
                         )
                     mailer.close();
                 };

@@ -10,7 +10,7 @@ import * as morgan from 'morgan';
 import { createServer, Server } from "http";
 import * as https from 'https';
 
-import { UserReg } from '../lib/routes/user/userReg';
+import { UserReg } from './routes/user/userReg';
 
 
 

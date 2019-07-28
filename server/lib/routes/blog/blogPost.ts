@@ -1,4 +1,4 @@
-import { Authentication } from './../../middleware/loggedInUser';
+import { Authentication } from '../../middleware/loggedInUser';
 import { Router, Request, Response } from 'express';
 import { Blog } from '../../../models/blog'
 import { User } from '../../../models/user';
