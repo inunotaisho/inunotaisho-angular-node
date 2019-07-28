@@ -2,7 +2,7 @@
 
 var mongoose = require('mongoose');
 var env       = process.env.NODE_ENV || 'development';
-var config    = require(__dirname + '/../config/config.json')[env];
+var config    = require('../../../config/config.json')[env];
 const Blog = require('./blog');
 const Contact = require('./contact');
 const User = require('./user');

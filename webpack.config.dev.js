@@ -1,7 +1,7 @@
 const fs = require('fs'),
     path = require('path'),
     projectRoot = process.cwd(),
-    sourcePath = path.join(__dirname, './src'),
+    sourcePath = path.join(__dirname, './client/src'),
     destPath = path.join(__dirname, './public'),
     ProgressPlugin = require('webpack/lib/ProgressPlugin'),
     CircularDependencyPlugin = require('circular-dependency-plugin'),
@@ -38,10 +38,10 @@ module.exports = {
     },
     entry: {
         polyfills: [
-            "./src/polyfills.ts"
+            "./client/src/polyfills.ts"
         ],
         main: [
-            "./src/main.ts",
+            "./client/src/main.ts",
             "./node_modules/jquery/dist/jquery.slim.min.js"
         ]
     },
@@ -105,9 +105,9 @@ module.exports = {
         new AngularCompilerPlugin({
             mainPath: "main.ts",
             hostReplacementPaths: {
-                "environments/environment.ts": "environments/environment.ts"
+                "client/environments/environment.ts": "client/environments/environment.ts"
             },
-            tsConfigPath: './src/tsconfig.app.json',
+            tsConfigPath: './client/src/tsconfig.app.json',
             skipCodeGeneration: true,
             sourceMap: true
         })

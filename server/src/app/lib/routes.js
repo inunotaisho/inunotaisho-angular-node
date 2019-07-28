@@ -3,11 +3,11 @@
 
 let express = require('express'),
     router = express.Router(),
-    user = require('./routes/users'),
-    blog = require('./routes/blog'),
+    user = require('../routes/users'),
+    blog = require('../routes/blog'),
     fs = require('fs'),
     path = require('path'),
-    contact = require('./routes/contact');
+    contact = require('../routes/contact');
 
 
 router.use('/users', user);

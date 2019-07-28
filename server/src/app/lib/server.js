@@ -22,7 +22,7 @@ app.use(express.static("public"));
 app.use(helmet.frameguard());
 app.use(helmet.hsts());
 app.use(helmet.noSniff());
-app.use(favicon(path.join(__dirname, '/assets', 'inu.ico')));
+app.use(favicon(path.join(__dirname, '../../assets', 'inu.ico')));
 
 
 

@@ -1,107 +1,108 @@
-const fs = require('fs');
-const path = require('path');
-const projectRoot = process.cwd();
-const ProgressPlugin = require('webpack/lib/ProgressPlugin');
+const fs = require('fs'),
+    path = require('path'),
+    projectRoot = process.cwd(),
+    sourcePath = path.join(__dirname, './client/src'),
+    destPath = path.join(__dirname, './public'),
+    ProgressPlugin = require('webpack/lib/ProgressPlugin'),
+    rxPaths = require('rxjs/_esm5/path-mapping'),
+    HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const { ProvidePlugin, DefinePlugin, NoEmitOnErrorsPlugin, SourceMapDevToolPlugin, NamedModulesPlugin } = require('webpack');
 const { UglifyJsPlugin, CommonsChunkPlugin } = require('webpack').optimize;
-const { AotPlugin } = require('@ngtools/webpack');
 
-const nodeModules = path.join(projectRoot, 'node_modules');
-const realNodeModules = fs.realpathSync(nodeModules);
-const genDirNodeModules = path.join(projectRoot, 'src','$$_gendir','node_modules');
-const entryPoints = ["inline","polyfills","sw-register","vendor","main"];
- 
- module.exports = {
+const AngularCompilerPlugin = require('@ngtools/webpack').AngularCompilerPlugin;
+
+const nodeModules = path.join(process.cwd(), 'node_modules'),
+    realNodeModules = fs.realpathSync(nodeModules),
+    genDirNodeModules = path.join(process.cwd(), 'src', '$$_gendir', 'node_modules');
+
+module.exports = {
     resolve: {
-    extensions: [
-      ".ts",
-      ".js"
-    ],
-    modules: [
-        "./node_modules"
-    ],
-    symlinks: true
+        extensions: [
+            ".ts",
+            ".js"
+        ],
+        modules: [
+            "./node_modules"
+        ],
+        symlinks: true,
+        alias: rxPaths()
     },
     resolveLoader: {
         modules: [
-        "./node_modules"
+            "./node_modules"
         ]
     },
     entry: {
-        main: [
-            "./src/main.ts"
-                ],
         polyfills: [
-            "./src/polyfills.ts"
+            "./client/src/polyfills.ts"
+        ],
+        main: [
+            "./client/src/main.ts",
+            "./node_modules/jquery/dist/jquery.slim.min.js"
         ]
     },
     target: 'web',
-      output: {
+    output: {
         path: `${__dirname}/public/dist/`,
         filename: "[name].bundle.js",
         chunkFilename: "[id].chunk.js"
-     },
-    module:{ 
+    },
+    module: {
         rules: [{
             test: /\.json$/,
             loader: "json-loader"
-            },{
+        }, {
             test: /\.html$/,
             use: [{
-                    loader: 'raw-loader'
-                }],
-            }, {
-            test: /\.ts$/,       
-            loader: '@ngtools/webpack'    
-            }]
+                loader: 'raw-loader'
+            }],
+        }, {
+            test: /\.ts$/,
+            loader: '@ngtools/webpack'
+        }]
     },
-    plugins:[
-        new NoEmitOnErrorsPlugin(),
+    plugins: [
+        new HtmlWebpackPlugin({
+            filename: destPath + '/index.html',
+            template: sourcePath + '/index.html'
+        }),
         new ProvidePlugin({
             $: "jquery",
             jQuery: 'jquery'
         }),
-        new UglifyJsPlugin({
-            minimize: true
-            }),
+        new NoEmitOnErrorsPlugin(),
         new ProgressPlugin(),
         new DefinePlugin({
-             'process.env.NODE_ENV': JSON.stringify('production'),
-              __DEV__: false
-          }),
-        new CommonsChunkPlugin({
-            minChunks: 2,
-            async: "common"
-            }),
-        new CommonsChunkPlugin({
-        name: [
-            "inline"
-            ],
-            "minChunks": null
-        }),
-        new CommonsChunkPlugin({
-            name: [
-                "vendor"
-            ],
-            minChunks: (module) => {
-                        return module.resource
-                            && (module.resource.startsWith(nodeModules)
-                                || module.resource.startsWith(genDirNodeModules)
-                                || module.resource.startsWith(realNodeModules));
-                    },
-            chunks: [
-                "main"
-            ]
+            'process.env.NODE_ENV': JSON.stringify('production'),
+            __DEV__: false
         }),
         new NamedModulesPlugin({}),
-        new AotPlugin({
-            mainPath:"main.ts",
+        new AngularCompilerPlugin({
+            mainPath: "main.ts",
             hostReplacementPaths: {
-                "environments/environment.ts": "environments/environment.ts"
+                "client/environments/environment.ts": "client/environments/environment.ts"
             },
-            tsConfigPath: './src/tsconfig.src.json',
-            skipCodeGeneration: true
+            tsConfigPath: 'client/src/tsconfig.app.json',
+            skipCodeGeneration: true,
+            sourceMap: true
         })
-    ]
+    ],
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                vendors: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: "vendors",
+                    chunks: "all",
+                    // maxSize: 10000
+                },
+                default: {
+                    name: "main",
+                    chunks: "all",
+                    "minChunks": 2
+                }
+            }
+        }
+    }
 }
