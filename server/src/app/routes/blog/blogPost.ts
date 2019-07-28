@@ -1,12 +1,13 @@
 import { Authentication } from '../../middleware/loggedInUser';
 import { Router, Request, Response } from 'express';
-import { Blog } from '../../../models/blog'
-import { User } from '../../../models/user';
+import { Database } from 'server/src/models';
+
 
 export class BlogPost {
     constructor(
         private router: Router,
-        private auth: Authentication
+        private auth: Authentication,
+        private db: Database
     ) {
         this.postCreateArticle();
         
@@ -16,16 +17,16 @@ export class BlogPost {
      * postCreateArticle
      */
     public postCreateArticle() {
-        this.router.post('/', this.auth(), (req, res, next) => {
+        this.router.post('/', this.auth.loginRequired(), (req, res, next) => {
     
-            Blog.create(req.body).then(post => {
+            this. db.Blog.create(req.body).then(post => {
                 res.send(post);
             }).catch(err => {
                 if(err){
                     throw err
                 }
             }).catch(err => {
-                res.send(500);
+                res.status(500).send(err);
             });
         });
     }

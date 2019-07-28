@@ -1,10 +1,10 @@
 import { Router, Request, Response } from 'express';
-import { Blog } from '../../../models/blog'
-import { User } from '../../../models/user';
+import { Database } from 'server/src/models';
 
 export class BlogPut {
     constructor(
-        private router: Router
+        private router: Router,
+        private db: Database
     ) {
         this.updatePut();
 
@@ -12,9 +12,9 @@ export class BlogPut {
 
     public updatePut() {
         this.router.put('/:id', (req, res, next) => {
-            Blog.findById(req.params.id).then(post => {
+            this.db.Blog.findById(req.params.id).then(post => {
                 if (post) {
-                    Blog.update({ _id: req.params.id }, req.body, (err, response) => {
+                    this.db.Blog.update({ _id: req.params.id }, req.body, (err, response) => {
                         if (err) {
                             return res.send('Error updating Blog');
                         } else {
@@ -25,11 +25,17 @@ export class BlogPut {
                     res.send(404);
                 }
             }).then(post => {
-                res.redirect("", + post.id);
-            }).catch(err => {
+                res.send(post);
+            }).then((err: any) => {
                 if (err.name === "SequelizeValidationError") {
-                    let post = Blog.build(req.body);
+                    // req.body.id = req.params.id;
+                    // const post = this.db.Blog.create(req.body);
+                    // res.send(post);
+
+                    const post = new this.db.Blog(req.body);
                     post.id = req.params.id;
+                    post.save();
+                    res.send(post);
                 } else {
                     throw err
                 }

@@ -5,10 +5,10 @@ export class Authentication {
 
 
     constructor() {
-        this.auth();
+        this.loginRequired();
     }
 
-    public auth() {
+    public loginRequired() {
 
         return jwt({
             secret: process.env.SECRET,

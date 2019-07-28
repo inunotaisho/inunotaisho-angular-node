@@ -1,12 +1,12 @@
 import { Authentication } from '../../middleware/loggedInUser';
 import { Router, Request, Response } from 'express';
-import { Blog } from '../../../models/blog'
-import { User } from '../../../models/user';
+import { Database } from 'server/src/models';
 
 export class BlogGet {
     constructor(
         private router: Router,
-        private auth: Authentication
+        private auth: Authentication,
+        private db: Database
     ) {
         this.getBlogListings();
         this.creatArticleForm();
@@ -16,7 +16,7 @@ export class BlogGet {
 
     private getBlogListings(): void {
         this.router.get('/', (req, res, next) => {
-            Blog.find().then(posts => {
+            this.db.Blog.find().then(posts => {
 
             }).catch(err => {
                 res.send(500);
@@ -36,7 +36,7 @@ export class BlogGet {
      */
     public editArticleForm(): void {
         this.router.get("/:id/edit", (req, res, next) => {
-            Blog.findById(req.params.id).then(post => {
+            this.db.Blog.findById(req.params.id).then(post => {
                 if (post) {
 
                 } else {
@@ -54,7 +54,7 @@ export class BlogGet {
      */
     public getSingleArticle(): void {
         this.router.get("/:id", (req, res, next) => {
-            Blog.findById(req.params.id).then(post => {
+            this.db.Blog.findById(req.params.id).then(post => {
                 if (post) {
 
                 } else {

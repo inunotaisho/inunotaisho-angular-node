@@ -40,11 +40,11 @@ export class Contact {
 
             mailer.sendMail(mailOptions, (error, info) => {
                 if (error) {
-                    console.log('maybe err', error.mailOptions, '================', error);
+                    // console.log('maybe err', error.mailOptions, '================', error);
                     return;
                 } else {
-                    console.log('Message %s sent: %s', info.messageId, info.response);
-                    console.log('reeeee', req.statusCode, 'vmnxvncvmnv', res.statusCode);
+                    // console.log('Message %s sent: %s', info.messageId, info.response);
+                    // console.log('reeeee', req.statusCode, 'vmnxvncvmnv', res.statusCode);
                     res
                         .send(
                             '<div class="alert alert--success row">' +

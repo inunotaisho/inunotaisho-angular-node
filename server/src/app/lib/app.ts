@@ -26,12 +26,11 @@ if (cluster.isMaster) {
 
   const port: number = Number(env.PORT) || 5000;
 
-  new app().Start();
-  this.app.then((app) => {
+  new app().Start().then((server) => {
 
-    app.set(port);
+    server.set('port', port);
 
-    app.on("error", (error: any) => {
+    server.on("error", (error: any) => {
       if (error.syscall !== "listen") {
         throw error;
       }
@@ -54,12 +53,10 @@ if (cluster.isMaster) {
       }
     });
 
-    app.listen(app.get('port'), function () {
+    server.listen(server.get('port'), function () {
       console.log('server running', cluster.worker.id);
     });
 
   }).catch();
 
 }
-
-export { app };

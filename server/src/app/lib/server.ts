@@ -10,18 +10,25 @@ import * as morgan from 'morgan';
 import { createServer, Server } from "http";
 import * as https from 'https';
 
-import { UserReg } from '../routes/user/userReg';
-
 
 
 
 export class app {
 
-  public app: express.Application = express();
+  public app: express.Application;
+
+  public Start(): Promise<express.Application> {
+
+    return new Promise((resolve, reject) => {
+      resolve(this.app);
+    });
+
+  }
 
   constructor() {
+    this.app = express();
     this.config();
-    
+
   }
 
   private config() {
@@ -41,9 +48,5 @@ export class app {
 
     //requiring routes module
     this.app.use(require('./routes/routes'));
-  }
-
-  public Start(): express.Application {
-    return this.app;
   }
 }
