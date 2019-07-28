@@ -1,6 +1,7 @@
 import { Router, Request, Response } from 'express';
 import { createTransport } from 'nodemailer';
 import * as mg from 'nodemailer-mailgun-transport';
+import { ROUTER } from './routes';
 import { Blog } from "../../models/blog";
 import { User } from "../../models/user";
 
@@ -47,7 +48,7 @@ export class Contact {
                     res
                         .send(
                             '<div class="alert alert--success row">' +
-                            '<h4 class="col-xs-offset-5 col-xs-4 col-sm-offset-5 col-sm-4 col-md-offset-5 col-md-4" >' + 
+                            '<h4 class="col-xs-offset-5 col-xs-4 col-sm-offset-5 col-sm-4 col-md-offset-5 col-md-4" >' +
                             'Message sent!</h4></div>'
                         )
                     mailer.close();

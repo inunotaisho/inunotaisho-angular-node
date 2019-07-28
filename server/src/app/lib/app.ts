@@ -1,19 +1,20 @@
 import * as cluster from 'cluster';
 import { cpus } from 'os';
 import { env } from 'process';
-import { App } from './server';
-import { Database } from '../models';
+import { app } from './server';
+import { Database } from '../../models';
 
 
 if (cluster.isMaster) {
 
   console.log(`\n -------------------> RUN ${env.NODE_ENV} ENVIRONMENT \n`);
 
-  const numCPUs = cpus().length;
+  let cpuCount = require('os').cpus().length;
 
-  for (const cpu of cpus()) {
-    cluster.fork();
-  }
+    // Create a worker for each CPU
+    for (let i = 0; i < cpuCount; i += 1) {
+        cluster.fork();
+    }
 
   cluster.on("exit", (worker, code, signal) => {
     console.log("Worker " + worker.process.pid + " died with code: " + code + ", and signal: " + signal);
@@ -23,13 +24,14 @@ if (cluster.isMaster) {
 
 } else {
 
-  const port: number = Number(env.PORT) || 3000;
+  const port: number = Number(env.PORT) || 5000;
 
-  new App().Start().then((server) => {
+  new app().Start();
+  this.app.then((app) => {
 
-    server.listen(port);
+    app.set(port);
 
-    server.on("error", (error: any) => {
+    app.on("error", (error: any) => {
       if (error.syscall !== "listen") {
         throw error;
       }
@@ -52,7 +54,7 @@ if (cluster.isMaster) {
       }
     });
 
-    server.listen(server.get('port'), function () {
+    app.listen(app.get('port'), function () {
       console.log('server running', cluster.worker.id);
     });
 
@@ -60,4 +62,4 @@ if (cluster.isMaster) {
 
 }
 
-export { App };
+export { app };

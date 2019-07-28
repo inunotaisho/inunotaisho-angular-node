@@ -10,12 +10,12 @@ import * as morgan from 'morgan';
 import { createServer, Server } from "http";
 import * as https from 'https';
 
-import { UserReg } from './routes/user/userReg';
+import { UserReg } from '../routes/user/userReg';
 
 
 
 
-export class App {
+export class app {
 
   public app: express.Application = express();
 
