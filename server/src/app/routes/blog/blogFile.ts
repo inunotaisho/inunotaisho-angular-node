@@ -2,26 +2,18 @@ import { Router, Request, Response } from 'express';
 
 console.log(process.env.cloud_name);
 
+const router: Router = Router();
 
-export class FileUpload {
+router.post('/file', (req: Request, res: Response) => {
+    console.log('isnide ddsdsd')
+    const fileUrl = req.body.fileUrl;
 
-    constructor(private router: Router) {
+    // function(result) {
+    //     console.log(result)
+    // };
 
-    }
+});
 
-    /**
-     * fileUploader
-     */
-    public fileUploader() {
-        this.router.post('/file', (req, res) => {
-            console.log('isnide ddsdsd')
-            const fileUrl = req.body.fileUrl;
+export { router as FileUpload }
 
-            // function(result) {
-            //     console.log(result)
-            // };
-
-        });
-    }
-}
 

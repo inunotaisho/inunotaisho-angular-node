@@ -1,34 +1,20 @@
 import { Authentication } from '../../middleware/loggedInUser';
-import { Router, Request, Response } from 'express';
+import { Router, Request, Response, NextFunction } from 'express';
 import { Database } from 'server/src/models';
 
+const router: Router = Router();
 
-export class BlogPost {
-    constructor(
-        private router: Router,
-        private auth: Authentication,
-        private db: Database
-    ) {
-        this.postCreateArticle();
-        
-    }
+router.post('/', this.auth.loginRequired(), (req: Request, res: Response, next: NextFunction) => {
 
-    /**
-     * postCreateArticle
-     */
-    public postCreateArticle() {
-        this.router.post('/', this.auth.loginRequired(), (req, res, next) => {
-    
-            this. db.Blog.create(req.body).then(post => {
-                res.send(post);
-            }).catch(err => {
-                if(err){
-                    throw err
-                }
-            }).catch(err => {
-                res.status(500).send(err);
-            });
-        });
-    }
+    this.db.Blog.create(req.body).then(post => {
+        res.send(post);
+    }).catch(err => {
+        if (err) {
+            throw err
+        }
+    }).catch(err => {
+        res.status(500).send(err);
+    });
+});
 
-}
+export { router as BlogPost }

@@ -1,4 +1,5 @@
-import * as jwt from 'express-jwt'
+import * as jwt from 'express-jwt';
+import { Request } from 'express';
 import { User } from '../../models/user';
 
 export class Authentication {
@@ -13,7 +14,7 @@ export class Authentication {
         return jwt({
             secret: process.env.SECRET,
             credentialsRequired: true,
-            getToken: function fromHeaderOrQuerystring(req) {
+            getToken: function fromHeaderOrQuerystring(req: Request) {
                 if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
                     return req.headers.authorization.split(' ')[1];
                 } else if (req.query && req.query.token) {

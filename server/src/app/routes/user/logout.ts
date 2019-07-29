@@ -1,17 +1,13 @@
 import { Router, Request, Response } from 'express';
 import { User } from '../../../models/user';
 
-export class Logout {
+const router: Router = Router();
 
-    constructor(private router: Router) {
-        this.logoutRoute();
-    }
+router.get('/logout', function (req: Request, res: Response) {
+  req.session.destroy(function () {
+    res.status(200).json({ message: 'logout successful' });
+  });
+});
 
-    private logoutRoute() {
-        this.router.get('/logout', function (req, res) {
-            req.session.destroy(function () {
-              res.status(200).json({ message: 'logout successful' });
-            });
-          });
-    }
-}
+
+export { router as Logout };

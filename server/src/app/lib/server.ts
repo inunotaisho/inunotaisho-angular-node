@@ -9,40 +9,27 @@ import * as methodOverride from 'method-override';
 import * as morgan from 'morgan';
 import * as https from 'https';
 import { ROUTER } from '../routes/routes';
-// import { Connection } from './Database';
 
 
 
 
 export class Application {
 
-  private static async ConnectDB(): Promise<any> {
-    const connection = await Connection;
+  public app: express.Application;
 
-    try {
-      await connection.synchronize();
-    } catch (e) {
-      console.log(e);
-      console.log("Couldn't synchronize database");
-    }
+  public Start(): Promise<express.Application> {
 
-    return connection;
+    return new Promise((resolve, reject) => {
+      resolve(this.app);
+    });
+
   }
-
-  private readonly app: express.Application;
-  private readonly server: https.Server;
 
   constructor() {
     this.app = express();
     this.config();
-    this.ConfigRouter();
+    this.configRouter();
 
-  }
-
-  public async Start(): Promise<express.Application> {
-    return new Promise((resolve, reject) => {
-      resolve(this.app);
-    })
   }
 
   private config() {
@@ -85,7 +72,7 @@ export class Application {
     );
   }
 
-  private ConfigRouter(): void {
+  private configRouter(): void {
     for (const route of ROUTER) {
       this.app.use(route.path, route.middleware, route.handler);
     }

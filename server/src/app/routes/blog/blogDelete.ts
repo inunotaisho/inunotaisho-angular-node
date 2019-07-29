@@ -1,32 +1,20 @@
 import { Authentication } from './../../middleware/loggedInUser';
-import { Router, Request, Response } from 'express';
-import { Database } from '../../../models'
+import { Router, Request, Response, NextFunction } from 'express';
+import * as db from '../../../models';
 
-export class BlogDelete {
-    constructor(
-        private router: Router,
-        private auth: Authentication,
-        private db: Database
-    ) {
-        this.deleteSingleArticle();
+const router: Router = Router();
 
-    }
+this.router.delete('/:id', (req: Request, res: Response, next: NextFunction) => {
+    this.db.Blog.remove({ _id: req.params.id }, (err) => {
+        console.log('deleeeeeee', err)
+        if (err) {
+            // res.send('Error deleting file');
+        } else {
+            // res.send('Successfully deleted the Shit');
+        }
+    });
 
-    /**
-     * deleteSingleArticle
-     */
-    public deleteSingleArticle() {
-        this.router.delete('/:id', (req, res, next) =>{
-            this.db.Blog.remove({_id: req.params.id}, (err) => {
-                console.log('deleeeeeee', err)
-                if (err) {
-                    // res.send('Error deleting file');
-                } else {
-                    // res.send('Successfully deleted the Shit');
-                }
-            });
-        
-        });
-    }
-}
+});
+
+export { router as BlogDelete }
 
