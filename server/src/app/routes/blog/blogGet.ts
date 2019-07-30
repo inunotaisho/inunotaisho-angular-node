@@ -1,6 +1,6 @@
-import { Authentication } from '../../middleware/loggedInUser';
+import { auth } from '../../middleware/loggedInUser';
 import { Router, Request, Response, NextFunction } from 'express';
-import { Database } from 'server/src/models';
+import * as db from '../../../models';
 
 const router: Router = Router();
 

@@ -1,5 +1,5 @@
 import { Router, Request, Response, NextFunction } from 'express';
-import { Database } from 'server/src/models';
+import * as db from '../../../models';
 
 const router: Router = Router();
 
