@@ -1,7 +1,7 @@
 import * as express from 'express';
 import * as fs from 'fs';
 import { promisify } from 'util';
-import { Authentication } from './../middleware/loggedInUser';
+import { auth } from './../middleware/loggedInUser';
 import { Contact } from './contact';
 import {
     BlogGet,
@@ -60,7 +60,7 @@ export const ROUTER: IROUTER[] = [
     },
     {
         handler: Login,
-        middleware: [],
+        middleware: [auth],
         path: '/login',
     },
     {

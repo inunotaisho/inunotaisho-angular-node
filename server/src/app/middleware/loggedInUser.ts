@@ -1,15 +1,10 @@
 import * as jwt from 'express-jwt';
 import { Request } from 'express';
-import { User } from '../../models/user';
 
-export class Authentication {
+class Authentication {
 
 
-    constructor() {
-        this.loginRequired();
-    }
-
-    public loginRequired() {
+    static loginRequired() {
 
         return jwt({
             secret: process.env.SECRET,
@@ -25,3 +20,5 @@ export class Authentication {
         });
     }
 }
+
+export { Authentication as auth }
