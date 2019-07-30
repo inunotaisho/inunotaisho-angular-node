@@ -1,3 +1,4 @@
+require('dotenv').config({ silent: true});
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import * as cors from 'cors';
@@ -38,7 +39,7 @@ export class Application {
     this.app.use(helmet.frameguard());
     this.app.use(helmet.hsts());
     this.app.use(helmet.noSniff());
-    this.app.use(favicon(path.join(__dirname, '/assets', 'inu.ico')));
+    this.app.use(favicon(path.join(__dirname, '../../assets', 'inu.ico')));
 
     // to extract form data from POST bodies
     this.app.use(bodyParser.json({ limit: '50mb' }));                         // for parsing application/json
@@ -57,12 +58,12 @@ export class Application {
     );
 
     this.app.use(morgan('combined'));
-    this.app.use(
-      cors({
-        credentials: true,
-        origin: process.env.FRONT_URL || 'http://localhost:3000',
-      })
-    );
+    // this.app.use(
+    //   cors({
+    //     credentials: true,
+    //     origin: process.env.FRONT_URL || 'http://localhost:3000',
+    //   })
+    // );
 
     this.app.use(
       (err: any, req: express.Request, res: express.Response, next: express.NextFunction): void => {
