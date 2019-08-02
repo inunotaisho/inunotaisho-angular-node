@@ -7,10 +7,11 @@ const fs = require('fs'),
     rxPaths = require('rxjs/_esm5/path-mapping'),
     HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const { ProvidePlugin, DefinePlugin, NoEmitOnErrorsPlugin, SourceMapDevToolPlugin, NamedModulesPlugin } = require('webpack');
-const { UglifyJsPlugin, CommonsChunkPlugin } = require('webpack').optimize;
+const { ProvidePlugin, DefinePlugin, NoEmitOnErrorsPlugin, NamedModulesPlugin } = require('webpack');
 
 const AngularCompilerPlugin = require('@ngtools/webpack').AngularCompilerPlugin;
+
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const nodeModules = path.join(process.cwd(), 'node_modules'),
     realNodeModules = fs.realpathSync(nodeModules),
@@ -89,13 +90,18 @@ module.exports = {
         })
     ],
     optimization: {
+        minimizer: [
+            new UglifyJsPlugin({
+                test:/\.js(\?.*)?$/i,
+            })
+        ],
         splitChunks: {
             cacheGroups: {
                 vendors: {
                     test: /[\\/]node_modules[\\/]/,
                     name: "vendors",
                     chunks: "all",
-                    // maxSize: 10000
+                    maxSize: 10000
                 },
                 default: {
                     name: "main",
