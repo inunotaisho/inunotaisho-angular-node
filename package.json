@@ -138,6 +138,8 @@
     "assets": "mkdir ./public/assets && concurrently -r \"npm run fonts\" \"npm run images\" \"npm run i18n\"",
     "assets:server": "mkdir ./dist/assets && cp -R ./server/src/assets ./dist",
     "build:server": "npm run clean:server && npm run refresh:server",
+    "build:client":"concurrently -r \"npm run clean\" \"npm run bundle\"",
+    "build":"npm run build:server && npm run build:client",
     "bundle": "npm run less && npm run pack",
     "clean": "rimraf public/* && npm run assets",
     "clean:server": "rimraf dist",
@@ -148,15 +150,13 @@
     "less": "mkdirp public/dist && lessc ./client/src/app/styles/main.less > ./public/dist/app.css --clean-css=\"--s0 --advanced\"",
     "refresh": "node ./lib/app.js",
     "refresh:server": "npm run compile:server && npm run assets:server",
-    "start": "concurrently -r \"npm run clean\" \"npm run bundle\" && nodemon ./dist/app/lib/app.js",
+    "start": " npm run build && node ./dist/app/lib/app.js",
     "pack": "webpack --config webpack.config.dev.js",
     "test": "karma start ./karma.conf.js",
     "ts": "tsc -p .",
     "tslint": "npm run tslint:client && npm run tslint:server",
     "tslint:client": "\"client/src/**/*.ts\"",
-    "tslint:server": "\"server/src/**/*.ts\"",
-    "watch": "npm run watch:less",
-    "watch:less": "nodemon -q -w src -e less --exec npm run less"
+    "tslint:server": "\"server/src/**/*.ts\""
   },
   "repository": {
     "type": "git",
