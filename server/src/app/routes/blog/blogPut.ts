@@ -3,20 +3,24 @@ import * as db from '../../../models';
 
 const router: Router = Router();
 
+/**
+ * PUT update article.
+ */
+
 router.put('/:id', (req: Request, res: Response, next: NextFunction) => {
     this.db.Blog.findById(req.params.id).then(post => {
         if (post) {
-            this.db.Blog.update({ _id: req.params.id }, req.body, (err, response) => {
+            this.db.Blog.update({ _id: req.params.id }, req.body, (err: any, res: Response) => {
                 if (err) {
-                    return res.send('Error updating Blog');
+                    return res.status(500).send('Error updating Blog').send(err);
                 } else {
-                    return res.send('Blog updated successfully!!!');
+                    return res.status(200).send('Blog updated successfully!!!');
                 }
             });
         } else {
-            res.send(404);
+            res.send(404).send("Not Found");
         }
-    }).then(post => {
+    }).then((post) => {
         res.send(post);
     }).then((err: any) => {
         if (err.name === "SequelizeValidationError") {

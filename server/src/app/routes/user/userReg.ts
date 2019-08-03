@@ -8,14 +8,14 @@ router.post('/register', (req: Request, res: Response) => {
         res.status(400).json({ message: 'Passwords must match' });
     } else {
         User.findOne({ username: req.body.username })
-            .then(function (existingUser) {
+            .then((existingUser) => {
                 if (existingUser) {
                     res.status(400).json({ message: 'User already exists' });
                 } else {
                     const user = new User(req.body)
                     console.log(user);
                     this.user.setPassword(req.body.password)
-                    this.user.save().then(function (newUser) {
+                    this.user.save().then((newUser) => {
                         res.status(200).json({ message: 'registration succesful' });
                     });
                 }

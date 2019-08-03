@@ -3,10 +3,10 @@ import { User } from '../../../models/user';
 
 const router: Router = Router();
 
-        router.post('/login', function (req: Request, res: Response) {
+        router.post('/login', (req: Request, res: Response) => {
             console.log('Register');
             User.findOne({ username: req.body.username })
-                .then(function (user) {
+                .then((user) => {
                     if (!user) {
                         return res.status(401).json({ error: 'User does not exist' });
                     }

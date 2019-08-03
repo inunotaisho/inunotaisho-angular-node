@@ -5,6 +5,9 @@ import * as db from '../../../models';
 const router: Router = Router();
 
 
+/**
+ * GET articles listing.
+ */
 
 router.get('/listings', (req: Request, res: Response, next: NextFunction) => {
     this.db.Blog.find().then(posts => {
@@ -14,7 +17,9 @@ router.get('/listings', (req: Request, res: Response, next: NextFunction) => {
     });
 });
 
-
+/**
+ * Create a new article form.
+ */
 router.get('/new', (req: Request, res: Response, next: NextFunction) => {
     res.send('it works');
 })
