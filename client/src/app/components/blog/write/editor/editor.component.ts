@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from '../../../../services/authservice/authentication.service';
 
 @Component({
@@ -7,35 +7,21 @@ import { AuthService } from '../../../../services/authservice/authentication.ser
     templateUrl: './editor.component.html'
 })
 
-export class EditorComponent implements OnInit {
+export class EditorComponent implements OnInit, OnDestroy {
 
 
-    title:string;
-    author: string;
-    content: string;
-    published: Date;
-
-
-    constructor(
-        private auth: AuthService,
-        private http: HttpClient
-    ) {
+    constructor() {
     }
 
     blogs = []
 
-    ngOnInit(){
+
+    ngOnInit():void {
+        
+    }
+
+    ngOnDestroy(){
 
     }
 
-    addEntry() {
-        const entryData = {
-            title: this.title,
-            author: this.auth.getUsername(),
-            // authorId: this.auth
-            content: this.content,
-            published: new Date()
-        }
-
-    }
 }
