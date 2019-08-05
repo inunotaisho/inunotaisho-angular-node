@@ -26,47 +26,47 @@ export const ROUTER: IROUTER[] = [
     {
         handler: Contact,
         middleware: [],
-        path: '/contact',
+        path: 'contact',
     },
     {
         handler: BlogGet,
         middleware: [],
-        path: '/blogGet',
+        path: 'blogGet',
     },
     {
         handler: BlogPost,
         middleware: [],
-        path: '/blogPost',
+        path: 'blogPost',
     },
     {
         handler: BlogPut,
         middleware: [],
-        path: '/blogPut',
+        path: 'blogPut',
     },
     {
         handler: BlogDelete,
         middleware: [],
-        path: '/blogDelete',
+        path: 'blogDelete',
     },
     {
         handler: FileUpload,
         middleware: [],
-        path: '/fileUpload',
+        path: 'fileUpload',
     },
     {
         handler: UserReg,
         middleware: [],
-        path: '/register',
+        path: 'users',
     },
     {
         handler: Login,
         middleware: [auth],
-        path: '/login',
+        path: 'login',
     },
     {
         handler: Logout,
         middleware: [],
-        path: '/logout',
+        path: 'logout',
     },
 ];
 
