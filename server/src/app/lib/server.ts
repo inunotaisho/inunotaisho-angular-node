@@ -75,7 +75,7 @@ export class Application {
 
   private configRouter(): void {
     for (const route of ROUTER) {
-      this.app.use(route.path, route.middleware, route.handler);
+      this.app.use(`/api/${route.path}`, route.middleware, route.handler);
     }
 
     this.app.use(
