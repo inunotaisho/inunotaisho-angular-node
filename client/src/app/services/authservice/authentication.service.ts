@@ -80,7 +80,7 @@ export class AuthService {
         }
         this.attemptingToLogIn = true;
 
-        return this.http.post('/users/login', user, { headers: contentHeaders })
+        return this.http.post('api/users/login', user, { headers: contentHeaders })
             .subscribe(
                 response => {
                     this.reset();
