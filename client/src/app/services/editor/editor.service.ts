@@ -23,13 +23,15 @@ export class EditorService implements OnInit, OnDestroy {
   }
 
 
-  saveArticle() {
-    this.http.get(`blogGet/${Route}`, this.articleTaskRunner(this.article)).subscribe(res => {
-      console.log(res)
-    }, err => {
-      console.log(err);
-    })
-  }
+  // saveArticle() {
+  //   this.http.get(`blogGet`).subscribe(res => {
+  //     console.log(res)
+  //   }, err => {
+  //     console.log(err);
+  //   })
+  // }
+
+  // this.articleTaskRunner(this.article)
 
   articleTaskRunner(articleData: object) {
     let articleSchema = {
@@ -40,19 +42,19 @@ export class EditorService implements OnInit, OnDestroy {
       published: new Date()
     }
 
-    if () {
-      this.newArticleData = articleSchema;
-    } else {
-      this.editArticleData = articleSchema;
-    }
+    // if () {
+    //   this.newArticleData = articleSchema;
+    // } else {
+    //   this.editArticleData = articleSchema;
+    // }
 
-    if () {
-      articleData = this.newArticleData;
-    } else {
-      articleData = this.editArticleData;
-    }
+    // if () {
+    //   articleData = this.newArticleData;
+    // } else {
+    //   articleData = this.editArticleData;
+    // }
 
-    return articleData;
+    // return articleData;
   }
 
   ngOnInit(){
