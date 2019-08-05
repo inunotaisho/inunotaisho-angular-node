@@ -177,6 +177,6 @@ export class AppSettings {
    */
 
   public static get cloudinaryConfiguration(): any {
-    return {}
+    return {};
   }
 }
