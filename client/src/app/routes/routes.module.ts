@@ -28,6 +28,6 @@ export const routes: Routes = [
     {path:'write', component: WriteComponent, canActivate: [AuthGuard]},
     {path:'contact', component: ContactComponent},
     {path:'reg', component: RegComponent},
-    {path:'blogPost', component: BlogPostComponent},
+    {path:'blog-post', component: BlogPostComponent},
     { path: '**',  component: ErrorComponent }
    ]
