@@ -14,7 +14,7 @@ export class ContactComponent implements OnDestroy{
 
     onSubmit(contactForm: NgForm){
         console.log(contactForm);
-       this.subscribe = this.http.post('/contact', contactForm.value)
+       this.subscribe = this.http.post('api/contact', contactForm.value)
         .subscribe(res => {
             contactForm.reset();
         },

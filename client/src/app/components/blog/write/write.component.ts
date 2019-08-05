@@ -21,19 +21,6 @@ export class WriteComponent implements OnDestroy {
 
     constructor(private http: HttpClient) { }
 
-    blogPost(e: any) {
-        console.log(this.post);
-        let blogPostSub = this.http.post('/blog', {
-            subject: this.subject,
-            post: this.post
-        }).subscribe(res => {
-            console.log(res)
-        }, err => {
-            console.log(err);
-            console.log('article did not post');
-        })
-    }
-
     ngOnDestroy() {
         if (this.blogPostSub != undefined) {
             this.blogPostSub.unsubscribe();

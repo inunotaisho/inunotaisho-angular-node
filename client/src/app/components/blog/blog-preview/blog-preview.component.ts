@@ -12,7 +12,7 @@ export class BlogPreviewComponent implements OnInit{
      }
 
      getBlogItems(){
-        this.http.get('/blog').subscribe(res => {
+        this.http.get('api/blogGet/listings').subscribe(res => {
             console.log(res)
         }, err => {
             console.log(err);
