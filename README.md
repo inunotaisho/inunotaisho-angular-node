@@ -1,12 +1,12 @@
 # InuNoTaisho: Angular
 
-**Important note: The branch of this repo that is `master` is most likely the active version of Angular. Branchs that are `angular#` are probaly not running.**
+**Important note: This repo is no longer public. App is being changed to have both a front end and the backend repository. Please email me if you are a recruiter or employer wishing to see my work. I will be willing to grant access to those seeking my services.**
 
-This is the Angular 8 fullstack version of my website which will be the upgrade for www.ebseiten.com.
+This is the Angular 7 fullstack version of my website which will be the upgrade for www.ebseiten.com.
 
 Its about 62% of the way complete. It runs so long as you have `mongodb`.
 
-Plans are in the works to migrate the backend from `es5` to `TypeScript`.
+We are using `TypeScript` both frontend and backend. However, it will not work in this repo, so it will be running using a js stack.
 
 First clone this repo. Before taking futher steps, make sure you have `nodejs` and `npm` installed. Then run `npm install` to install all required `node_modules`.
 

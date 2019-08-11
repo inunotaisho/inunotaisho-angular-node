@@ -12,15 +12,15 @@ router.post('/register', (req: Request, res: Response) => {
                 if (existingUser) {
                     res.status(400).json({ message: 'User already exists' });
                 } else {
-                    const user = new User(req.body)
+                    const user = new User(req.body);
                     console.log(user);
-                    this.user.setPassword(req.body.password)
+                    this.user.setPassword(req.body.password);
                     this.user.save().then((newUser) => {
                         res.status(200).json({ message: 'registration succesful' });
                     });
                 }
             });
     }
-})
+});
 
-export { router as UserReg }
+export { router as UserReg };

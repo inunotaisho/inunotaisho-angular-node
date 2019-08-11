@@ -71,16 +71,17 @@ export const ROUTER: IROUTER[] = [
 ];
 
 export const ResumeRoute: express.Router = express.Router()
-    .get("/pdf", (req, res) => {
-        let file = fs.createReadStream(__dirname + '/assets/resumetemplate.pdf');
+    .get('/pdf', (req, res) => {
+        const file = fs.createReadStream(__dirname + '/assets/resumetemplate.pdf');
         res.setHeader('Content-Type', 'application/pdf');
         res.setHeader('Content-Disposition', 'inline; filename=name.pdf');
         file.pipe(res);
     });
 export const CertRoute: express.Router = express.Router()
-    .get("/cert", (req, res) => {
-        let file = fs.createReadStream(__dirname + '/assets/resumetemplate.pdf');
+    .get('/cert', (req, res) => {
+        const file = fs.createReadStream(__dirname + '/assets/resumetemplate.pdf');
         res.setHeader('Content-Type', 'application/pdf');
         res.setHeader('Content-Disposition', 'inline; filename=name.pdf');
         file.pipe(res);
     });
+    

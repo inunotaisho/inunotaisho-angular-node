@@ -1,11 +1,10 @@
 import { Router, Request, Response } from 'express';
-import { User } from '../../../models/user';
+import { db } from '../../../models';
 
 const router: Router = Router();
 
         router.post('/login', (req: Request, res: Response) => {
-            console.log('Register');
-            User.findOne({ username: req.body.username })
+            db.User.findOne({ username: req.body.username })
                 .then((user) => {
                     if (!user) {
                         return res.status(401).json({ error: 'User does not exist' });
@@ -13,13 +12,12 @@ const router: Router = Router();
 
                     if (!this.user.comparePassword(req.body.password)) {
                         return res.status(401).json({ error: 'Password incorrect' });
-                    }
-                    else {
+                    } else {
                         res.json({ success: true, token: this.user.generateJWT(), username: this.user.username });
                     }
                 });
 
-        })
+        });
 
 
-export { router as Login }
+export { router as Login };

@@ -29,8 +29,7 @@ export class Application {
   constructor() {
     this.app = express();
     this.config();
-    this.configRouter();
-
+    //this.configRouter();
   }
 
   private config() {
@@ -46,7 +45,7 @@ export class Application {
     this.app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
     // serving static files 
-    this.app.use(express.static('public'));
+    this.app.use(express.static('public')); 
 
     this.app.use(
       (req, res, next): void => {
@@ -58,24 +57,31 @@ export class Application {
     );
 
     this.app.use(morgan('combined'));
+
+    this.configRouter();
     // this.app.use(
     //   cors({
     //     credentials: true,
     //     origin: process.env.FRONT_URL || 'http://localhost:3000',
     //   })
     // );
-
-    this.app.use(
-      (err: any, req: express.Request, res: express.Response, next: express.NextFunction): void => {
-        err.status = 404;
-        next(err);
-      }
-    );
+      
+    // this.app.use(
+    //   (err: any, req: express.Request, res: express.Response, next: express.NextFunction): void => {
+    //     err.status = 404;
+    //     next(err);
+    //   }
+    // );
   }
 
   private configRouter(): void {
     for (const route of ROUTER) {
-      this.app.use(`/api/${route.path}`, route.middleware, route.handler);
+      console.log(`/api/${route.path}`);
+      if (route.middleware.length) {
+        this.app.use(`/api/${route.path}`, route.middleware, route.handler);
+        continue;
+      }
+      this.app.use(`/api/${route.path}`, route.handler);
     }
 
     this.app.use(
@@ -84,7 +90,7 @@ export class Application {
         res.json({
           error: 'Not found',
         });
-        next();
+        //next();
       }
     );
 

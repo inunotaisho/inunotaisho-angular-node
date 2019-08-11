@@ -1,6 +1,6 @@
 import { auth } from './../../middleware/loggedInUser';
 import { Router, Request, Response, NextFunction } from 'express';
-import {Database as db} from '../../../models';
+import { db } from '../../../models';
 
 const router: Router = Router();
 
@@ -10,8 +10,8 @@ const router: Router = Router();
  */
 
 router.delete('/:id', (req: Request, res: Response, next: NextFunction) => {
-    this.db.Blog.remove({ _id: req.params.id }, (err) => {
-        console.log('deleeeeeee', err)
+    db.Blog.remove({ _id: req.params.id }, (err) => {
+        console.log('deleeeeeee', err);
         if (err) {
             // res.send('Error deleting file');
         } else {
@@ -26,9 +26,9 @@ router.delete('/:id', (req: Request, res: Response, next: NextFunction) => {
  * Delete article form.
  */
 
-router.get("/:id/delete", (req: Request, res: Response, next: NextFunction) => {
-    this.db.Blog.findById(req.params.id).then((err: any) => {  
-      if(err) {
+router.get('/:id/delete', (req: Request, res: Response, next: NextFunction) => {
+    db.Blog.findById(req.params.id).then((err: any) => {  
+      if (err) {
         // res.send('Error deleting file');
       } else {
         // res.send('Successfully deleted the Shit');
@@ -38,5 +38,5 @@ router.get("/:id/delete", (req: Request, res: Response, next: NextFunction) => {
      });
   });
 
-export { router as BlogDelete }
+export { router as BlogDelete };
 

@@ -1,6 +1,6 @@
 import { auth } from '../../middleware/loggedInUser';
 import { Router, Request, Response, NextFunction } from 'express';
-import * as db from '../../../models';
+import { db } from '../../../models';
 
 const router: Router = Router();
 
@@ -9,12 +9,14 @@ const router: Router = Router();
  * GET articles listing.
  */
 
-router.get('/listings', (req: Request, res: Response, next: NextFunction) => {
-    this.db.Blog.find().then(posts => {
-    }).catch(err => {
-        res.send(500);
-        console.log(err)
-    });
+router.get('/listings', async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const posts = await db.Blog.find().lean();
+        res.status(200).send(posts);
+    }
+    catch (error) {
+        res.status(500).send(error.message);   
+    }
 });
 
 /**
@@ -22,13 +24,13 @@ router.get('/listings', (req: Request, res: Response, next: NextFunction) => {
  */
 router.get('/new', (req: Request, res: Response, next: NextFunction) => {
     res.send('it works');
-})
+});
 
 /**
  * editArticleForm
  */
-router.get("/:id/edit", (req, res, next) => {
-    this.db.Blog.findById(req.params.id).then(post => {
+router.get('/:id/edit', (req, res, next) => {
+    db.Blog.findById(req.params.id).then(post => {
         if (post) {
 
         } else {
@@ -44,8 +46,8 @@ router.get("/:id/edit", (req, res, next) => {
 /**
  * getSingleArticle
  */
-router.get("/:id", (req, res, next) => {
-    this.db.Blog.findById(req.params.id).then(post => {
+router.get('/:id', (req, res, next) => {
+    db.Blog.findById(req.params.id).then(post => {
         if (post) {
 
         } else {
@@ -58,7 +60,3 @@ router.get("/:id", (req, res, next) => {
 });
 
 export {router as BlogGet};
-
-
-
-

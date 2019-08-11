@@ -1,10 +1,7 @@
 import { Router, Request, Response, NextFunction } from 'express';
 import { createTransport } from 'nodemailer';
 import * as mg from 'nodemailer-mailgun-transport';
-import { Observable } from 'rxjs';
 
-import { Blog } from "../../models/blog";
-import { User } from "../../models/user";
 
 
 const router: Router = Router();
@@ -15,20 +12,20 @@ const router: Router = Router();
 
 router.post('/', (req: Request, res: Response, next: NextFunction) => {
 
-    let firstName = req.body.firstName,
-        lastName = req.body.lastName,
-        contactEmail = req.body.email;
+    const firstName = req.body.firstName;
+    const lastName = req.body.lastName;
+    const contactEmail = req.body.email;
 
-    let auth = {
+    const auth = {
         auth: {
             api_key: process.env.api_key,
             domain: process.env.domain
         }
-    }
+    };
 
     const mailer = createTransport(mg(auth));
 
-    let mailOptions = {
+    const mailOptions = {
         from: firstName + ' ' + lastName + ' ' + contactEmail,
         to: process.env.myEmail,
         subject: req.body.subject,
@@ -47,9 +44,9 @@ router.post('/', (req: Request, res: Response, next: NextFunction) => {
                     '<div class="alert alert--success row">' +
                     '<h4 class="col-xs-offset-5 col-xs-4 col-sm-offset-5 col-sm-4 col-md-offset-5 col-md-4" >' +
                     'Message sent!</h4></div>'
-                )
+                );
             mailer.close();
-        };
+        }
     });
 });
 
