@@ -17,12 +17,12 @@ let express= require('express'),
 
 
 app.use(cookieParser());
-app.use(express.static("public"));
+app.use(express.static("../../../../public"));
 
 app.use(helmet.frameguard());
 app.use(helmet.hsts());
 app.use(helmet.noSniff());
-app.use(favicon(path.join(__dirname, '/assets', 'inu.ico')));
+app.use(favicon(path.join(__dirname, '../../assets', 'inu.ico')));
 
 
 
@@ -52,7 +52,7 @@ app.use(bodyParser.json());                         // for parsing application/j
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 //requiring routes module
-app.use(require('./routes'));
+app.use(require('../routes/routes'));
 
 /* istanbul ignore next */
 if (process.env.NODE_ENV === 'development') {
