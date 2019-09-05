@@ -2,7 +2,7 @@
 
 **Important note: This repo is no longer public. App is being changed to have both a front end and the backend repository. Please email me if you are a recruiter or employer wishing to see my work. I will be willing to grant access to those seeking my services.**
 
-This is the Angular 7 fullstack version of my website which will be the upgrade for www.ebseiten.com.
+This is the Angular 8 fullstack version of my website which will be the upgrade for www.ebseiten.com.
 
 Its about 62% of the way complete. It runs so long as you have `mongodb`.
 
@@ -12,7 +12,7 @@ First clone this repo. Before taking futher steps, make sure you have `nodejs` a
 
 All modules a stored in `node_modules` and `webpack` is used as a module loader.  
 
-Make sure you have `mongodb` installed. `Redis-server` server is no longer required due to the use of `JSON Web Tokens` to handle sessions. Open another terminal tab and create the desired name for your database using **Mongo Shell**. Run the command `mongo` to open the shell and run the `use "DATABASE_NAME"` to create your desired database.
+Make sure you have `mongodb` installed. Open another terminal tab and create the desired name for your database using **Mongo Shell**. Run the command `mongo` to open the shell and run the `use "DATABASE_NAME"` to create your desired database.
  
 For easier access use something like `Robo3T`or something similar. Command line control of `mongo` is also an option, but is not covered by this readme.
 
