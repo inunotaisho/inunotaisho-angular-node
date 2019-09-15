@@ -1,4 +1,4 @@
-<nav class="navbar container-fluid navbar-dark navbar-expand-lg bg-dark" id="headNav nav-color" role="navigation">
+<nav class="navbar container-fluid navbar-dark navbar-expand-lg bg-custom" id="headNav nav-color" role="navigation">
     <a class="navbar-brand" routerLink="/">
         <span class="logotext">{{ data['Navbar-Brand'] }}</span>
     </a>
@@ -6,7 +6,7 @@
         data-target="#navbarSupportedContent" aria-expanded="false">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div id="navbar" class="navbar-collapse collapse nav-color" [collapse]="!isCollapsed">
+    <div id="navbar" class="navbar-collapse collapse bg-custom" [collapse]="!isCollapsed">
         <ul class="nav navbar-nav ml-auto" id="navbarSupportedContent">
             <li class="nav-item">
                 <a class="mobile nav-link" routerLink="/" routerLinkActive="active">{{ data['Navigate-Home'] }}</a>

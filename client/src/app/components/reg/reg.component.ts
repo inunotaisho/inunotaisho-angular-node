@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { NgForm, FormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import {UserRegistration } from '../../models/reg.model';
+import { AppSettings } from './../../common/config';
 
 @Component({
     templateUrl:'./reg.component.html'
@@ -31,7 +32,7 @@ export class RegComponent implements OnDestroy{
     // }
 
     onSubmit(form:NgForm){
-        this.reg = this.http.post('api/users/register', this.user).subscribe((res) => {
+        this.reg = this.http.post(AppSettings.API_SERVER + '/api/users/register', this.user).subscribe((res) => {
             // success status code 2xx
             this.errorMessage = '';
             form.reset();

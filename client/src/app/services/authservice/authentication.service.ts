@@ -7,7 +7,6 @@ import { TranslateService } from '@ngx-translate/core';
 import { AppSettings } from './../../common/config';
 import { contentHeaders } from './../../common/headers';
 import { loginModel } from './../../models/login.model';
-import { GlobalLoaderFacade as SlimLoadingBarService } from '../globalLoaderFacade/global-loader-facade.service';
 import { getSingleError } from '../../common/error';
 
 
@@ -26,7 +25,6 @@ export class AuthService {
     constructor(
         private router: Router,
         private http: HttpClient,
-        private loaderService: SlimLoadingBarService,
         private translateService: TranslateService,
     ) {
         /**
@@ -80,7 +78,7 @@ export class AuthService {
         }
         this.attemptingToLogIn = true;
 
-        return this.http.post('api/users/login', user, { headers: contentHeaders })
+        return this.http.post(AppSettings.API_SERVER + '/api/login/authenticate', user, { headers: contentHeaders })
             .subscribe(
                 response => {
                     this.reset();

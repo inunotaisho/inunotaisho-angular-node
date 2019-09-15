@@ -4,7 +4,6 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CollapseModule, TooltipModule } from 'ngx-bootstrap';
-import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
 import { SimpleNotificationsModule } from 'angular2-notifications';
 
 /**
@@ -33,7 +32,6 @@ import { AuthGuard, alreadyLoggedIn } from '../authguard/authguard.guard';
 
 import { AuthService } from '../../services/authservice/authentication.service';
 import { TranslationService } from '../../services/translation/translation.service';
-import { GlobalLoaderFacade } from '../../services/globalLoaderFacade/global-loader-facade.service';
 import { ImageUploadService } from '../../services/imageUpload/image-upload.service';
 
 // for AoT support, https://github.com/ocombe/"@ngx-translate/core"#aot
@@ -71,8 +69,6 @@ export function createTranslateLoader(http: HttpClient) {
 
     RouterModule.forChild(routes),
 
-    SlimLoadingBarModule,
-
     SimpleNotificationsModule.forRoot(),
 
     TranslateModule.forRoot({
@@ -97,7 +93,6 @@ export function createTranslateLoader(http: HttpClient) {
     AuthGuard,
     alreadyLoggedIn,
     TranslationService,
-    GlobalLoaderFacade,
     ImageUploadService
   ],
 })
